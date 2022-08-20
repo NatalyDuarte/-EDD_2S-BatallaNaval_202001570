@@ -1,10 +1,10 @@
 //importando librerias
 #include <iostream>
-//#include "ListaUsuario.cpp"
+#include "ListaUsuario.cpp"
 //#include "ListaCategoria.cpp"
 
 using namespace std;
-//ListaUsuario listausu;
+ListaUsuario listausu;
 //ListaCategoria listacate;
 void inicio(){
     int opc;
@@ -84,8 +84,8 @@ int main(int argc, char** argv){
     //string res;
     //res=listacate.getCate("Rock");
     //cout<<res<<endl;
-    //listausu.agregarlista("natu","pas12",150, 22);
-    //listausu.mostrarlista();
+    listausu.agregarlista("natu","pas12",150, 22);
+    listausu.mostrarlista();
     inicio();
     return 0;
 }
