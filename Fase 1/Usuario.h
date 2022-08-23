@@ -16,6 +16,8 @@ class Usuario{
             this->pass= pass;
             this->mon= mon;
             this->edad= edad;
+            this->siguiente=NULL;
+            this->anterior=NULL;
         }
 
 };
