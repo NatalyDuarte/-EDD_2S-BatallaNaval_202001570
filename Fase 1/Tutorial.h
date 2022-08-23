@@ -7,13 +7,11 @@ class Tutorial{
     public:
         int ancho, alto;
         Tutorial* siguiente;
-        Tutorial* anterior;
         //constructor
         Tutorial(){
             ancho = 0;
             alto = 0;
-            siguiente = NULL;
-            
+            siguiente = NULL;   
         }
 
     private:

@@ -123,6 +123,7 @@ void menu1(){
             case 3:
                 break;
             case 4: 
+                listacate.mostrarArti();
                 break; 
             case 5: 
                 break;

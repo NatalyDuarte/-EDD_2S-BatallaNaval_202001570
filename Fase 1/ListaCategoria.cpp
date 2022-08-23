@@ -55,10 +55,9 @@ void ListaCategoria::agregarArti(int id, string categoria,double precio,string n
 void ListaCategoria::mostrarArti(){
     Categoria* auxcate = cabecera;
     while(auxcate != NULL){
-        cout<<"=====Categoria: "<<auxcate->dato<<endl;
         Articulo *auxarti = auxcate->abajo;
         while(auxarti!= NULL){
-            cout<<"[id: "<<auxarti->id<<", [Nombre: "<< auxarti->nombre<<"] "<<", [precio: "<< auxarti->precio<<"] "<<", [src: "<< auxarti->src<<"] "<<endl;
+            cout<<"[id: "<<auxarti->id<<", [Nombre: "<< auxarti->nombre<<"] "<<", [Categoria: "<< auxcate->dato<<"] "<<", [precio: "<< auxarti->precio<<"] "<<endl;
             auxarti = auxarti->abajo;
         }
         auxcate = auxcate->siguiente;

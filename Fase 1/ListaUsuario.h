@@ -22,6 +22,8 @@ class ListaUsuario{
         void editar(string res, string nick,string pass,int mon, int edad);
         //metodo eliminar cuenta
         void eliminar(string res);
+        //metodo de encriptar
+        string encriptar(string pass);
     private:
         Usuario* inicio;
         Usuario* fin;
