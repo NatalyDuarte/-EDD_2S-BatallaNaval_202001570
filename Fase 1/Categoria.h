@@ -1,7 +1,7 @@
 #include <stddef.h>
 #include <string>
 #include <iostream>
-//#include "ListaArticulo.h"
+#include "ListaArticulo.h"
 
 using namespace std;
 
@@ -11,12 +11,12 @@ class Categoria{
         string dato;
         Categoria* siguiente;
         Categoria* abajo;
-        //ListaArticulo* lista_cate;
+        ListaArticulo lista_cate;
         Categoria(string dato){
             this->dato = dato;
             this->siguiente=NULL;
             this->abajo=NULL;
-            //this->lista_cate=NULL;
+            lista_cate;
         }
     private:
 

@@ -8,41 +8,69 @@
 #include "include/json/json.h"
 
 using namespace::std;
-using namespace Json;
 ListaUsuario listausu;
 ListaCategoria listacate;
 
 void carga(){
-    string dire;
-    //cout<<"Ingrese la ruta de su archivo"<<endl;
-    //cin>>dire;
-    ifstream file("pruebas.json");
-    Json::Reader reader;  
-    Json::Value root; 
-    reader.parse(file, root);
-    std::cout<<root<<std::endl;
-    int sia; 
-    sia= root.size();   //  Number of root nodes
+    string dire,nick,pass;
+    string mon,edad;
+    string cate,cate1,nom,src,ob,id,precio;
+    string texto,data;
 
-    /*for (int j = 0; j < size; j++) {
-        const Json::Value arrayObj = root[j]["usuarios"];
-        for (int i = 0; i < arrayObj.size(); i++) {
-            if (arrayObj[i].isMember("nick")) {
-                cout << arrayObj[i]["nick"].asString() << endl;
-            }
-            if (arrayObj[i].isMember("password")) {
-                cout << arrayObj[i]["password"].asString() << endl;
-            }
-            if (arrayObj[i].isMember("monedas")) {
-                cout << arrayObj[i]["monedas"].asString() << endl;
-            }
-            if (arrayObj[i].isMember("edad")) {
-                cout << arrayObj[i]["edad"].asString() << endl;
-            }
-            int m = 0;
+    cout<<"Ingrese la ruta de su archivo"<<endl;
+    cin>>dire;
+    ifstream prue;
+    prue.open(dire,ios::in);
+    if (prue.fail())
+    {
+        cout << "Error al abrir el archivo";
+        exit(1);
+    }
+    try
+    {
+        while (!prue.eof())
+        {
+            getline(prue, data);
+            texto = texto + data + "\n";
         }
-    }*/
-    
+        prue.close();
+        Json::Value root; 
+        Json::Reader reader;  
+        reader.parse(texto, root);
+        const Json::Value& characters = root["usuarios"];
+        const Json::Value& chara = root["articulos"];
+        for (int i = 0; i < characters.size(); i++){
+            nick=characters[i]["nick"].asString();
+            pass=characters[i]["password"].asString();
+            mon=characters[i]["monedas"].asString();
+            edad=characters[i]["edad"].asString();
+            listausu.agregarlista(nick,pass,stoi(mon),stoi(edad));
+        }
+        for (int o = 0; o < chara.size(); o++){
+            cate=chara[o]["categoria"].asString();
+            cate1=listacate.getCate(cate);
+            if(cate1=="None"){
+                listacate.agregarCate(cate);
+                id=chara[o]["id"].asString();
+                nom=chara[o]["nombre"].asString();
+                src=chara[o]["src"].asString();
+                precio=chara[o]["precio"].asString();
+
+            }else{
+                id=chara[o]["id"].asString();
+                nom=chara[o]["nombre"].asString();
+                src=chara[o]["src"].asString();
+                precio=chara[o]["precio"].asString();
+            }
+        }
+
+
+    }
+    catch (const std::exception &e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+
 }
 
 void menu1(){
@@ -155,12 +183,6 @@ void inicio(){
 
 
 int main(int argc, char** argv){
-    //El login no agarra
-    //listacate.agregarCate("Rock");
-    //listacate.mostrarCate();
-    //string res;
-    //res=listacate.getCate("Rock");
-    //cout<<res<<endl;
     inicio();
     return 0;
 }
