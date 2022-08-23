@@ -34,3 +34,20 @@ string ListaCategoria::getCate(string dato){
     }
     return "None";
 }
+
+void ListaCategoria::agregarArti(int id, string categoria,double precio,string nom,string src){
+    Categoria* auxcate = cabecera;
+    while(auxcate != NULL){
+        if(auxcate->album == categoria){
+            Articulo* arti = new Articulo(int id, double precio,string nom,string src);
+            Articulo *iniciarti = auxcate->abajo;
+            auxcate->abajo = arti;
+            arti->abajo = iniciarti;
+            break;
+        }
+        auxcate= auxcate->siguiente;
+    }
+    if (auxcate == NULL){
+        cout<<"No se encontro la categoria"<<endl;
+    }
+}

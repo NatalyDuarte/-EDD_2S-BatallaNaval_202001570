@@ -12,15 +12,13 @@ class Articulo{
     public:
         string nombre, src; 
         int id, precio;
-        Articulo* siguiente;
-        Categoria abajo;
+        Articulo* abajo;
         Articulo(int id, int precio,string nombre, string src){
             this->id= id;
             this->precio= precio;
             this->nombre= nombre;
             this->src= src;
-            this->siguiente=NULL;
-            abajo;
+            this->abajo=NULL;
         }
 
 };

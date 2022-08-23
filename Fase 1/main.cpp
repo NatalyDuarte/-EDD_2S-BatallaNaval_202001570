@@ -55,12 +55,13 @@ void carga(){
                 nom=chara[o]["nombre"].asString();
                 src=chara[o]["src"].asString();
                 precio=chara[o]["precio"].asString();
-
+                listacate.agregarArti(stoi(id),cate,stod(precio),nom,src);
             }else{
                 id=chara[o]["id"].asString();
                 nom=chara[o]["nombre"].asString();
                 src=chara[o]["src"].asString();
                 precio=chara[o]["precio"].asString();
+                listacate.agregarArti(stoi(id),cate1,stod(precio),nom,src);
             }
         }
 
