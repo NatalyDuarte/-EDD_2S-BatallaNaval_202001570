@@ -38,8 +38,8 @@ string ListaCategoria::getCate(string dato){
 void ListaCategoria::agregarArti(int id, string categoria,double precio,string nom,string src){
     Categoria* auxcate = cabecera;
     while(auxcate != NULL){
-        if(auxcate->album == categoria){
-            Articulo* arti = new Articulo(int id, double precio,string nom,string src);
+        if(auxcate->dato== categoria){
+            Articulo* arti = new Articulo(id, precio, nom,src);
             Articulo *iniciarti = auxcate->abajo;
             auxcate->abajo = arti;
             arti->abajo = iniciarti;

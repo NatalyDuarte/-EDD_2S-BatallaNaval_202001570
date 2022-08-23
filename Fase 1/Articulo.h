@@ -1,7 +1,6 @@
 #include <stddef.h>
 #include <string>
 #include <iostream>
-#include "Categoria.h"
 
 using namespace std;
 
