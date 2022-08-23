@@ -16,7 +16,7 @@ void carga(){
     string mon,edad;
     string cate,cate1,nom,src,ob,id,precio;
     string texto,data;
-
+    string ancho,alto,movimientos;
     cout<<"Ingrese la ruta de su archivo"<<endl;
     cin>>dire;
     ifstream prue;
@@ -39,6 +39,7 @@ void carga(){
         reader.parse(texto, root);
         const Json::Value& characters = root["usuarios"];
         const Json::Value& chara = root["articulos"];
+        const Json::Value& charac = root["tutorial"];
         for (int i = 0; i < characters.size(); i++){
             nick=characters[i]["nick"].asString();
             pass=characters[i]["password"].asString();
@@ -63,6 +64,9 @@ void carga(){
                 precio=chara[o]["precio"].asString();
                 listacate.agregarArti(stoi(id),cate1,stod(precio),nom,src);
             }
+        }
+        for (int u = 0; u < charac.size(); u++){
+
         }
 
 
