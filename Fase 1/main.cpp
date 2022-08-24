@@ -6,17 +6,19 @@
 #include "ListaCategoria.cpp"
 #include "dist/jsoncpp.cpp"
 #include "include/json/json.h"
+#include "ColaTutorial.cpp"
 
 using namespace::std;
 ListaUsuario listausu;
 ListaCategoria listacate;
+ColaTutorial colatuto;
 
 void carga(){
     string dire,nick,pass;
     string mon,edad;
     string cate,cate1,nom,src,ob,id,precio;
     string texto,data;
-    string ancho,alto,movimientos;
+    string ancho,alto,movix,moviy;
     cout<<"Ingrese la ruta de su archivo"<<endl;
     cin>>dire;
     ifstream prue;
@@ -39,7 +41,8 @@ void carga(){
         reader.parse(texto, root);
         const Json::Value& characters = root["usuarios"];
         const Json::Value& chara = root["articulos"];
-        const Json::Value& charac = root["tutorial"];
+        const Json::Value& tuto = root["tutorial"];
+        //const Json::Value& chari = root["movimientos"];
         for (int i = 0; i < characters.size(); i++){
             nick=characters[i]["nick"].asString();
             pass=characters[i]["password"].asString();
@@ -65,9 +68,17 @@ void carga(){
                 listacate.agregarArti(stoi(id),cate1,stod(precio),nom,src);
             }
         }
-        for (int u = 0; u < charac.size(); u++){
-
-        }
+        /*for (int u = 0; u < tuto.size(); u++){
+            ancho=tuto[u]["ancho"].asString();
+            alto=tuto[u]["alto"].asString();
+            cout<<ancho<<endl;*/
+            //colatuto.insertar(stoi(ancho),stoi(alto),"tablero");
+            /*for (int v = 0; v < chari.size(); v++){
+                movix=chari[v]["x"].asString();
+                moviy=chari[v]["y"].asString();
+                colatuto.insertar(stoi(movix),stoi(moviy),"movimiento");
+            }*/
+        //}
 
 
     }

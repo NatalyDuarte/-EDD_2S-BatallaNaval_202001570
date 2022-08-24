@@ -1,11 +1,12 @@
 #include <iostream>
 #include "ListaUsuario.h"
-#include "sha256/sha256.h"
+#include "sha256/sha256.cpp"
 
 using namespace std;
+SHA256 probando;
 
 void ListaUsuario::agregarlista(string nick, string pass,int mon, int edad){
-    Usuario* usu= new Usuario(nick,encriptar(pass),mon,edad);
+    Usuario* usu= new Usuario(nick,probando(pass),mon,edad);
     if(inicio == NULL){
         inicio = usu; 
         inicio -> siguiente = inicio;
@@ -35,7 +36,7 @@ string ListaUsuario:: verificar(string nic, string pass){
         while (aux!=NULL)
             {
                 if( aux->nick==nic){
-                     if (aux->pass==encriptar(pass)){
+                     if (aux->pass==probando(pass)){
                         return nic;
                     }else{
                         cout<<"Contraseña incorrecta"<<endl;
@@ -61,7 +62,7 @@ void ListaUsuario::editar(string res,string nick, string pass,int mon, int edad)
 		do{
             if(aux->nick==res){
                 aux->nick = nick;
-                aux->pass = encriptar(pass);
+                aux->pass =probando(pass);
                 aux->mon = mon; 
                 aux->edad = edad;
                 encontrado = true;				
@@ -109,10 +110,4 @@ void ListaUsuario::eliminar(string res){
 	}else{
 		cout << "\n La lista se Encuentra Vacia\n\n";
 	}
-}
-
-string ListaUsuario::encriptar(string pass){
-    SHA256 sha256;
-    string contraencrip = sha256(pass);
-    return contraencrip;
 }
