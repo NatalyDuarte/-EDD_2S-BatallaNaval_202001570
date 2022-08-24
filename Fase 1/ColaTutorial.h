@@ -15,6 +15,8 @@ class ColaTutorial{
     //void modificar();
     void eliminar();
     void mostrar();
+    //graficar
+    void graficar();
     private:
     Tutorial* adelante;
     Tutorial* atras;

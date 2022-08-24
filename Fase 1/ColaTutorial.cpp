@@ -59,4 +59,27 @@ void ColaTutorial::mostrar(){
 	}
 }
 
-	
+void ColaTutorial::graficar(){
+    int cont = 0;
+    int conts = 0;
+    Tutorial* aux=adelante;
+    string cadena = "";
+    ofstream grafico;
+    grafico.open("graficaCola.dot", ios::out);
+    cadena = cadena +"digraph G {\n";
+    cadena = cadena +"node[shape=box fillcolor=\"white:yellow\" style =filled]\n";
+    while(aux!=NULL){
+        if(aux->indi=="Movimiento"){
+            cadena = cadena + "Node"+to_string(cont)+"[label=\"X:"+to_string(aux->ancho) +" Y: "+to_string(aux->alto)+"\"];\n";
+        } 
+        aux = aux->siguiente;
+        cont= cont+1;
+    }
+
+    cadena = cadena + "}";
+    grafico<<cadena;
+    grafico.close();
+    system("dot -Tpng graficaCola.dot -o graficaCola.png");
+    //os.startfile("grafica.png")
+    cout<<"Generada exitosamente"<<endl;
+}

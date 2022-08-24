@@ -28,6 +28,8 @@ class ListaCategoria{
         void mostrarArti();
         //metodo obtener precio articulo 
         int getPrecio(int id);
+        //metodo graficar
+        void graficarListas();
     private:
         //Articulo* inicio; 
         //Articulo* fin;

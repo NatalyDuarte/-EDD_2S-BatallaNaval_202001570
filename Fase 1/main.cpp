@@ -178,8 +178,10 @@ void grafica(){
             listausu.graficadoble();
 			break;
         case 2: 
+            listacate.graficarListas();
             break;
         case 3:
+            colatuto.graficar();
             break;
         case 4: 
             cout<<"Regresando...."<<endl;

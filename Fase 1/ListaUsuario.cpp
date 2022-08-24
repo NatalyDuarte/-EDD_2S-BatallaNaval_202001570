@@ -198,7 +198,7 @@ void ListaUsuario::graficadoble(){
         int cont = 0;
         string cadena = "";
         ofstream archivo;
-        archivo.open("grafica.dot", ios::out);
+        archivo.open("graficaUsuarios.dot", ios::out);
         cadena = cadena + "digraph G { \n";
         while(aux->siguiente != inicio){
             cadena = cadena + "Node"+to_string(cont)+"[label=\"Nick: "+aux->nick+",Password: "+aux->pass+",Edad: "+to_string(aux->edad)+", Monedas: "+to_string(aux->mon)+"\"];\n";
@@ -217,7 +217,7 @@ void ListaUsuario::graficadoble(){
         cadena = cadena + "}";
         archivo<<cadena;
         archivo.close();
-        system("dot -Tpng grafica.dot -o grafica.png");
+        system("dot -Tpng graficaUsuarios.dot -o graficaUsuarios.png");
         //startfile("grafica.png");
         cout<<"Generada exitosamente"<<endl;
 }

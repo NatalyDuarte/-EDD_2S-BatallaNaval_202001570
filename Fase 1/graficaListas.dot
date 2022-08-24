@@ -1,0 +1,13 @@
+graph G {
+node[shape=box fillcolor="pink:yellow" style =filled]
+Node0[label="Leve2"];
+Node0 -- Node1;
+Node0[label="Waters"];
+Node0[label="Flores"];
+Node1[label="Level4"];
+Node1 -- Node2;
+Node2[label="Level3"];
+Node2 -- Node3;
+Node3[label="Level1"];
+Node3 -- Node4;
+}

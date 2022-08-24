@@ -78,3 +78,35 @@ int ListaCategoria::getPrecio(int id){
     }
     return 0;
 }
+
+void ListaCategoria::graficarListas(){
+    int cont = 0;
+    int conts = 0;
+    string cadena = "";
+    ofstream grafico;
+    grafico.open("graficaListas.dot", ios::out);
+    cadena = cadena +"graph G {\n";
+    cadena = cadena +"node[shape=box fillcolor=\"pink:yellow\" style =filled]\n";
+    Categoria* aux = cabecera;
+    Articulo* prob=aux->abajo;
+    while(aux!=NULL){
+        cadena = cadena + "Node"+to_string(cont)+"[label=\""+aux->dato+"\"];\n";
+        if(aux!=inicio){
+            cadena = cadena + "Node"+to_string(cont)+" -- "+ "Node"+to_string(cont+1)+";\n";
+        }
+        while(prob!=NULL){
+            cadena = cadena + "Node"+to_string(cont)+"[label=\""+prob->nombre+"\"];\n";
+            prob = prob->abajo;
+        }
+        aux = aux->siguiente;
+        cont= cont+1;
+    }
+
+    
+    cadena = cadena + "}";
+    grafico<<cadena;
+    grafico.close();
+    system("dot -Tpng graficaListas.dot -o graficaListas.png");
+    //os.startfile("grafica.png")
+    cout<<"Generada exitosamente"<<endl;
+}
