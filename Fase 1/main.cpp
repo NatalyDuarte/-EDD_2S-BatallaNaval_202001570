@@ -159,6 +159,83 @@ void menu1(){
     }
 }
 
+void grafica(){
+    int opc;
+    string res;
+    do
+    {      
+        cout<<"====================0====GRAFICAS=====================" <<endl;
+        cout<<"|1. Lista doblemente enlazada circular (Usuarios)    |" <<endl;
+        cout<<"|2. Lista de listas (Articulos)                      |" <<endl;
+        cout<<"|3. Cola de movimientos (Tutorial)                   |" <<endl;
+        cout<<"|4. Lista de pilas (Listado de jugadas)              |" <<endl;
+        cout<<"|5. Regresar a menu                                  |" <<endl;
+        cout<<"======================================================" <<endl;
+        cout<<"Dijite su opcion: ";
+        cin>>opc;
+        switch(opc){
+		case 1:
+            listausu.graficadoble();
+			break;
+        case 2: 
+            break;
+        case 3:
+            break;
+        case 4: 
+            cout<<"Regresando...."<<endl;
+            break;
+        case 5: 
+            cout<<"Regresando...."<<endl;
+            break;
+        default:
+			cout << "\n\n Opcion No Valida \n\n";
+		}
+    }while (opc != 5);
+
+}
+void reportes(){
+    int opc;
+    string res;
+    do
+    {      
+        cout<<"==============REPORTES===============" <<endl;
+        cout<<"|1. Graficas                        |" <<endl;
+        cout<<"|2. Listado de usuarios             |" <<endl;
+        cout<<"|3. Listado de articulos            |" <<endl;
+        cout<<"|4. Regresar a menu                 |" <<endl;
+        cout<<"=====================================" <<endl;
+        cout<<"Dijite su opcion: ";
+        cin>>opc;
+        switch(opc){
+		case 1:
+            grafica();
+			break;
+        case 2: 
+            cout<<"Si desea ordenarlos ascendentemente ingre [A] y descendente [D]"<<endl;
+            cin>>res;
+            if(res=="A"){
+                listausu.ordeascen();
+                //listausu.mostrarlista();
+            }else if (res=="D"){
+                cout<<"Llego";
+            }else{
+                cout<<"Letra invalida"<<endl;
+            }
+
+            break;
+        case 3:
+            menu1();
+            break;
+        case 4: 
+            cout<<"Regresando...."<<endl;
+            break;
+        default:
+			cout << "\n\n Opcion No Valida \n\n";
+		}
+    }while (opc != 4);
+
+}
+
 void inicio(){
     int opc;
     string nick, pass;
@@ -196,7 +273,7 @@ void inicio(){
             menu1();
             break;
         case 4: 
-            cout <<"Llego op4";
+            reportes();
             break;
         case 5:
             cout <<"Feliz dia!!";

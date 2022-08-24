@@ -1,6 +1,10 @@
 #include <iostream>
 #include "ListaUsuario.h"
 #include "sha256/sha256.cpp"
+#include <fstream>
+#include <sstream>
+#include <string>
+#include <bits/stdc++.h> 
 
 using namespace std;
 SHA256 probando;
@@ -155,3 +159,66 @@ int ListaUsuario:: obtedad(string nic, string pass){
     }
     return 0;
 }
+
+void ListaUsuario::ordeascen(){
+    Usuario* aux = inicio;
+    Usuario* prob=NULL;
+    Usuario* apaux=NULL;
+    if(inicio!=NULL){
+        while(aux!=NULL){
+            prob=aux->siguiente;
+            while(prob!=NULL){
+                if(aux->edad > prob->edad){
+                    apaux->nick=aux->nick;
+                    apaux->pass=aux->pass;
+                    apaux->mon=aux->mon;
+                    apaux->edad=aux->edad;
+
+                    aux->nick=prob->nick;
+                    aux->pass=prob->pass;
+                    aux->mon=prob->mon;
+                    aux->edad=prob->edad;
+
+                    prob->nick=apaux->nick;
+                    prob->pass=apaux->pass;
+                    prob->mon=apaux->mon;
+                    prob->edad=apaux->edad;
+                }
+                prob=prob->siguiente;
+            }
+            aux=aux->siguiente;
+        }
+	}else{
+		cout << "\n La lista se Encuentra Vacia\n\n";
+	}
+}
+
+void ListaUsuario::graficadoble(){
+        Usuario* aux = inicio;
+        int cont = 0;
+        string cadena = "";
+        ofstream archivo;
+        archivo.open("grafica.dot", ios::out);
+        cadena = cadena + "digraph G { \n";
+        while(aux->siguiente != inicio){
+            cadena = cadena + "Node"+to_string(cont)+"[label=\"Nick: "+aux->nick+",Password: "+aux->pass+",Edad: "+to_string(aux->edad)+", Monedas: "+to_string(aux->mon)+"\"];\n";
+            if(aux != inicio){
+                cadena = cadena + "Node"+to_string(cont-1)+" -> "+"Node"+to_string(cont)+";\n";
+                cadena = cadena + "Node"+to_string(cont)+" -> "+"Node"+to_string(cont-1)+";\n";
+            }
+            cont=cont+1;
+            aux = aux->siguiente;
+        }
+        cadena = cadena + "Node"+to_string(cont)+"[label=\"Nick: "+aux->nick+",Password: "+aux->pass+",Edad: "+to_string(aux->edad)+",Monedas: "+to_string(aux->mon)+"\"];\n";
+        cadena = cadena + "Node"+to_string(cont-1)+" -> "+"Node"+to_string(cont)+";\n";
+        cadena = cadena + "Node"+to_string(cont)+" -> "+"Node"+to_string(cont-1)+";\n";
+        cadena = cadena + "Node"+to_string(cont)+" -> "+"Node"+to_string(0)+";\n";
+        cadena = cadena + "Node"+to_string(0)+" -> "+"Node"+to_string(cont)+";\n";
+        cadena = cadena + "}";
+        archivo<<cadena;
+        archivo.close();
+        system("dot -Tpng grafica.dot -o grafica.png");
+        //startfile("grafica.png");
+        cout<<"Generada exitosamente"<<endl;
+}
+   

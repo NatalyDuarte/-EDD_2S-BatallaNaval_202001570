@@ -30,6 +30,11 @@ class ListaUsuario{
         int obtedad(string res,string pass);
         //metodo agregar pila movimientos
         void agregarmovipila();
+        //metodo ordenar 
+        void ordeascen();
+        void ordedescen();
+        //graficar
+        void graficadoble();
     private:
         Usuario* inicio;
         Usuario* fin;
