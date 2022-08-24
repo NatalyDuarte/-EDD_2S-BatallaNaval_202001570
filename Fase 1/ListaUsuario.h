@@ -28,6 +28,8 @@ class ListaUsuario{
         int obtemonedas(string res,string pass);
         //metodo obtener edad
         int obtedad(string res,string pass);
+        //metodo agregar pila movimientos
+        void agregarmovipila();
     private:
         Usuario* inicio;
         Usuario* fin;
