@@ -24,6 +24,10 @@ class ListaUsuario{
         void eliminar(string res);
         //metodo de encriptar
         string encriptar(string pass);
+        //metodo obtener monedas
+        int obtemonedas(string res,string pass);
+        //metodo obtener edad
+        int obtedad(string res,string pass);
     private:
         Usuario* inicio;
         Usuario* fin;

@@ -35,7 +35,7 @@ string ListaCategoria::getCate(string dato){
     return "None";
 }
 
-void ListaCategoria::agregarArti(int id, string categoria,double precio,string nom,string src){
+void ListaCategoria::agregarArti(int id, string categoria,int precio,string nom,string src){
     Categoria* auxcate = cabecera;
     while(auxcate != NULL){
         if(auxcate->dato== categoria){
@@ -57,10 +57,24 @@ void ListaCategoria::mostrarArti(){
     while(auxcate != NULL){
         Articulo *auxarti = auxcate->abajo;
         while(auxarti!= NULL){
-            cout<<"[id: "<<auxarti->id<<", [Nombre: "<< auxarti->nombre<<"] "<<", [Categoria: "<< auxcate->dato<<"] "<<", [precio: "<< auxarti->precio<<"] "<<endl;
+            cout<<"[id: "<<auxarti->id<<"], [Nombre: "<< auxarti->nombre<<"] "<<", [Categoria: "<< auxcate->dato<<"] "<<", [precio: "<< auxarti->precio<<"] "<<endl;
             auxarti = auxarti->abajo;
         }
         auxcate = auxcate->siguiente;
     }
 }
 
+int ListaCategoria::getPrecio(int id){
+    Categoria* aux = cabecera;
+    while (aux!=NULL){
+        Articulo *auxarti = aux->abajo;
+        while(auxarti!= NULL){
+            if(auxarti->id == id){
+                return auxarti->precio;
+            }
+            auxarti = auxarti->abajo;
+        }
+        aux = aux->siguiente;
+    }
+    return 0;
+}

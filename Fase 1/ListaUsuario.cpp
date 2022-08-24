@@ -111,3 +111,47 @@ void ListaUsuario::eliminar(string res){
 		cout << "\n La lista se Encuentra Vacia\n\n";
 	}
 }
+
+int ListaUsuario:: obtemonedas(string nic, string pass){
+    Usuario* aux = inicio;
+    if(inicio!=NULL){
+        while (aux!=NULL)
+            {
+                if( aux->nick==nic){
+                     if (aux->pass==probando(pass)){
+                        return aux->mon;
+                    }else{
+                        cout<<"Contraseña incorrecta"<<endl;
+                    }
+                }else{
+                    cout<<"No existe el nombre del Usuario"<<endl;
+                }
+                aux=aux->siguiente;
+            }
+    }else{
+        cout<<"No existe ese Usuario \n";
+    }
+    return 0;
+}
+
+int ListaUsuario:: obtedad(string nic, string pass){
+    Usuario* aux = inicio;
+    if(inicio!=NULL){
+        while (aux!=NULL)
+            {
+                if( aux->nick==nic){
+                     if (aux->pass==probando(pass)){
+                        return aux->edad;
+                    }else{
+                        cout<<"Contraseña incorrecta"<<endl;
+                    }
+                }else{
+                    cout<<"No existe el nombre del Usuario"<<endl;
+                }
+                aux=aux->siguiente;
+            }
+    }else{
+        cout<<"No existe ese Usuario \n";
+    }
+    return 0;
+}

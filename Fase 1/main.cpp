@@ -41,7 +41,7 @@ void carga(){
         reader.parse(texto, root);
         const Json::Value& characters = root["usuarios"];
         const Json::Value& chara = root["articulos"];
-        const Json::Value& tuto = root["tutorial"];
+        const Json::Value& tuto = root["tutorial"]["movimientos"];
         //const Json::Value& chari = root["movimientos"];
         for (int i = 0; i < characters.size(); i++){
             nick=characters[i]["nick"].asString();
@@ -68,19 +68,14 @@ void carga(){
                 listacate.agregarArti(stoi(id),cate1,stod(precio),nom,src);
             }
         }
-        /*for (int u = 0; u < tuto.size(); u++){
-            ancho=tuto[u]["ancho"].asString();
-            alto=tuto[u]["alto"].asString();
-            cout<<ancho<<endl;*/
-            //colatuto.insertar(stoi(ancho),stoi(alto),"tablero");
-            /*for (int v = 0; v < chari.size(); v++){
-                movix=chari[v]["x"].asString();
-                moviy=chari[v]["y"].asString();
-                colatuto.insertar(stoi(movix),stoi(moviy),"movimiento");
-            }*/
-        //}
-
-
+        ancho= root["tutorial"]["ancho"].asString();
+        alto= root["tutorial"]["alto"].asString();
+        colatuto.insertar(stoi(ancho),stoi(alto),"Tablero");
+        for (int u = 0; u < tuto.size(); u++){
+                movix=tuto[u]["x"].asString();
+                moviy=tuto[u]["y"].asString();
+                colatuto.insertar(stoi(movix),stoi(moviy),"Movimiento");
+        }
     }
     catch (const std::exception &e)
     {
@@ -94,6 +89,8 @@ void menu1(){
     int op;
     string nick2, pass2;
     int mon2, edad2;
+    int id,mon,pre;
+    int edad;
     cout<<"============BIENVENIDO==============" <<endl;
     cout<<"Ingresa tu nick:                    " <<endl;
     cin>>nick1;
@@ -132,9 +129,23 @@ void menu1(){
                 op=6;
                 break;
             case 3:
+                colatuto.mostrar();
                 break;
             case 4: 
+                mon=listausu.obtemonedas(res1,pass1);
+                cout<<"Total tokens: "<<mon<<endl;
                 listacate.mostrarArti();
+                cout<<"Elija opcion para comprar: "<<endl;
+                cin>>id;
+                pre=listacate.getPrecio(id);
+                if( mon>=pre){
+                    cout<<"Comprado exitosamente"<<endl;
+                    mon=mon-pre;
+                    edad=listausu.obtedad(res1,pass1);
+                    listausu.editar(res1,res1,pass1,mon,edad);
+                }else{
+                    cout<<"No se puede realizar la compra por falta de tokens"<<endl;
+                }
                 break; 
             case 5: 
                 break;

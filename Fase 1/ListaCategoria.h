@@ -23,9 +23,11 @@ class ListaCategoria{
         //metodo obtener categoria
         string getCate(string dato);
         //metodo agregar articulo 
-        void agregarArti(int id, string categoria,double precio,string nom,string src);
+        void agregarArti(int id, string categoria,int precio,string nom,string src);
         //metodo mostrar Articulo
         void mostrarArti();
+        //metodo obtener precio articulo 
+        int getPrecio(int id);
     private:
         //Articulo* inicio; 
         //Articulo* fin;

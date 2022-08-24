@@ -44,7 +44,14 @@ void ColaTutorial::mostrar(){
     Tutorial* aux=adelante;
     if(adelante!=NULL){
 		while(aux!=NULL){
-			cout<<"[Coordenada X:"<< aux->ancho <<"], [Coordenada Y:"<<aux->alto<<"]."<<endl;
+            if (aux->indi=="Tablero"){
+                cout<<"Tablero"<<endl;
+                cout<<"Ancho: "<< aux->ancho <<endl;
+                cout<<"Alto: "<<aux->alto<<endl;
+            }else{
+                cout<<"Movimientos"<<endl;
+                cout<<"[Coordenada X:"<< aux->ancho <<"], [Coordenada Y:"<<aux->alto<<"]."<<endl;
+            }
 			aux = aux->siguiente;
 		}
 	}else{
