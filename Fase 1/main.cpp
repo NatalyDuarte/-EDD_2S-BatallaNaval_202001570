@@ -7,11 +7,13 @@
 #include "dist/jsoncpp.cpp"
 #include "include/json/json.h"
 #include "ColaTutorial.cpp"
+#include "PilaMovimientos.cpp"
 
 using namespace::std;
 ListaUsuario listausu;
 ListaCategoria listacate;
 ColaTutorial colatuto;
+PilaMovimientos pilamovi;
 
 void carga(){
     string dire,nick,pass;
@@ -83,7 +85,6 @@ void carga(){
     }
 
 }
-
 void menu1(){
     string nick1, pass1,res1;
     int op;
@@ -91,6 +92,9 @@ void menu1(){
     int mon2, edad2;
     int id,mon,pre;
     int edad;
+    int mov;
+    int coordeX, coordeY;
+    string nombr;
     cout<<"============BIENVENIDO==============" <<endl;
     cout<<"Ingresa tu nick:                    " <<endl;
     cin>>nick1;
@@ -148,6 +152,17 @@ void menu1(){
                 }
                 break; 
             case 5: 
+                cout<<"Cuantos movimientos quiere realizar"<<endl;
+                cin>>mov;
+                for (int i=0; i <mov; i++){
+                    cout<<"Ingrese la coordenada X"<<endl;
+                    cin>>coordeX;
+                    cout<<"Ingrese la coordenada Y"<<endl;
+                    cin>>coordeY;
+                    pilamovi.insertar(coordeX,coordeY);
+                }
+                cout<<"Nombre a guardar de los movimientos"<<endl;
+                cin>>nombr;
                 break;
             case 6: 
                 cout<<"Regresando......."<<endl;
@@ -158,13 +173,12 @@ void menu1(){
         }while (op != 6);
     }
 }
-
 void grafica(){
     int opc;
     string res;
     do
     {      
-        cout<<"====================0====GRAFICAS=====================" <<endl;
+        cout<<"=========================GRAFICAS=====================" <<endl;
         cout<<"|1. Lista doblemente enlazada circular (Usuarios)    |" <<endl;
         cout<<"|2. Lista de listas (Articulos)                      |" <<endl;
         cout<<"|3. Cola de movimientos (Tutorial)                   |" <<endl;
@@ -197,7 +211,8 @@ void grafica(){
 }
 void reportes(){
     int opc;
-    string res;
+    string res,res1,cate;
+
     do
     {      
         cout<<"==============REPORTES===============" <<endl;
@@ -213,20 +228,30 @@ void reportes(){
             grafica();
 			break;
         case 2: 
+
             cout<<"Si desea ordenarlos ascendentemente ingre [A] y descendente [D]"<<endl;
             cin>>res;
             if(res=="A"){
                 listausu.ordeascen();
-                //listausu.mostrarlista();
+                listausu.mostrarlista();
             }else if (res=="D"){
-                cout<<"Llego";
+                listausu.mostrarlista();
             }else{
                 cout<<"Letra invalida"<<endl;
             }
 
             break;
         case 3:
-            menu1();
+            cout<<"Si desea ordenarlos ascendentemente ingre [A] y descendente [D]"<<endl;
+            cin>>res1;
+            if(res1=="A"){
+                listacate.ordenamietno();
+            }else if (res1=="D"){
+                listacate.mostrarArti();
+            }else{
+                cout<<"Letra invalida"<<endl;
+            }
+
             break;
         case 4: 
             cout<<"Regresando...."<<endl;
@@ -237,7 +262,6 @@ void reportes(){
     }while (opc != 4);
 
 }
-
 void inicio(){
     int opc;
     string nick, pass;
@@ -286,9 +310,6 @@ void inicio(){
     }while (opc != 5);
       
 }
-
-
-
 int main(int argc, char** argv){
     inicio();
     return 0;

@@ -17,5 +17,4 @@ class Categoria{
             abajo;
         }
     private:
-
 };

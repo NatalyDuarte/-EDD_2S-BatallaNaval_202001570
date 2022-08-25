@@ -4,8 +4,7 @@
 using namespace std;
 class Usuario{
     //atributos y metodos
-    private: 
-        
+    private:   
     public:
         string nick, pass; 
         int mon, edad;
@@ -19,6 +18,5 @@ class Usuario{
             this->siguiente=NULL;
             this->anterior=NULL;
         }
-
 };
     

@@ -85,28 +85,62 @@ void ListaCategoria::graficarListas(){
     string cadena = "";
     ofstream grafico;
     grafico.open("graficaListas.dot", ios::out);
-    cadena = cadena +"graph G {\n";
-    cadena = cadena +"node[shape=box fillcolor=\"pink:yellow\" style =filled]\n";
+    cadena = cadena +"digraph G{\nbgcolor = \"none\"\nlabel=\"LISTA ARTICULOS\";\nnode[shape=box, color=black, style=filled fillcolor=cadetblue1]\n";
+    cadena = cadena +"{rank=same;\n";
     Categoria* aux = cabecera;
-    Articulo* prob=aux->abajo;
     while(aux!=NULL){
-        cadena = cadena + "Node"+to_string(cont)+"[label=\""+aux->dato+"\"];\n";
-        if(aux!=inicio){
-            cadena = cadena + "Node"+to_string(cont)+" -- "+ "Node"+to_string(cont+1)+";\n";
+        cadena = cadena +"N"+to_string(cont)+"[label=\""+aux->dato +"\", ];\n";
+        Articulo* prob=aux->abajo;
+        int nu=0;
+        if(aux->abajo!=NULL){
+            while(prob!=NULL){
+                 cadena = cadena +"n"+to_string(cont+nu)+"[label=\""+prob->nombre+"\",color=black, style=filled fillcolor=cornsilk];\n";
+                 if(prob->abajo!=NULL){
+                    cadena = cadena +"n"+to_string(cont+nu)+" -> n"+to_string(cont+nu+1)+";\n";
+                 }
+                prob=prob->abajo;
+                nu=nu+1;
+            }
+            cadena = cadena +"N"+to_string(cont)+" -> n"+to_string(cont)+"0";
         }
-        while(prob!=NULL){
-            cadena = cadena + "Node"+to_string(cont)+"[label=\""+prob->nombre+"\"];\n";
-            prob = prob->abajo;
+        if(aux->abajo!=NULL){
+            cadena = cadena +"N"+to_string(cont)+" -> N"+to_string(cont+1)+"\n"; 
+        }else{
+            cadena = cadena +"N"+to_string(cont)+" -> N0";
         }
         aux = aux->siguiente;
-        cont= cont+1;
+        cont=cont+1;
     }
-
-    
     cadena = cadena + "}";
     grafico<<cadena;
     grafico.close();
     system("dot -Tpng graficaListas.dot -o graficaListas.png");
     //os.startfile("grafica.png")
     cout<<"Generada exitosamente"<<endl;
+
+        
+}
+
+void ListaCategoria::ordenamietno(){
+    Categoria* auxcate = cabecera;
+    Articulo *auxarti=NULL;
+    while(auxcate != NULL){
+        auxarti = auxcate->abajo;
+        Articulo* probando=NULL;
+        Articulo* aux=NULL;
+            while(auxarti!= NULL){
+                probando= auxarti->abajo;
+                while(probando!=NULL){
+                    if( auxarti->precio > probando->precio){
+                        aux=probando;
+                        probando=auxarti;
+                        auxarti=aux;
+                    }
+                    probando = probando->abajo;
+                }
+            auxarti = auxarti->abajo;      
+        }     
+        auxcate = auxcate->siguiente;
+    }
+    mostrarArti();
 }

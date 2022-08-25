@@ -3,11 +3,9 @@
 #include <iostream>
 
 using namespace std;
-
 class Articulo{
     //atributos y metodos
-    private: 
-        
+    private:     
     public:
         string nombre, src; 
         int id, precio;
@@ -19,5 +17,4 @@ class Articulo{
             this->src= src;
             this->abajo=NULL;
         }
-
 };

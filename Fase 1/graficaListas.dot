@@ -1,13 +1,60 @@
-graph G {
-node[shape=box fillcolor="pink:yellow" style =filled]
-Node0[label="Leve2"];
-Node0 -- Node1;
-Node0[label="Waters"];
-Node0[label="Flores"];
-Node1[label="Level4"];
-Node1 -- Node2;
-Node2[label="Level3"];
-Node2 -- Node3;
-Node3[label="Level1"];
-Node3 -- Node4;
+digraph G{
+bgcolor = "none"
+label="LISTA ARTICULOS";
+node[shape=box, color=black, style=filled fillcolor=cadetblue1]
+{rank=same;
+N0[label="Leve2", ];
+n0[label="Waters",color=black, style=filled fillcolor=cornsilk];
+n0 -> n1;
+n1[label="Flores",color=black, style=filled fillcolor=cornsilk];
+N0 -> n00N0 -> N1
+N1[label="Level4", ];
+n1[label="Sosa",color=black, style=filled fillcolor=cornsilk];
+n1 -> n2;
+n2[label="Wolf",color=black, style=filled fillcolor=cornsilk];
+n2 -> n3;
+n3[label="Camacho",color=black, style=filled fillcolor=cornsilk];
+n3 -> n4;
+n4[label="Albert",color=black, style=filled fillcolor=cornsilk];
+n4 -> n5;
+n5[label="Henson",color=black, style=filled fillcolor=cornsilk];
+n5 -> n6;
+n6[label="Snow",color=black, style=filled fillcolor=cornsilk];
+N1 -> n10N1 -> N2
+N2[label="Level3", ];
+n2[label="Kirk",color=black, style=filled fillcolor=cornsilk];
+n2 -> n3;
+n3[label="Delacruz",color=black, style=filled fillcolor=cornsilk];
+n3 -> n4;
+n4[label="Petty",color=black, style=filled fillcolor=cornsilk];
+n4 -> n5;
+n5[label="Washington",color=black, style=filled fillcolor=cornsilk];
+n5 -> n6;
+n6[label="Justice",color=black, style=filled fillcolor=cornsilk];
+n6 -> n7;
+n7[label="Noel",color=black, style=filled fillcolor=cornsilk];
+n7 -> n8;
+n8[label="Blair",color=black, style=filled fillcolor=cornsilk];
+n8 -> n9;
+n9[label="Farrell",color=black, style=filled fillcolor=cornsilk];
+n9 -> n10;
+n10[label="Sykes",color=black, style=filled fillcolor=cornsilk];
+N2 -> n20N2 -> N3
+N3[label="Level1", ];
+n3[label="Osborn",color=black, style=filled fillcolor=cornsilk];
+n3 -> n4;
+n4[label="Guerra",color=black, style=filled fillcolor=cornsilk];
+n4 -> n5;
+n5[label="Branch",color=black, style=filled fillcolor=cornsilk];
+n5 -> n6;
+n6[label="Giles",color=black, style=filled fillcolor=cornsilk];
+n6 -> n7;
+n7[label="Montoya",color=black, style=filled fillcolor=cornsilk];
+n7 -> n8;
+n8[label="Garner",color=black, style=filled fillcolor=cornsilk];
+n8 -> n9;
+n9[label="Holden",color=black, style=filled fillcolor=cornsilk];
+n9 -> n10;
+n10[label="Trevino",color=black, style=filled fillcolor=cornsilk];
+N3 -> n30N3 -> N4
 }

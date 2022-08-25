@@ -5,10 +5,8 @@
 #include <sstream>
 #include <string>
 #include <bits/stdc++.h> 
-
 using namespace std;
 SHA256 probando;
-
 void ListaUsuario::agregarlista(string nick, string pass,int mon, int edad){
     Usuario* usu= new Usuario(nick,probando(pass),mon,edad);
     if(inicio == NULL){
@@ -161,36 +159,39 @@ int ListaUsuario:: obtedad(string nic, string pass){
 }
 
 void ListaUsuario::ordeascen(){
-    Usuario* aux = inicio;
-    Usuario* prob=NULL;
-    Usuario* apaux=NULL;
-    if(inicio!=NULL){
-        while(aux!=NULL){
-            prob=aux->siguiente;
-            while(prob!=NULL){
-                if(aux->edad > prob->edad){
-                    apaux->nick=aux->nick;
-                    apaux->pass=aux->pass;
-                    apaux->mon=aux->mon;
-                    apaux->edad=aux->edad;
+    Usuario* actual ;
+    Usuario* siguiente;
+    Usuario* t;
+    actual = inicio;
+    while(actual->siguiente != NULL)
+    {
+        siguiente = actual->siguiente;
+        while(siguiente!=NULL)
+        {
+            if(actual->edad > siguiente->edad)
+            {
+                t->nick = siguiente->nick;
+                t->pass = siguiente->pass;
+                t->edad = siguiente->edad;
+                t->mon = siguiente->mon;
 
-                    aux->nick=prob->nick;
-                    aux->pass=prob->pass;
-                    aux->mon=prob->mon;
-                    aux->edad=prob->edad;
+                siguiente->nick = actual->nick;
+                siguiente->pass = actual->pass;
+                siguiente->edad = actual->edad;
+                siguiente->mon = actual->mon;
 
-                    prob->nick=apaux->nick;
-                    prob->pass=apaux->pass;
-                    prob->mon=apaux->mon;
-                    prob->edad=apaux->edad;
-                }
-                prob=prob->siguiente;
+                actual->nick = t->nick; 
+                actual->pass = t->pass; 
+                actual->edad = t->edad; 
+                actual->mon = t->mon;          
             }
-            aux=aux->siguiente;
-        }
-	}else{
-		cout << "\n La lista se Encuentra Vacia\n\n";
-	}
+            siguiente = siguiente->siguiente;                    
+          }    
+          actual = actual->siguiente;
+          siguiente = actual->siguiente;       
+     }
+     
+     cout<<"\n\n\tLista ordenada..."<<endl;
 }
 
 void ListaUsuario::graficadoble(){

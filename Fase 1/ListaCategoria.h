@@ -30,6 +30,8 @@ class ListaCategoria{
         int getPrecio(int id);
         //metodo graficar
         void graficarListas();
+        //metodo ordenamiento
+        void  ordenamietno();
     private:
         //Articulo* inicio; 
         //Articulo* fin;
