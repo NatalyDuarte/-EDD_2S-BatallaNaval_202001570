@@ -161,6 +161,7 @@ void menu1(){
                     cin>>coordeY;
                     pilamovi.insertar(coordeX,coordeY);
                 }
+                pilamovi.mostrar();
                 cout<<"Nombre a guardar de los movimientos"<<endl;
                 cin>>nombr;
                 break;
@@ -246,6 +247,7 @@ void reportes(){
             cin>>res1;
             if(res1=="A"){
                 listacate.ordenamietno();
+                listacate.mostrarArti();
             }else if (res1=="D"){
                 listacate.mostrarArti();
             }else{

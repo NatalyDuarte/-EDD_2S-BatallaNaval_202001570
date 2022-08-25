@@ -82,36 +82,41 @@ int ListaCategoria::getPrecio(int id){
 void ListaCategoria::graficarListas(){
     int cont = 0;
     int conts = 0;
-    string cadena = "";
+    string cadena = "",cadena2="" ,conexion2="" ,conexion="";
+
     ofstream grafico;
     grafico.open("graficaListas.dot", ios::out);
-    cadena = cadena +"digraph G{\nbgcolor = \"none\"\nlabel=\"LISTA ARTICULOS\";\nnode[shape=box, color=black, style=filled fillcolor=cadetblue1]\n";
-    cadena = cadena +"{rank=same;\n";
+    cadena ="digraph G{\nbgcolor = \"none\"\nlabel=\"LISTA ARTICULOS\";\nnode[shape=box, color=black, style=filled fillcolor=cadetblue1]\n";
+    conexion ="{rank=same;\n";
     Categoria* aux = cabecera;
     while(aux!=NULL){
-        cadena = cadena +"N"+to_string(cont)+"[label=\""+aux->dato +"\", ];\n";
+        cadena +=" N"+to_string(cont)+"[label=\""+aux->dato +"\", ];\n";
         Articulo* prob=aux->abajo;
         int nu=0;
         if(aux->abajo!=NULL){
             while(prob!=NULL){
-                 cadena = cadena +"n"+to_string(cont+nu)+"[label=\""+prob->nombre+"\",color=black, style=filled fillcolor=cornsilk];\n";
+                 cadena2 +="n"+to_string(cont+nu)+"[label=\""+prob->nombre+"\",color=black, style=filled fillcolor=cornsilk];\n";
                  if(prob->abajo!=NULL){
-                    cadena = cadena +"n"+to_string(cont+nu)+" -> n"+to_string(cont+nu+1)+";\n";
+                    conexion2 +="n"+to_string(cont+nu)+" -> n"+to_string(cont+nu+1)+";\n";
                  }
                 prob=prob->abajo;
-                nu=nu+1;
+                nu++;
             }
-            cadena = cadena +"N"+to_string(cont)+" -> n"+to_string(cont)+"0";
+            conexion2 = conexion2 +" N"+to_string(cont)+" -> n"+to_string(cont)+"0";
+            cadena+=cadena2+"\n"+conexion2+"\n";
+            conexion2="";
+            cadena2="";
         }
         if(aux->abajo!=NULL){
-            cadena = cadena +"N"+to_string(cont)+" -> N"+to_string(cont+1)+"\n"; 
+            conexion+=" N"+to_string(cont)+" -> N"+to_string(cont+1)+"\n"; 
         }else{
-            cadena = cadena +"N"+to_string(cont)+" -> N0";
+            conexion+= cadena +" N"+to_string(cont)+" -> N0";
         }
         aux = aux->siguiente;
-        cont=cont+1;
+        cont++;
     }
-    cadena = cadena + "}";
+    cadena+="\n"+conexion+"}\n";
+    cadena+= "}";
     grafico<<cadena;
     grafico.close();
     system("dot -Tpng graficaListas.dot -o graficaListas.png");
@@ -124,23 +129,38 @@ void ListaCategoria::graficarListas(){
 void ListaCategoria::ordenamietno(){
     Categoria* auxcate = cabecera;
     Articulo *auxarti=NULL;
-    while(auxcate != NULL){
+    string nombre, src;
+    int id, precio;
+    Articulo* aux=NULL;
+    if(auxcate != NULL){
         auxarti = auxcate->abajo;
         Articulo* probando=NULL;
         Articulo* aux=NULL;
             while(auxarti!= NULL){
-                probando= auxarti->abajo;
+                probando=auxarti->abajo;
                 while(probando!=NULL){
-                    if( auxarti->precio > probando->precio){
-                        aux=probando;
-                        probando=auxarti;
-                        auxarti=aux;
+                    if(auxarti->precio < probando->precio){
+                        nombre=auxarti->nombre;
+                        src=auxarti->src;
+                        id=auxarti->id;
+                        precio = auxarti->precio;
+                        aux=auxarti->abajo;
+
+
+                        auxarti->nombre=probando->nombre;
+                        auxarti->id=probando->id;
+                        auxarti->src=probando->src;
+                        auxarti->precio=probando->precio;
+
+                        probando->nombre=nombre;
+                        probando->src=src;
+                        probando->id=id;
+                        probando->precio=precio;
+                        probando->abajo=aux;
                     }
-                    probando = probando->abajo;
+                    probando=probando->abajo;
                 }
-            auxarti = auxarti->abajo;      
-        }     
-        auxcate = auxcate->siguiente;
+                auxarti=auxarti->abajo;
+            }
     }
-    mostrarArti();
 }

@@ -1,6 +1,5 @@
 #include <iostream>
 #include "PilaMovimientos.h"
-#include "MovList.h"
 
 using namespace std;
 
@@ -13,8 +12,8 @@ class ListaMovimientos{
             fin= NULL;
         }
         //metodos
-        void agregar(string nom);
+        void agregar();
     private:
-        MovList* inicio;
-        MovList* fin;
+        PilaMovimientos* inicio;
+        PilaMovimientos* fin;
 };

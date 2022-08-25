@@ -66,17 +66,19 @@ void ColaTutorial::graficar(){
     string cadena = "";
     ofstream grafico;
     grafico.open("graficaCola.dot", ios::out);
-    cadena = cadena +"digraph G {\n";
-    cadena = cadena +"node[shape=box fillcolor=\"white:yellow\" style =filled]\n";
+    cadena = cadena +"digraph G{\nbgcolor = \"none\"\nlabel=\"COLA\"\nnode [shape=plaintext fontname=\"Sans serif\" fontsize=\"8\", color=black, style=filled fillcolor=cadetblue1];\n";
     while(aux!=NULL){
         if(aux->indi=="Movimiento"){
-            cadena = cadena + "Node"+to_string(cont)+"[label=\"X:"+to_string(aux->ancho) +" Y: "+to_string(aux->alto)+"\"];\n";
+            cadena = cadena +"nodo"+to_string(cont)+"[label= <<table  cellborder= \"0\" cellspacing=\"0\"><tr><td align=\"left\"><b>Alto: &nbsp;</b> "+to_string(aux->alto) +"</td></tr>"+"<tr><td align=\"left\"><b>Ancho: &nbsp;</b> "+to_string(aux->ancho)+"</td></tr></table>>];\n" ;
+            if(aux->siguiente!=NULL){
+                cadena = cadena +"nodo"+to_string(cont+1)+" -> nodo"+to_string(cont)+";\n";
+            }
         } 
         aux = aux->siguiente;
         cont= cont+1;
     }
 
-    cadena = cadena + "}";
+    cadena = cadena + "rankdir= RL}";
     grafico<<cadena;
     grafico.close();
     system("dot -Tpng graficaCola.dot -o graficaCola.png");
