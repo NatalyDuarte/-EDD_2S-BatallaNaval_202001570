@@ -132,7 +132,7 @@ void ListaCategoria::ordenamietno(){
     string nombre, src;
     int id, precio;
     Articulo* aux=NULL;
-    if(auxcate != NULL){
+    while(auxcate != NULL){
         auxarti = auxcate->abajo;
         Articulo* probando=NULL;
         Articulo* aux=NULL;
@@ -162,5 +162,6 @@ void ListaCategoria::ordenamietno(){
                 }
                 auxarti=auxarti->abajo;
             }
+        auxcate=auxcate->siguiente;
     }
 }

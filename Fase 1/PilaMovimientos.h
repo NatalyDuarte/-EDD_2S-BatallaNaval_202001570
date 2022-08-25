@@ -14,6 +14,7 @@ class PilaMovimientos{
         //metodos
         void insertar(int coordeX, int coordeY);
         void mostrar();
+        void graficar();
     private:
         Movimientos* primero;
         Movimientos* ultimo;

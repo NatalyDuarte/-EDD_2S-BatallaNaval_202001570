@@ -199,7 +199,7 @@ void grafica(){
             colatuto.graficar();
             break;
         case 4: 
-            cout<<"Regresando...."<<endl;
+            pilamovi.graficar();
             break;
         case 5: 
             cout<<"Regresando...."<<endl;
@@ -233,7 +233,7 @@ void reportes(){
             cout<<"Si desea ordenarlos ascendentemente ingre [A] y descendente [D]"<<endl;
             cin>>res;
             if(res=="A"){
-                listausu.ordeascen();
+                //listausu.ordeascen();
                 listausu.mostrarlista();
             }else if (res=="D"){
                 listausu.mostrarlista();
