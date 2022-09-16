@@ -5,9 +5,13 @@
 #include "Usuarios/ListaUsuario.cpp"
 #include "Carpetas/dist/jsoncpp.cpp"
 #include "Carpetas/include/json/json.h"
+#include "Tutorial/ColaTutorial.cpp"
+#include "Categoria/ListaCategoria.cpp"
 
 using namespace::std;
 ListaUsuario listausu;
+ListaCategoria listacate;
+ColaTutorial colatuto;
 void carga(){
     string dire,nick,pass;
     string mon,edad, id;
@@ -82,7 +86,7 @@ void carga(){
 
 void NuevoUsuario(){
     int id,mon,edad;
-    string nick,password;
+    string nick,pass;
     id=listausu.obtener();
     cout<<"============BIENVENIDO==============" <<endl;
     cout<<"Ingresa tu nick:                    " <<endl;
