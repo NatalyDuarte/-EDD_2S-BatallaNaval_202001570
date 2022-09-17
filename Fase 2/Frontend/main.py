@@ -3,6 +3,10 @@ from PyQt5.QtWidgets import QMainWindow, QApplication
 from PyQt5.uic import loadUi
 import sys
 import webbrowser
+import requests
+import json
+
+dire = "http://localhost:5000"
 
 def editar():
     entrar.hide()
@@ -22,6 +26,9 @@ def incio():
         entrar.show()
         entrar.pushButton.clicked.connect(editar)
         entrar.pushButton_3.clicked.connect(tiend)
+    login = {'nick': 'somevalue','password':'asdf'}
+    x = requests.get(f'{dire}/login', json = login)
+    print(x.text)
 
 
 if __name__ == '__main__':

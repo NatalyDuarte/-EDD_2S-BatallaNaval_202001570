@@ -38,7 +38,7 @@ void ListaUsuario::mostrarlista(){
 	if(inicio!=NULL){
 		do{
             //cout << "\n " << aux->nick;
-            cout<<"[nick:"<< aux->nick <<"], [pass:"<<aux->pass<<"], [mon:"<<aux->mon<<"], [edad:"<<aux->edad<<"]."<<endl;
+            cout<<"[id:"<< aux->id <<"], [nick:"<< aux->nick <<"], [pass:"<<aux->pass<<"], [mon:"<<aux->mon<<"], [edad:"<<aux->edad<<"]."<<endl;
             aux=aux->siguiente;
 		}while(aux!=inicio);	
 	}else{
