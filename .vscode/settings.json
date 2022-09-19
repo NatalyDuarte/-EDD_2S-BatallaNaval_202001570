@@ -53,5 +53,6 @@
         "streambuf": "cpp",
         "typeinfo": "cpp",
         "listausuario.h": "c"
-    }
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
 }
