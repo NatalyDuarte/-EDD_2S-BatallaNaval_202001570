@@ -2689,10 +2689,14 @@ SWIGINTERN PyObject *SWIG_PyStaticMethod_New(PyObject *SWIGUNUSEDPARM(self), PyO
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_ListaUsuario swig_types[0]
-#define SWIGTYPE_p_char swig_types[1]
-static swig_type_info *swig_types[3];
-static swig_module_info swig_module = {swig_types, 2, 0, 0, 0, 0};
+#define SWIGTYPE_p_Categoria swig_types[0]
+#define SWIGTYPE_p_ColaTutorial swig_types[1]
+#define SWIGTYPE_p_ListaCategoria swig_types[2]
+#define SWIGTYPE_p_ListaMovimientos swig_types[3]
+#define SWIGTYPE_p_ListaUsuario swig_types[4]
+#define SWIGTYPE_p_char swig_types[5]
+static swig_type_info *swig_types[7];
+static swig_module_info swig_module = {swig_types, 6, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -2704,16 +2708,16 @@ static swig_module_info swig_module = {swig_types, 2, 0, 0, 0, 0};
 #define SWIG_TypeQuery SWIG_Python_TypeQuery
 
 /*-----------------------------------------------
-              @(target):= _ListaUsuario.so
+              @(target):= _Listas.so
   ------------------------------------------------*/
 #if PY_VERSION_HEX >= 0x03000000
-#  define SWIG_init    PyInit__ListaUsuario
+#  define SWIG_init    PyInit__Listas
 
 #else
-#  define SWIG_init    init_ListaUsuario
+#  define SWIG_init    init_Listas
 
 #endif
-#define SWIG_name    "_ListaUsuario"
+#define SWIG_name    "_Listas"
 
 #define SWIGVERSION 0x040002 
 #define SWIG_VERSION SWIGVERSION
@@ -2799,7 +2803,10 @@ namespace swig {
 #include <string>
 
 
-#include "ListaUsuario.i"
+#include "Usuarios/ListaUsuario.h"
+#include "Tutorial/ColaTutorial.h"
+#include "Movimientos/ListaMovimientos.h"
+#include "Categoria/ListaCategoria.h"
 
 
 #include <limits.h>
@@ -3647,6 +3654,683 @@ SWIGINTERN PyObject *ListaUsuario_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObj
   return SWIG_Python_InitShadowInstance(args);
 }
 
+SWIGINTERN PyObject *_wrap_new_ColaTutorial(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ColaTutorial *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "new_ColaTutorial", 0, 0, 0)) SWIG_fail;
+  result = (ColaTutorial *)new ColaTutorial();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_ColaTutorial, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ColaTutorial_insertar(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ColaTutorial *arg1 = (ColaTutorial *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  std::string arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  PyObject *swig_obj[4] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "ColaTutorial_insertar", 4, 4, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ColaTutorial, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ColaTutorial_insertar" "', argument " "1"" of type '" "ColaTutorial *""'"); 
+  }
+  arg1 = reinterpret_cast< ColaTutorial * >(argp1);
+  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ColaTutorial_insertar" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "ColaTutorial_insertar" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = static_cast< int >(val3);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(swig_obj[3], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "ColaTutorial_insertar" "', argument " "4"" of type '" "std::string""'"); 
+    }
+    arg4 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  (arg1)->insertar(arg2,arg3,arg4);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ColaTutorial_eliminar(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ColaTutorial *arg1 = (ColaTutorial *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ColaTutorial, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ColaTutorial_eliminar" "', argument " "1"" of type '" "ColaTutorial *""'"); 
+  }
+  arg1 = reinterpret_cast< ColaTutorial * >(argp1);
+  (arg1)->eliminar();
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ColaTutorial_mostrar(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ColaTutorial *arg1 = (ColaTutorial *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ColaTutorial, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ColaTutorial_mostrar" "', argument " "1"" of type '" "ColaTutorial *""'"); 
+  }
+  arg1 = reinterpret_cast< ColaTutorial * >(argp1);
+  (arg1)->mostrar();
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ColaTutorial_graficar(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ColaTutorial *arg1 = (ColaTutorial *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ColaTutorial, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ColaTutorial_graficar" "', argument " "1"" of type '" "ColaTutorial *""'"); 
+  }
+  arg1 = reinterpret_cast< ColaTutorial * >(argp1);
+  (arg1)->graficar();
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_ColaTutorial(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ColaTutorial *arg1 = (ColaTutorial *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ColaTutorial, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_ColaTutorial" "', argument " "1"" of type '" "ColaTutorial *""'"); 
+  }
+  arg1 = reinterpret_cast< ColaTutorial * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *ColaTutorial_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_ColaTutorial, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *ColaTutorial_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_new_ListaMovimientos(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ListaMovimientos *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "new_ListaMovimientos", 0, 0, 0)) SWIG_fail;
+  result = (ListaMovimientos *)new ListaMovimientos();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_ListaMovimientos, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ListaMovimientos_agregar(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ListaMovimientos *arg1 = (ListaMovimientos *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ListaMovimientos, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ListaMovimientos_agregar" "', argument " "1"" of type '" "ListaMovimientos *""'"); 
+  }
+  arg1 = reinterpret_cast< ListaMovimientos * >(argp1);
+  (arg1)->agregar();
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_ListaMovimientos(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ListaMovimientos *arg1 = (ListaMovimientos *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ListaMovimientos, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_ListaMovimientos" "', argument " "1"" of type '" "ListaMovimientos *""'"); 
+  }
+  arg1 = reinterpret_cast< ListaMovimientos * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *ListaMovimientos_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_ListaMovimientos, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *ListaMovimientos_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_ListaCategoria_inicio_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ListaCategoria *arg1 = (ListaCategoria *) 0 ;
+  Categoria *arg2 = (Categoria *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "ListaCategoria_inicio_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ListaCategoria, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ListaCategoria_inicio_set" "', argument " "1"" of type '" "ListaCategoria *""'"); 
+  }
+  arg1 = reinterpret_cast< ListaCategoria * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_Categoria, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ListaCategoria_inicio_set" "', argument " "2"" of type '" "Categoria *""'"); 
+  }
+  arg2 = reinterpret_cast< Categoria * >(argp2);
+  if (arg1) (arg1)->inicio = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ListaCategoria_inicio_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ListaCategoria *arg1 = (ListaCategoria *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  Categoria *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ListaCategoria, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ListaCategoria_inicio_get" "', argument " "1"" of type '" "ListaCategoria *""'"); 
+  }
+  arg1 = reinterpret_cast< ListaCategoria * >(argp1);
+  result = (Categoria *) ((arg1)->inicio);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Categoria, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ListaCategoria_fin_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ListaCategoria *arg1 = (ListaCategoria *) 0 ;
+  Categoria *arg2 = (Categoria *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "ListaCategoria_fin_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ListaCategoria, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ListaCategoria_fin_set" "', argument " "1"" of type '" "ListaCategoria *""'"); 
+  }
+  arg1 = reinterpret_cast< ListaCategoria * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_Categoria, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ListaCategoria_fin_set" "', argument " "2"" of type '" "Categoria *""'"); 
+  }
+  arg2 = reinterpret_cast< Categoria * >(argp2);
+  if (arg1) (arg1)->fin = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ListaCategoria_fin_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ListaCategoria *arg1 = (ListaCategoria *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  Categoria *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ListaCategoria, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ListaCategoria_fin_get" "', argument " "1"" of type '" "ListaCategoria *""'"); 
+  }
+  arg1 = reinterpret_cast< ListaCategoria * >(argp1);
+  result = (Categoria *) ((arg1)->fin);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Categoria, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ListaCategoria_cabecera_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ListaCategoria *arg1 = (ListaCategoria *) 0 ;
+  Categoria *arg2 = (Categoria *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "ListaCategoria_cabecera_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ListaCategoria, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ListaCategoria_cabecera_set" "', argument " "1"" of type '" "ListaCategoria *""'"); 
+  }
+  arg1 = reinterpret_cast< ListaCategoria * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_Categoria, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ListaCategoria_cabecera_set" "', argument " "2"" of type '" "Categoria *""'"); 
+  }
+  arg2 = reinterpret_cast< Categoria * >(argp2);
+  if (arg1) (arg1)->cabecera = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ListaCategoria_cabecera_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ListaCategoria *arg1 = (ListaCategoria *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  Categoria *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ListaCategoria, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ListaCategoria_cabecera_get" "', argument " "1"" of type '" "ListaCategoria *""'"); 
+  }
+  arg1 = reinterpret_cast< ListaCategoria * >(argp1);
+  result = (Categoria *) ((arg1)->cabecera);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Categoria, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_ListaCategoria(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ListaCategoria *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "new_ListaCategoria", 0, 0, 0)) SWIG_fail;
+  result = (ListaCategoria *)new ListaCategoria();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_ListaCategoria, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ListaCategoria_agregarCate(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ListaCategoria *arg1 = (ListaCategoria *) 0 ;
+  std::string arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "ListaCategoria_agregarCate", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ListaCategoria, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ListaCategoria_agregarCate" "', argument " "1"" of type '" "ListaCategoria *""'"); 
+  }
+  arg1 = reinterpret_cast< ListaCategoria * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "ListaCategoria_agregarCate" "', argument " "2"" of type '" "std::string""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  (arg1)->agregarCate(arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ListaCategoria_mostrarCate(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ListaCategoria *arg1 = (ListaCategoria *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ListaCategoria, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ListaCategoria_mostrarCate" "', argument " "1"" of type '" "ListaCategoria *""'"); 
+  }
+  arg1 = reinterpret_cast< ListaCategoria * >(argp1);
+  (arg1)->mostrarCate();
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ListaCategoria_getCate(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ListaCategoria *arg1 = (ListaCategoria *) 0 ;
+  std::string arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[2] ;
+  std::string result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "ListaCategoria_getCate", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ListaCategoria, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ListaCategoria_getCate" "', argument " "1"" of type '" "ListaCategoria *""'"); 
+  }
+  arg1 = reinterpret_cast< ListaCategoria * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "ListaCategoria_getCate" "', argument " "2"" of type '" "std::string""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  result = (arg1)->getCate(arg2);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ListaCategoria_agregarArti(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ListaCategoria *arg1 = (ListaCategoria *) 0 ;
+  int arg2 ;
+  std::string arg3 ;
+  int arg4 ;
+  std::string arg5 ;
+  std::string arg6 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  int val4 ;
+  int ecode4 = 0 ;
+  PyObject *swig_obj[6] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "ListaCategoria_agregarArti", 6, 6, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ListaCategoria, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ListaCategoria_agregarArti" "', argument " "1"" of type '" "ListaCategoria *""'"); 
+  }
+  arg1 = reinterpret_cast< ListaCategoria * >(argp1);
+  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ListaCategoria_agregarArti" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(swig_obj[2], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "ListaCategoria_agregarArti" "', argument " "3"" of type '" "std::string""'"); 
+    }
+    arg3 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  ecode4 = SWIG_AsVal_int(swig_obj[3], &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "ListaCategoria_agregarArti" "', argument " "4"" of type '" "int""'");
+  } 
+  arg4 = static_cast< int >(val4);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(swig_obj[4], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "ListaCategoria_agregarArti" "', argument " "5"" of type '" "std::string""'"); 
+    }
+    arg5 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(swig_obj[5], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "ListaCategoria_agregarArti" "', argument " "6"" of type '" "std::string""'"); 
+    }
+    arg6 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  (arg1)->agregarArti(arg2,arg3,arg4,arg5,arg6);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ListaCategoria_mostrarArti(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ListaCategoria *arg1 = (ListaCategoria *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ListaCategoria, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ListaCategoria_mostrarArti" "', argument " "1"" of type '" "ListaCategoria *""'"); 
+  }
+  arg1 = reinterpret_cast< ListaCategoria * >(argp1);
+  (arg1)->mostrarArti();
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ListaCategoria_getPrecio(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ListaCategoria *arg1 = (ListaCategoria *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  int result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "ListaCategoria_getPrecio", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ListaCategoria, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ListaCategoria_getPrecio" "', argument " "1"" of type '" "ListaCategoria *""'"); 
+  }
+  arg1 = reinterpret_cast< ListaCategoria * >(argp1);
+  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ListaCategoria_getPrecio" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  result = (int)(arg1)->getPrecio(arg2);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ListaCategoria_graficarListas(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ListaCategoria *arg1 = (ListaCategoria *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ListaCategoria, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ListaCategoria_graficarListas" "', argument " "1"" of type '" "ListaCategoria *""'"); 
+  }
+  arg1 = reinterpret_cast< ListaCategoria * >(argp1);
+  (arg1)->graficarListas();
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ListaCategoria_ordenamietno(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ListaCategoria *arg1 = (ListaCategoria *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ListaCategoria, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ListaCategoria_ordenamietno" "', argument " "1"" of type '" "ListaCategoria *""'"); 
+  }
+  arg1 = reinterpret_cast< ListaCategoria * >(argp1);
+  (arg1)->ordenamietno();
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_ListaCategoria(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ListaCategoria *arg1 = (ListaCategoria *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ListaCategoria, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_ListaCategoria" "', argument " "1"" of type '" "ListaCategoria *""'"); 
+  }
+  arg1 = reinterpret_cast< ListaCategoria * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *ListaCategoria_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_ListaCategoria, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *ListaCategoria_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
 static PyMethodDef SwigMethods[] = {
 	 { "SWIG_PyInstanceMethod_New", SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { "new_ListaUsuario", _wrap_new_ListaUsuario, METH_NOARGS, NULL},
@@ -3666,6 +4350,37 @@ static PyMethodDef SwigMethods[] = {
 	 { "delete_ListaUsuario", _wrap_delete_ListaUsuario, METH_O, NULL},
 	 { "ListaUsuario_swigregister", ListaUsuario_swigregister, METH_O, NULL},
 	 { "ListaUsuario_swiginit", ListaUsuario_swiginit, METH_VARARGS, NULL},
+	 { "new_ColaTutorial", _wrap_new_ColaTutorial, METH_NOARGS, NULL},
+	 { "ColaTutorial_insertar", _wrap_ColaTutorial_insertar, METH_VARARGS, NULL},
+	 { "ColaTutorial_eliminar", _wrap_ColaTutorial_eliminar, METH_O, NULL},
+	 { "ColaTutorial_mostrar", _wrap_ColaTutorial_mostrar, METH_O, NULL},
+	 { "ColaTutorial_graficar", _wrap_ColaTutorial_graficar, METH_O, NULL},
+	 { "delete_ColaTutorial", _wrap_delete_ColaTutorial, METH_O, NULL},
+	 { "ColaTutorial_swigregister", ColaTutorial_swigregister, METH_O, NULL},
+	 { "ColaTutorial_swiginit", ColaTutorial_swiginit, METH_VARARGS, NULL},
+	 { "new_ListaMovimientos", _wrap_new_ListaMovimientos, METH_NOARGS, NULL},
+	 { "ListaMovimientos_agregar", _wrap_ListaMovimientos_agregar, METH_O, NULL},
+	 { "delete_ListaMovimientos", _wrap_delete_ListaMovimientos, METH_O, NULL},
+	 { "ListaMovimientos_swigregister", ListaMovimientos_swigregister, METH_O, NULL},
+	 { "ListaMovimientos_swiginit", ListaMovimientos_swiginit, METH_VARARGS, NULL},
+	 { "ListaCategoria_inicio_set", _wrap_ListaCategoria_inicio_set, METH_VARARGS, NULL},
+	 { "ListaCategoria_inicio_get", _wrap_ListaCategoria_inicio_get, METH_O, NULL},
+	 { "ListaCategoria_fin_set", _wrap_ListaCategoria_fin_set, METH_VARARGS, NULL},
+	 { "ListaCategoria_fin_get", _wrap_ListaCategoria_fin_get, METH_O, NULL},
+	 { "ListaCategoria_cabecera_set", _wrap_ListaCategoria_cabecera_set, METH_VARARGS, NULL},
+	 { "ListaCategoria_cabecera_get", _wrap_ListaCategoria_cabecera_get, METH_O, NULL},
+	 { "new_ListaCategoria", _wrap_new_ListaCategoria, METH_NOARGS, NULL},
+	 { "ListaCategoria_agregarCate", _wrap_ListaCategoria_agregarCate, METH_VARARGS, NULL},
+	 { "ListaCategoria_mostrarCate", _wrap_ListaCategoria_mostrarCate, METH_O, NULL},
+	 { "ListaCategoria_getCate", _wrap_ListaCategoria_getCate, METH_VARARGS, NULL},
+	 { "ListaCategoria_agregarArti", _wrap_ListaCategoria_agregarArti, METH_VARARGS, NULL},
+	 { "ListaCategoria_mostrarArti", _wrap_ListaCategoria_mostrarArti, METH_O, NULL},
+	 { "ListaCategoria_getPrecio", _wrap_ListaCategoria_getPrecio, METH_VARARGS, NULL},
+	 { "ListaCategoria_graficarListas", _wrap_ListaCategoria_graficarListas, METH_O, NULL},
+	 { "ListaCategoria_ordenamietno", _wrap_ListaCategoria_ordenamietno, METH_O, NULL},
+	 { "delete_ListaCategoria", _wrap_delete_ListaCategoria, METH_O, NULL},
+	 { "ListaCategoria_swigregister", ListaCategoria_swigregister, METH_O, NULL},
+	 { "ListaCategoria_swiginit", ListaCategoria_swiginit, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -3676,18 +4391,34 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
+static swig_type_info _swigt__p_Categoria = {"_p_Categoria", "Categoria *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_ColaTutorial = {"_p_ColaTutorial", "ColaTutorial *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_ListaCategoria = {"_p_ListaCategoria", "ListaCategoria *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_ListaMovimientos = {"_p_ListaMovimientos", "ListaMovimientos *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_ListaUsuario = {"_p_ListaUsuario", "ListaUsuario *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
+  &_swigt__p_Categoria,
+  &_swigt__p_ColaTutorial,
+  &_swigt__p_ListaCategoria,
+  &_swigt__p_ListaMovimientos,
   &_swigt__p_ListaUsuario,
   &_swigt__p_char,
 };
 
+static swig_cast_info _swigc__p_Categoria[] = {  {&_swigt__p_Categoria, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_ColaTutorial[] = {  {&_swigt__p_ColaTutorial, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_ListaCategoria[] = {  {&_swigt__p_ListaCategoria, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_ListaMovimientos[] = {  {&_swigt__p_ListaMovimientos, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_ListaUsuario[] = {  {&_swigt__p_ListaUsuario, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
+  _swigc__p_Categoria,
+  _swigc__p_ColaTutorial,
+  _swigc__p_ListaCategoria,
+  _swigc__p_ListaMovimientos,
   _swigc__p_ListaUsuario,
   _swigc__p_char,
 };

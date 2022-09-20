@@ -3,10 +3,8 @@ from PyQt5.QtWidgets import QMainWindow, QApplication
 from PyQt5.uic import loadUi
 import sys
 import webbrowser
-import requests
-import json
+import Listas
 
-dire = "http://localhost:5000"
 
 def editar():
     entrar.hide()
@@ -26,17 +24,15 @@ def incio():
         entrar.show()
         entrar.pushButton.clicked.connect(editar)
         entrar.pushButton_3.clicked.connect(tiend)
-    login = {'nick': 'somevalue','password':'asdf'}
-    x = requests.get(f'{dire}/login', json = login)
-    print(x.text)
 
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])
-    login = uic.loadUi("Fase 2\Frontend\Paginas\Login.ui")
-    entrar = uic.loadUi("Fase 2\Frontend\Paginas\Bienvenido.ui")
-    edita = uic.loadUi("Fase 2\Frontend\Paginas\Editar.ui")
-    tienda = uic.loadUi("Fase 2\Frontend\Paginas\Tienda.ui")
+    login = uic.loadUi("Fase_2/Backend/Frontend/Paginas/Login.ui")
+    entrar = uic.loadUi("Fase_2/Backend/Frontend/Paginas/Bienvenido.ui")
+    edita = uic.loadUi("Fase_2/Backend/Frontend/Paginas/Editar.ui")
+    tienda = uic.loadUi("Fase_2/Backend/Frontend/Paginas/Tienda.ui")
+    regis = uic.loadUi("Fase_2/Backend/Frontend/Paginas/Registro.ui")
     login.show()
     login.pushButton.clicked.connect(incio)
     sys.exit(app.exec_())
