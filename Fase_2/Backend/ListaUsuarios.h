@@ -6,18 +6,20 @@
 #include <bits/stdc++.h> 
 
 using namespace std;
+SHA256 probando;
+
 class Usuario
 {
 private:
 public:
-        string nick, pass; 
+        string nick, passw; 
         int mon, id, edad;
         Usuario* siguiente;
         Usuario* anterior;
-        Usuario(int id, string nick, string pass,int mon, int edad){
+        Usuario(int id, string nick, string passw,int mon, int edad){
             this->id = id;
             this->nick= nick;
-            this->pass= pass;
+            this->passw= passw;
             this->mon= mon;
             this->edad= edad;
             this->siguiente=NULL;
@@ -37,8 +39,8 @@ public:
         }
         //metodos
         //metodo de insertar
-        void agregarlista(int id, string nick, string pass,int mon, int edad){
-            Usuario* usu= new Usuario(id,nick,probando(pass),mon,edad);
+        void agregarlista(int id, string nick, string passw,int mon, int edad){
+            Usuario* usu= new Usuario(id,nick,probando(passw),mon,edad);
             if(inicio == NULL){
                 inicio = usu; 
                 inicio -> siguiente = inicio;
@@ -70,7 +72,7 @@ public:
             if(inicio!=NULL){
                 do{
                     //cout << "\n " << aux->nick;
-                    cout<<"[id:"<< aux->id <<"], [nick:"<< aux->nick <<"], [pass:"<<aux->pass<<"], [mon:"<<aux->mon<<"], [edad:"<<aux->edad<<"]."<<endl;
+                    cout<<"[id:"<< aux->id <<"], [nick:"<< aux->nick <<"], [passw:"<<aux->passw<<"], [mon:"<<aux->mon<<"], [edad:"<<aux->edad<<"]."<<endl;
                     aux=aux->siguiente;
                 }while(aux!=inicio);	
             }else{
@@ -78,14 +80,14 @@ public:
             }
         }
         //metodo verificar usuario
-        string verificar(string nick, string pass){
+        string verificar(string nick, string passw){
             Usuario* aux = inicio;
             if(inicio!=NULL){
                 while (aux!=NULL)
                     {
-                        if( aux->nick==nic){
-                            if (aux->pass==probando(pass)){
-                                return nic;
+                        if( aux->nick==nick){
+                            if (aux->passw==probando(passw)){
+                                return nick;
                             }else{
                                 cout<<"Contraseña incorrecta"<<endl;
                                 return "None";
@@ -103,14 +105,14 @@ public:
             return "None";
         }
         //metodo editar informacion
-        void editar(string res, string nick,string pass,int mon, int edad){
+        void editar(string res, string nick,string passw,int mon, int edad){
             Usuario* aux = inicio;
             bool encontrado = false;
             if(inicio!=NULL){
                 do{
                     if(aux->nick==res){
                         aux->nick = nick;
-                        aux->pass =probando(pass);
+                        aux->passw =probando(passw);
                         aux->mon = mon; 
                         aux->edad = edad;
                         encontrado = true;				
@@ -161,13 +163,13 @@ public:
         }
         
         //metodo obtener monedas
-        int obtemonedas(string res,string pass){
+        int obtemonedas(string res,string passw){
             Usuario* aux = inicio;
             if(inicio!=NULL){
                 while (aux!=NULL)
                     {
-                        if( aux->nick==nic){
-                            if (aux->pass==probando(pass)){
+                        if( aux->nick==res){
+                            if (aux->passw==probando(passw)){
                                 return aux->mon;
                             }else{
                                 cout<<"Contraseña incorrecta"<<endl;
@@ -183,13 +185,13 @@ public:
             return 0;
         }
         //metodo obtener edad
-        int obtedad(string res,string pass){
+        int obtedad(string res,string passw){
             Usuario* aux = inicio;
             if(inicio!=NULL){
                 while (aux!=NULL)
                     {
-                        if( aux->nick==nic){
-                            if (aux->pass==probando(pass)){
+                        if( aux->nick==res){
+                            if (aux->passw==probando(passw)){
                                 return aux->edad;
                             }else{
                                 cout<<"Contraseña incorrecta"<<endl;

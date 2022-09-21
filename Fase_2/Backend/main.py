@@ -5,6 +5,9 @@ import sys
 import webbrowser
 import Listas
 
+listausu = Listas.ListaUsuarios
+listacate = Listas.ListaCategoria
+colatuto = Listas.ColaTutorial
 
 def editar():
     entrar.hide()
@@ -20,6 +23,9 @@ def incio():
     if len(nick)==0 or len(passw)==0:
         login.label_5.setText("Ingrese los datos para continuar")
     else:
+        print(nick)
+        print(passw)
+        listausu.verificar(nick,passw)
         login.hide()
         entrar.show()
         entrar.pushButton.clicked.connect(editar)
