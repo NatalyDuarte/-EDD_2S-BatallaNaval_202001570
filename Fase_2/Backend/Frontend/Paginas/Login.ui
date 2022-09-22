@@ -21,15 +21,14 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgb
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>330</x>
+      <x>280</x>
       <y>140</y>
-      <width>171</width>
-      <height>71</height>
+      <width>191</width>
+      <height>91</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">font: 26pt &quot;MV Boli&quot;;
-font: 48pt &quot;Impact&quot;;</string>
+     <string notr="true">font: 87 48pt &quot;Arial Black&quot;;</string>
     </property>
     <property name="text">
      <string>Login</string>
@@ -98,8 +97,8 @@ color: rgb(255, 255, 255);</string>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>360</x>
-      <y>430</y>
+      <x>380</x>
+      <y>400</y>
       <width>111</width>
       <height>41</height>
      </rect>
@@ -146,6 +145,40 @@ border-radius:20px;</string>
     </property>
     <property name="text">
      <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>60</y>
+      <width>111</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(85, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>Carga Masiva</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_3">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>100</y>
+      <width>111</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(0, 0, 0);
+color: rgb(85, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>Registro de Usuario</string>
     </property>
    </widget>
   </widget>

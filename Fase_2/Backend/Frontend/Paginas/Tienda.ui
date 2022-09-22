@@ -40,23 +40,6 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgb
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>250</x>
-      <y>140</y>
-      <width>211</width>
-      <height>71</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 26pt &quot;MV Boli&quot;;
-font: 48pt &quot;Impact&quot;;</string>
-    </property>
-    <property name="text">
-     <string>Tienda</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
@@ -90,6 +73,22 @@ color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>Tokens Disponibles</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>160</y>
+      <width>241</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 87 48pt &quot;Arial Black&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Tienda</string>
     </property>
    </widget>
   </widget>
