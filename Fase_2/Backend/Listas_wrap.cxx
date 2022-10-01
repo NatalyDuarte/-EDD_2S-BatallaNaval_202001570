@@ -2809,11 +2809,10 @@ namespace swig {
 #include <string>
 
 
-#include "ListaUsuarios.h"
-#include "Carga.h"
-#include "ColaTutorial.h"
-#include "ListaMovimientos.h"
-#include "ListaCategoria.h"
+#include "Usuarios/ListaUsuarios.h"
+#include "Tutorial/ColaTutorial.h"
+#include "Movimientos/ListaMovimientos.h"
+#include "Categoria/ListaCategoria.h"
 
 
 SWIGINTERN swig_type_info*
@@ -3767,6 +3766,7 @@ SWIGINTERN PyObject *_wrap_ListaUsuarios_mostrarlista(PyObject *SWIGUNUSEDPARM(s
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject *swig_obj[1] ;
+  std::string result;
   
   if (!args) SWIG_fail;
   swig_obj[0] = args;
@@ -3775,8 +3775,31 @@ SWIGINTERN PyObject *_wrap_ListaUsuarios_mostrarlista(PyObject *SWIGUNUSEDPARM(s
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ListaUsuarios_mostrarlista" "', argument " "1"" of type '" "ListaUsuarios *""'"); 
   }
   arg1 = reinterpret_cast< ListaUsuarios * >(argp1);
-  (arg1)->mostrarlista();
-  resultobj = SWIG_Py_Void();
+  result = (arg1)->mostrarlista();
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ListaUsuarios_mostrarlistaF(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ListaUsuarios *arg1 = (ListaUsuarios *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  std::string result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ListaUsuarios, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ListaUsuarios_mostrarlistaF" "', argument " "1"" of type '" "ListaUsuarios *""'"); 
+  }
+  arg1 = reinterpret_cast< ListaUsuarios * >(argp1);
+  result = (arg1)->mostrarlistaF();
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
   return resultobj;
 fail:
   return NULL;
@@ -4007,6 +4030,28 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_ListaUsuarios_ordeanamiento(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ListaUsuarios *arg1 = (ListaUsuarios *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ListaUsuarios, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ListaUsuarios_ordeanamiento" "', argument " "1"" of type '" "ListaUsuarios *""'"); 
+  }
+  arg1 = reinterpret_cast< ListaUsuarios * >(argp1);
+  (arg1)->ordeanamiento();
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_delete_ListaUsuarios(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   ListaUsuarios *arg1 = (ListaUsuarios *) 0 ;
@@ -4039,96 +4084,6 @@ SWIGINTERN PyObject *ListaUsuarios_swigregister(PyObject *SWIGUNUSEDPARM(self), 
 SWIGINTERN PyObject *ListaUsuarios_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   return SWIG_Python_InitShadowInstance(args);
 }
-
-SWIGINTERN int Swig_var_listausu_set(PyObject *_val) {
-  {
-    void *argp = 0;
-    int res = SWIG_ConvertPtr(_val, &argp, SWIGTYPE_p_ListaUsuarios,  0  | 0);
-    if (!SWIG_IsOK(res)) {
-      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""listausu""' of type '""ListaUsuarios""'");
-    }
-    if (!argp) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in variable '""listausu""' of type '""ListaUsuarios""'");
-    } else {
-      ListaUsuarios * temp;
-      temp  = reinterpret_cast< ListaUsuarios * >(argp);
-      listausu = *temp;
-      if (SWIG_IsNewObj(res)) delete temp;
-    }
-  }
-  return 0;
-fail:
-  return 1;
-}
-
-
-SWIGINTERN PyObject *Swig_var_listausu_get(void) {
-  PyObject *pyobj = 0;
-  
-  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(&listausu), SWIGTYPE_p_ListaUsuarios,  0 );
-  return pyobj;
-}
-
-
-SWIGINTERN int Swig_var_listacate_set(PyObject *_val) {
-  {
-    void *argp = 0;
-    int res = SWIG_ConvertPtr(_val, &argp, SWIGTYPE_p_ListaCategoria,  0  | 0);
-    if (!SWIG_IsOK(res)) {
-      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""listacate""' of type '""ListaCategoria""'");
-    }
-    if (!argp) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in variable '""listacate""' of type '""ListaCategoria""'");
-    } else {
-      ListaCategoria * temp;
-      temp  = reinterpret_cast< ListaCategoria * >(argp);
-      listacate = *temp;
-      if (SWIG_IsNewObj(res)) delete temp;
-    }
-  }
-  return 0;
-fail:
-  return 1;
-}
-
-
-SWIGINTERN PyObject *Swig_var_listacate_get(void) {
-  PyObject *pyobj = 0;
-  
-  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(&listacate), SWIGTYPE_p_ListaCategoria,  0 );
-  return pyobj;
-}
-
-
-SWIGINTERN int Swig_var_colatuto_set(PyObject *_val) {
-  {
-    void *argp = 0;
-    int res = SWIG_ConvertPtr(_val, &argp, SWIGTYPE_p_ColaTutorial,  0  | 0);
-    if (!SWIG_IsOK(res)) {
-      SWIG_exception_fail(SWIG_ArgError(res), "in variable '""colatuto""' of type '""ColaTutorial""'");
-    }
-    if (!argp) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in variable '""colatuto""' of type '""ColaTutorial""'");
-    } else {
-      ColaTutorial * temp;
-      temp  = reinterpret_cast< ColaTutorial * >(argp);
-      colatuto = *temp;
-      if (SWIG_IsNewObj(res)) delete temp;
-    }
-  }
-  return 0;
-fail:
-  return 1;
-}
-
-
-SWIGINTERN PyObject *Swig_var_colatuto_get(void) {
-  PyObject *pyobj = 0;
-  
-  pyobj = SWIG_NewPointerObj(SWIG_as_voidptr(&colatuto), SWIGTYPE_p_ColaTutorial,  0 );
-  return pyobj;
-}
-
 
 SWIGINTERN PyObject *_wrap_Tutorial_ancho_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
@@ -6073,11 +6028,13 @@ static PyMethodDef SwigMethods[] = {
 	 { "ListaUsuarios_agregarlista", _wrap_ListaUsuarios_agregarlista, METH_VARARGS, NULL},
 	 { "ListaUsuarios_obtener", _wrap_ListaUsuarios_obtener, METH_O, NULL},
 	 { "ListaUsuarios_mostrarlista", _wrap_ListaUsuarios_mostrarlista, METH_O, NULL},
+	 { "ListaUsuarios_mostrarlistaF", _wrap_ListaUsuarios_mostrarlistaF, METH_O, NULL},
 	 { "ListaUsuarios_verificar", _wrap_ListaUsuarios_verificar, METH_VARARGS, NULL},
 	 { "ListaUsuarios_editar", _wrap_ListaUsuarios_editar, METH_VARARGS, NULL},
 	 { "ListaUsuarios_eliminar", _wrap_ListaUsuarios_eliminar, METH_VARARGS, NULL},
 	 { "ListaUsuarios_obtemonedas", _wrap_ListaUsuarios_obtemonedas, METH_VARARGS, NULL},
 	 { "ListaUsuarios_obtedad", _wrap_ListaUsuarios_obtedad, METH_VARARGS, NULL},
+	 { "ListaUsuarios_ordeanamiento", _wrap_ListaUsuarios_ordeanamiento, METH_O, NULL},
 	 { "delete_ListaUsuarios", _wrap_delete_ListaUsuarios, METH_O, NULL},
 	 { "ListaUsuarios_swigregister", ListaUsuarios_swigregister, METH_O, NULL},
 	 { "ListaUsuarios_swiginit", ListaUsuarios_swiginit, METH_VARARGS, NULL},
@@ -6977,9 +6934,6 @@ SWIG_init(void) {
   PyDict_SetItemString(md, "cvar", globals);
   Py_DECREF(globals);
   SWIG_addvarlink(globals, "probando", Swig_var_probando_get, Swig_var_probando_set);
-  SWIG_addvarlink(globals, "listausu", Swig_var_listausu_get, Swig_var_listausu_set);
-  SWIG_addvarlink(globals, "listacate", Swig_var_listacate_get, Swig_var_listacate_set);
-  SWIG_addvarlink(globals, "colatuto", Swig_var_colatuto_get, Swig_var_colatuto_set);
 #if PY_VERSION_HEX >= 0x03000000
   return m;
 #else

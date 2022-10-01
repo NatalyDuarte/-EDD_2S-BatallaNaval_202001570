@@ -1,14 +1,12 @@
 %module  Listas
 %include "std_string.i"
 %{
-#include "ListaUsuarios.h"
-#include "Carga.h"
-#include "ColaTutorial.h"
-#include "ListaMovimientos.h"
-#include "ListaCategoria.h"
+#include "Usuarios/ListaUsuarios.h"
+#include "Tutorial/ColaTutorial.h"
+#include "Movimientos/ListaMovimientos.h"
+#include "Categoria/ListaCategoria.h"
 %}
-%include ListaUsuarios.h
-%include Carga.h
-%include ColaTutorial.h
-%include ListaMovimientos.h
-%include ListaCategoria.h
+%include Usuarios/ListaUsuarios.h
+%include Tutorial/ColaTutorial.h
+%include Movimientos/ListaMovimientos.h
+%include Categoria/ListaCategoria.h

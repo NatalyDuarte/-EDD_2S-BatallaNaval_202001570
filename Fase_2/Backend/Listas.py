@@ -96,20 +96,26 @@ class ListaUsuarios(object):
     def mostrarlista(self):
         return _Listas.ListaUsuarios_mostrarlista(self)
 
-    def verificar(self, nick, passw):
-        return _Listas.ListaUsuarios_verificar(self, nick, passw)
+    def mostrarlistaF(self):
+        return _Listas.ListaUsuarios_mostrarlistaF(self)
+
+    def verificar(self, nic, passw):
+        return _Listas.ListaUsuarios_verificar(self, nic, passw)
 
     def editar(self, res, nick, passw, mon, edad):
         return _Listas.ListaUsuarios_editar(self, res, nick, passw, mon, edad)
 
-    def eliminar(self, res):
-        return _Listas.ListaUsuarios_eliminar(self, res)
+    def eliminar(self, UsuarioBuscado):
+        return _Listas.ListaUsuarios_eliminar(self, UsuarioBuscado)
 
-    def obtemonedas(self, res, passw):
-        return _Listas.ListaUsuarios_obtemonedas(self, res, passw)
+    def obtemonedas(self, nic, passw):
+        return _Listas.ListaUsuarios_obtemonedas(self, nic, passw)
 
-    def obtedad(self, res, passw):
-        return _Listas.ListaUsuarios_obtedad(self, res, passw)
+    def obtedad(self, nic, passw):
+        return _Listas.ListaUsuarios_obtedad(self, nic, passw)
+
+    def ordeanamiento(self):
+        return _Listas.ListaUsuarios_ordeanamiento(self)
     __swig_destroy__ = _Listas.delete_ListaUsuarios
 
 # Register ListaUsuarios in _Listas:

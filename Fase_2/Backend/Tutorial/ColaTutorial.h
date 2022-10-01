@@ -1,6 +1,7 @@
 #include <stddef.h>
 #include <string>
 #include <iostream>
+#include <fstream>
 using namespace std;
 class Tutorial{
     //atributos y metodos

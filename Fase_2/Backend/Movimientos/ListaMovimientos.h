@@ -2,6 +2,7 @@
 #include <string>
 #include <iostream>
 #include <sstream>
+#include <fstream>
 using namespace std;
 class Movimientos{
     //atributos y metodos

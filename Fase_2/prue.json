@@ -1,0 +1,477 @@
+{
+    "usuarios": [
+      {
+        "id":"1",
+        "nick": "Kristine466",
+        "password": "MAXIMIND",
+        "monedas": 8254,
+        "edad": 48
+      },
+      {
+        "id":"2",
+        "nick": "Gregory5553",
+        "password": "CABLAM",
+        "monedas": 9195,
+        "edad": 60
+      },
+      {
+        "id":"3",
+        "nick": "Lilian6779",
+        "password": "MARQET",
+        "monedas": 7705,
+        "edad": 24
+      },
+      {
+        "id":"4",
+        "nick": "Salas3251",
+        "password": "CANDECOR",
+        "monedas": 6397,
+        "edad": 57
+      },
+      {
+        "id":"5",
+        "nick": "Carol872",
+        "password": "DEVILTOE",
+        "monedas": 539,
+        "edad": 34
+      },
+      {
+        "id":"6",
+        "nick": "Joan5187",
+        "password": "ZENTIA",
+        "monedas": 4259,
+        "edad": 22
+      },
+      {
+        "id":"7",
+        "nick": "Rosemary8594",
+        "password": "BALOOBA",
+        "monedas": 3882,
+        "edad": 25
+      },
+      {
+        "id":"8",
+        "nick": "Michael8699",
+        "password": "SPEEDBOLT",
+        "monedas": 7465,
+        "edad": 44
+      },
+      {
+        "id":"9",
+        "nick": "Singleton1087",
+        "password": "UNIA",
+        "monedas": 3855,
+        "edad": 32
+      },
+      {
+        "id":"10",
+        "nick": "Wood9988",
+        "password": "KIDSTOCK",
+        "monedas": 3823,
+        "edad": 53
+      }
+    ],
+    "articulos": [
+      {
+        "id": 861972,
+        "categoria": "Level1",
+        "precio": 34,
+        "nombre": "Trevino",
+        "src": "C://imgs/img20"
+      },
+      {
+        "id": 633321,
+        "categoria": "Level3",
+        "precio": 27,
+        "nombre": "Sykes",
+        "src": "C://imgs/img20"
+      },
+      {
+        "id": 868070,
+        "categoria": "Level4",
+        "precio": 34,
+        "nombre": "Snow",
+        "src": "C://imgs/img20"
+      },
+      {
+        "id": 99647,
+        "categoria": "Level4",
+        "precio": 36,
+        "nombre": "Henson",
+        "src": "C://imgs/img20"
+      },
+      {
+        "id": 666202,
+        "categoria": "Level3",
+        "precio": 40,
+        "nombre": "Farrell",
+        "src": "C://imgs/img20"
+      },
+      {
+        "id": 372284,
+        "categoria": "Level3",
+        "precio": 20,
+        "nombre": "Blair",
+        "src": "C://imgs/img20"
+      },
+      {
+        "id": 637785,
+        "categoria": "Level1",
+        "precio": 21,
+        "nombre": "Holden",
+        "src": "C://imgs/img20"
+      },
+      {
+        "id": 74913,
+        "categoria": "Level4",
+        "precio": 20,
+        "nombre": "Albert",
+        "src": "C://imgs/img20"
+      },
+      {
+        "id": 577947,
+        "categoria": "Level3",
+        "precio": 25,
+        "nombre": "Noel",
+        "src": "C://imgs/img20"
+      },
+      {
+        "id": 200459,
+        "categoria": "Level3",
+        "precio": 40,
+        "nombre": "Justice",
+        "src": "C://imgs/img20"
+      },
+      {
+        "id": 990648,
+        "categoria": "Level3",
+        "precio": 23,
+        "nombre": "Washington",
+        "src": "C://imgs/img20"
+      },
+      {
+        "id": 770027,
+        "categoria": "Level3",
+        "precio": 23,
+        "nombre": "Petty",
+        "src": "C://imgs/img20"
+      },
+      {
+        "id": 110138,
+        "categoria": "Level3",
+        "precio": 24,
+        "nombre": "Delacruz",
+        "src": "C://imgs/img20"
+      },
+      {
+        "id": 424677,
+        "categoria": "Leve2",
+        "precio": 34,
+        "nombre": "Flores",
+        "src": "C://imgs/img20"
+      },
+      {
+        "id": 758133,
+        "categoria": "Level1",
+        "precio": 39,
+        "nombre": "Garner",
+        "src": "C://imgs/img20"
+      },
+      {
+        "id": 20104,
+        "categoria": "Level1",
+        "precio": 33,
+        "nombre": "Montoya",
+        "src": "C://imgs/img20"
+      },
+      {
+        "id": 507715,
+        "categoria": "Level4",
+        "precio": 32,
+        "nombre": "Camacho",
+        "src": "C://imgs/img20"
+      },
+      {
+        "id": 705737,
+        "categoria": "Level1",
+        "precio": 38,
+        "nombre": "Giles",
+        "src": "C://imgs/img20"
+      },
+      {
+        "id": 801663,
+        "categoria": "Level4",
+        "precio": 27,
+        "nombre": "Wolf",
+        "src": "C://imgs/img20"
+      },
+      {
+        "id": 450093,
+        "categoria": "Leve2",
+        "precio": 24,
+        "nombre": "Waters",
+        "src": "C://imgs/img20"
+      },
+      {
+        "id": 187765,
+        "categoria": "Level4",
+        "precio": 38,
+        "nombre": "Sosa",
+        "src": "C://imgs/img20"
+      },
+      {
+        "id": 447311,
+        "categoria": "Level1",
+        "precio": 28,
+        "nombre": "Branch",
+        "src": "C://imgs/img20"
+      },
+      {
+        "id": 495406,
+        "categoria": "Level1",
+        "precio": 34,
+        "nombre": "Guerra",
+        "src": "C://imgs/img20"
+      },
+      {
+        "id": 613161,
+        "categoria": "Level3",
+        "precio": 29,
+        "nombre": "Kirk",
+        "src": "C://imgs/img20"
+      },
+      {
+        "id": 566031,
+        "categoria": "Level1",
+        "precio": 31,
+        "nombre": "Osborn",
+        "src": "C://imgs/img20"
+      }
+    ],
+    "tutorial": {
+      "ancho": 47,
+      "alto": 47,
+      "movimientos": [
+        {
+          "x": 35,
+          "y": 33
+        },
+        {
+          "x": 38,
+          "y": 20
+        },
+        {
+          "x": 29,
+          "y": 36
+        },
+        {
+          "x": 34,
+          "y": 32
+        },
+        {
+          "x": 21,
+          "y": 25
+        },
+        {
+          "x": 21,
+          "y": 28
+        },
+        {
+          "x": 30,
+          "y": 39
+        },
+        {
+          "x": 36,
+          "y": 22
+        },
+        {
+          "x": 37,
+          "y": 40
+        },
+        {
+          "x": 35,
+          "y": 36
+        },
+        {
+          "x": 29,
+          "y": 29
+        },
+        {
+          "x": 33,
+          "y": 23
+        },
+        {
+          "x": 30,
+          "y": 35
+        },
+        {
+          "x": 29,
+          "y": 36
+        },
+        {
+          "x": 39,
+          "y": 28
+        },
+        {
+          "x": 37,
+          "y": 20
+        },
+        {
+          "x": 40,
+          "y": 22
+        },
+        {
+          "x": 34,
+          "y": 28
+        },
+        {
+          "x": 39,
+          "y": 28
+        },
+        {
+          "x": 26,
+          "y": 29
+        },
+        {
+          "x": 25,
+          "y": 23
+        },
+        {
+          "x": 40,
+          "y": 29
+        },
+        {
+          "x": 31,
+          "y": 31
+        },
+        {
+          "x": 24,
+          "y": 26
+        },
+        {
+          "x": 37,
+          "y": 37
+        },
+        {
+          "x": 26,
+          "y": 23
+        },
+        {
+          "x": 29,
+          "y": 30
+        },
+        {
+          "x": 20,
+          "y": 34
+        },
+        {
+          "x": 27,
+          "y": 34
+        },
+        {
+          "x": 34,
+          "y": 20
+        },
+        {
+          "x": 38,
+          "y": 31
+        },
+        {
+          "x": 22,
+          "y": 39
+        },
+        {
+          "x": 20,
+          "y": 24
+        },
+        {
+          "x": 34,
+          "y": 40
+        },
+        {
+          "x": 39,
+          "y": 38
+        },
+        {
+          "x": 23,
+          "y": 36
+        },
+        {
+          "x": 32,
+          "y": 31
+        },
+        {
+          "x": 28,
+          "y": 27
+        },
+        {
+          "x": 22,
+          "y": 35
+        },
+        {
+          "x": 22,
+          "y": 23
+        },
+        {
+          "x": 36,
+          "y": 34
+        },
+        {
+          "x": 30,
+          "y": 32
+        },
+        {
+          "x": 33,
+          "y": 38
+        },
+        {
+          "x": 22,
+          "y": 23
+        },
+        {
+          "x": 32,
+          "y": 39
+        },
+        {
+          "x": 27,
+          "y": 31
+        },
+        {
+          "x": 32,
+          "y": 40
+        },
+        {
+          "x": 31,
+          "y": 21
+        },
+        {
+          "x": 38,
+          "y": 20
+        },
+        {
+          "x": 31,
+          "y": 21
+        },
+        {
+          "x": 23,
+          "y": 21
+        },
+        {
+          "x": 35,
+          "y": 22
+        },
+        {
+          "x": 34,
+          "y": 24
+        },
+        {
+          "x": 33,
+          "y": 29
+        },
+        {
+          "x": 39,
+          "y": 34
+        }
+      ]
+    }
+  }

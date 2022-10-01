@@ -152,7 +152,7 @@ border-radius:20px;</string>
      <rect>
       <x>30</x>
       <y>60</y>
-      <width>111</width>
+      <width>151</width>
       <height>41</height>
      </rect>
     </property>
@@ -169,7 +169,7 @@ color: rgb(85, 255, 255);</string>
      <rect>
       <x>30</x>
       <y>100</y>
-      <width>111</width>
+      <width>151</width>
       <height>41</height>
      </rect>
     </property>
@@ -188,7 +188,7 @@ color: rgb(85, 255, 255);</string>
      <x>0</x>
      <y>0</y>
      <width>832</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>
