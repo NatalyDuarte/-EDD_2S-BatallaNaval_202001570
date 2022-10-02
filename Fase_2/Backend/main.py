@@ -7,9 +7,12 @@ import Listas
 from tkinter import *
 from tkinter import filedialog
 import json
+from random import randint,random,uniform
+from Matriz import MatrizDispersa 
 listausu = Listas.ListaUsuarios()
 listacate = Listas.ListaCategoria()
 colatuto = Listas.ColaTutorial()
+matriz = MatrizDispersa.Matriz()
 
 respu = ""
 nick= ""
@@ -106,6 +109,102 @@ def incio():
             entrar.pushButton_4.clicked.connect(cerra)
             entrar.pushButton_5.clicked.connect(tiend)
             
+def portav(a,b):
+        res1=matriz.Buscar(a+1,b)
+        res2=matriz.Buscar(a+2,b)
+        res3=matriz.Buscar(a+3,b)
+        if res1=="NO" and res2=="NO" and res3=="NO":
+            matriz.InsertarMatriz(a,b,"P")
+            matriz.InsertarMatriz(a+1,b,"P") 
+            matriz.InsertarMatriz(a+2,b,"P")
+            matriz.InsertarMatriz(a+3,b,"P")
+        elif res1=="SI" and res2=="SI" and res3=="SI":
+            res1=matriz.Buscar(a-1,b)
+            res2=matriz.Buscar(a-2,b)
+            res3=matriz.Buscar(a-3,b)
+            if res1=="NO" and res2=="NO" and res3=="NO":
+                matriz.InsertarMatriz(a,b,"P")
+                matriz.InsertarMatriz(a-1,b,"P") 
+                matriz.InsertarMatriz(a-2,b,"P")
+                matriz.InsertarMatriz(a-3,b,"P")
+        elif res1=="NO" and res2=="NO" and res3=="SI":
+            res1=matriz.Buscar(a-1,b)
+            res2=matriz.Buscar(a-2,b)
+            res3=matriz.Buscar(a+1,b)
+            if res1=="NO" and res2=="NO" and res3=="NO":
+                matriz.InsertarMatriz(a,b,"P")
+                matriz.InsertarMatriz(a-1,b,"P") 
+                matriz.InsertarMatriz(a-2,b,"P")
+                matriz.InsertarMatriz(a+1,b,"P")
+        elif res1=="NO" and res2=="SI":
+            res1=matriz.Buscar(a-1,b)
+            res2=matriz.Buscar(a+2,b)
+            res3=matriz.Buscar(a+1,b)
+            if res1=="NO" and res2=="NO" and res3=="NO":
+                matriz.InsertarMatriz(a,b,"P")
+                matriz.InsertarMatriz(a-1,b,"P") 
+                matriz.InsertarMatriz(a+2,b,"P")
+                matriz.InsertarMatriz(a+1,b,"P")
+        elif res1=="SI" :
+            res1=matriz.Buscar(a+1,b)
+            res2=matriz.Buscar(a+2,b)
+            res3=matriz.Buscar(a+1,b)
+            if res1=="NO" and res2=="NO" and res3=="NO":
+                matriz.InsertarMatriz(a,b,"P")
+                matriz.InsertarMatriz(a+1,b,"P") 
+                matriz.InsertarMatriz(a+2,b,"P")
+                matriz.InsertarMatriz(a+1,b,"P")
+
+def matri(ancho,alto):  
+    if ancho==10:
+        porta = 1
+        subma = 2
+        destruc = 3
+        buques =  4
+    elif ancho>= 10 and ancho<=20:
+        porta = 2
+        subma = 4
+        destruc = 6
+        buques =  8
+    else:
+        formu=((ancho-1)/10)+1
+        porta = int(formu)
+        subma = int(formu)* 2
+        destruc = int(formu) * 3
+        buques = int(formu) * 4
+    bus= randint(0,1)
+    a=randint(0,ancho-1)
+    b=randint(0,alto-1)
+    bus=0
+    if bus==0:
+        res=matriz.Buscar(a,b)
+        #insercion de barcos
+        if res=="NO":
+            #vertical
+            #porta
+            for i in range(0,porta):
+                portav(a,b)
+            #subma
+            #destruc
+            #buques
+        else:
+            a=randint(0,ancho-1)
+            b=randint(0,alto-1)
+            res=matriz.Buscar(a,b)
+            #insercion de barcos
+            if res=="NO":
+                #vertical
+                #porta
+                for i in porta:
+                    portav(a,b)
+                #subma
+                #destruc
+                #buques    
+    else:
+        #horizontal
+        res=matriz.Buscar(a,b)
+                
+                         
         
 def carga():
     archivo=filedialog.askopenfilename(filetypes=[("Archivos JSON", ".json .JSON")])
@@ -138,11 +237,14 @@ def carga():
                     listacate.agregarArti(int(id),cate1,int(precio),nom,src)
             ancho= datos["tutorial"]["ancho"]
             alto= datos["tutorial"]["alto"]
-            colatuto.insertar(int(ancho),int(alto),"Tablero")
-            for tutorial in datos['tutorial']["movimientos"]:
-                movix=tutorial["x"]
-                moviy=tutorial["y"]
-                colatuto.insertar(int(movix),int(moviy),"Movimiento")
+            if ancho>=10 and alto>=10:
+                colatuto.insertar(int(ancho),int(alto),"Tablero")
+                for tutorial in datos['tutorial']["movimientos"]:
+                    movix=tutorial["x"]
+                    moviy=tutorial["y"]
+                    colatuto.insertar(int(movix),int(moviy),"Movimiento")
+                matri(ancho,alto)
+                matriz.graficar("Matriz")
     else:
         print("No se reconocio el archivo")
         
@@ -152,12 +254,12 @@ def carga():
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])
-    login = uic.loadUi("Frontend/Paginas/Login.ui")
-    admini = uic.loadUi("Frontend/Paginas/Administracion.ui")
-    entrar = uic.loadUi("Frontend/Paginas/Bienvenido.ui")
-    edita = uic.loadUi("Frontend/Paginas/Editar.ui")
-    tienda = uic.loadUi("Frontend/Paginas/Tienda.ui")
-    regis = uic.loadUi("Frontend/Paginas/Registro.ui")
+    login = uic.loadUi("Fase_2/Backend/Frontend/Paginas/Login.ui")
+    admini = uic.loadUi("Fase_2/Backend/Frontend/Paginas/Administracion.ui")
+    entrar = uic.loadUi("Fase_2/Backend/Frontend/Paginas/Bienvenido.ui")
+    edita = uic.loadUi("Fase_2/Backend/Frontend/Paginas/Editar.ui")
+    tienda = uic.loadUi("Fase_2/Backend/Frontend/Paginas/Tienda.ui")
+    regis = uic.loadUi("Fase_2/Backend/Frontend/Paginas/Registro.ui")
     listausu.agregarlista(0,"EDD","edd123",0,50)
     listausu.agregarlista(1,"Javier","edd123",12,12)
     listausu.agregarlista(2,"Pedro","edd123",12,22)

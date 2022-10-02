@@ -3,8 +3,6 @@ class Celda():
         self.caracter = caracter
         self.coordefila = coordefila 
         self.coordecolumna = coordecolumna
-        self.siguien= None
-        self.anteri= None
         self.arriba = None
         self.abajo = None
         self.derecha = None

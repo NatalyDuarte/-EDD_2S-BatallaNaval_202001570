@@ -1,4 +1,3 @@
-from Cabecera import Cabecera
 class ListaCabecera():
     
     def __init__(self, tipo):

@@ -1,4 +1,4 @@
-include <iostream>
+#include <iostream>
 #include <string>
 #include <iostream>
 #include <conio.h>
@@ -7,23 +7,33 @@ include <iostream>
 
 using namespace std;
 
-struct Compra {
-    int dato,cantidad;
-    string nombre;
+class Compra{
+    private:
+    public:
+    int id;
+    int altura;
+    string nombre; 
+    int cantidad;
     Compra* derecha;
     Compra* izquierda;
-    Compra* padre;
-    public:
-    string textoGraphviz() {
-        if (izquierda == NULL && derecha == NULL) {
-            return to_string(dato);
-        } else {
+    Compra(int id,string nombre, int cantidad){
+        this->id = id;
+        this->nombre = nombre; 
+        this->cantidad = cantidad;
+        this->altura = 0;
+        this->derecha = NULL;
+        this->izquierda = NULL;
+    }
+    string textoGraphviz(){
+        if(derecha==NULL && izquierda==NULL){
+            return to_string(id);
+        }else{
             string texto = "";
-            if (izquierda != NULL) {
-                texto += dato + "->" + izquierda->textoGraphviz() + "\n";
+            if(izquierda!=NULL){
+                texto += to_string(id)+" ->" + izquierda->textoGraphviz()+ "\n";
             }
-            if (derecha != NULL) {
-                texto += dato + "->" + derecha->textoGraphviz() + "\n";
+            if(derecha!=NULL){
+                texto += to_string(id)+" ->" +  derecha->textoGraphviz()+ "\n";
             }
             return texto;
         }
@@ -31,186 +41,143 @@ struct Compra {
 };
 class ArbolAvl{
     private: 
+        Compra* raiz;
     public:
-        //Función para crear un nuevo nodo
-        Compra* CrearNodo(int dato,string nombre,int cantidad,Compra* padre) {
-            Compra* nuevo = new Compra();
-            nuevo->dato = dato;
-            nuevo->nombre = nombre;
-            nuevo->cantidad = cantidad;
-            nuevo->derecha = NULL;
-            nuevo->izquierda = NULL;
-            nuevo->padre = padre;
-
-            return nuevo;
+        ArbolAvl(){
+            raiz=NULL;
         }
-        //Función para insertar nodos en el árbol
-        void Insertar(Compra *&arbol, int dato,string nombre,int cantidad,Compra*padre) {
-            if (arbol == NULL) { //Si el arbol está vacío
-                Compra *nuevo = CrearNodo(dato,nombre,cantidad,padre);
-                arbol = nuevo;
-            }
-            else { // Si el arbol tiene un nodo o más
-                int raiz;
-                raiz= arbol->dato; // Obtener valor de la raíz
-                if (dato < raiz) {
-                    Insertar(arbol->izquierda, dato,nombre,cantidad,arbol);
-                }
-                else {
-                    Insertar(arbol->derecha, dato,nombre,cantidad,arbol);
-                }
-            }
+        Compra* ObtenerRaiz(){
+            return raiz;
         }
-        //Función para mostrar el arbol
-        void MostrarArbol(Compra* arbol, int cont) {
-            if (arbol == NULL) {
-                return;
-            }
-            else {
-                MostrarArbol(arbol->derecha, cont + 1);
-                for (int i = 0; i < cont; i++) {
-                    cout <<"    ";
-                }
-                cout << arbol->dato << endl;
-                MostrarArbol(arbol->izquierda, cont + 1);
-            }
-        }
-        // Función para buscar un dato en el arbol
-        bool Busqueda(Compra* arbol, int dato) {
-            if (arbol == NULL) {
-                return false;
-            }
-            else if (arbol->dato == dato){
-                return true;
-            }
-            else if (dato <arbol->dato) {
-                return Busqueda(arbol->izquierda, dato);
-            }
-            else {
-                return Busqueda(arbol->derecha, dato);
-            }
-        }
-        // Funcion para recorrido en profundidad - PreOrden
-        void PreOrden(Compra* arbol) {
-            if (arbol == NULL) {
-                return;
-            }
-            else {
-                cout << arbol->dato << " - ";
-                PreOrden(arbol->izquierda);
-                PreOrden(arbol->derecha);
-            }
-        }
-        // Funcion para recorrido en profundidad - InOrden
-        void InOrden(Compra* arbol) {
-            if (arbol == NULL) {
-                return;
-            }
-            else {
-                InOrden(arbol->izquierda);
-                cout << arbol->dato << " - ";
-                InOrden(arbol->derecha);
-            }
-        }
-        // Funcion para recorrido en profundidad - PostOrden
-        void PostOrden(Compra* arbol) {
-            if (arbol == NULL) {
-                return;
-            }
-            else {
-                PostOrden(arbol->izquierda);
-                PostOrden(arbol->derecha);
-                cout << arbol->dato << " - ";
-            }
-        }
-        // Funcion para eliminar un nodo del arbol
-        void Eliminar(Compra* arbol, int n) {
-            if (arbol == NULL) {
-                return;
-            }
-            else if (n < arbol->dato) { //Si el valor es menor
-                Eliminar(arbol->izquierda, n); // Busca por la izquierda
-            }
-            else if (n > arbol->dato) { // Si el valor es mayor
-                Eliminar(arbol->derecha, n); //Busca por la derecha
-            }
-            else {
-                EliminarNodo(arbol);
-            }
-        }
-        // Funcion para eliminar el nodo encontrado
-        void EliminarNodo(Compra* nodoEliminar) {
-            if (nodoEliminar->izquierda && nodoEliminar->derecha) {
-                Compra* menor = Minimo(nodoEliminar->derecha); // Primero te vas hacia la derecha
-                nodoEliminar->dato = menor->dato;
-                nodoEliminar->dato = menor->dato;
-                EliminarNodo(menor);
-            }
-            else if (nodoEliminar->izquierda) {
-                Reemplazar(nodoEliminar, nodoEliminar->izquierda);
-                DestruirNodo(nodoEliminar);
-            }
-            else if (nodoEliminar->derecha) {
-                Reemplazar(nodoEliminar, nodoEliminar->derecha);
-                DestruirNodo(nodoEliminar);
-            }
-            else { // No tiene hijos
-                Reemplazar(nodoEliminar, NULL);
-                DestruirNodo(nodoEliminar);
-            }
-        }
-        // Función para determinar el nodo más izquierdo posible
-        Compra* Minimo(Compra* arbol) {
-            if (arbol == NULL) {
+        Compra* Buscar(int id, Compra* nodo){
+            if(raiz==NULL){
                 return NULL;
-            }
-            if (arbol->izquierda) { // Si tiene hijo izquierdo
-                return Minimo(arbol->izquierda); // retorna el hijo izquierdo
-            }
-            else { // Si no tiene hijo izquierdo (significa que él es el más izquierdo)
-                return arbol; // se retorna a sí mismo
+            }else if(nodo->id == id){
+                return nodo;
+            }else if(nodo->id < id){
+                return Buscar(id,nodo->derecha);
+            }else{
+                return Buscar(id,nodo->izquierda);
             }
         }
-        // Función para reemplazar dos nodos
-        void Reemplazar(Compra* arbol, Compra* nuevoNodo) {
-            if (arbol->padre) {
-                //arbol->padre hay que asignarle su nuevo hijo
-                if (arbol->dato == arbol->padre->izquierda->dato) {
-                    arbol->padre->izquierda = nuevoNodo;
+        int ObtenerAlt(Compra* nodo){
+            if(nodo==NULL){
+                return -1;
+            }else{
+                return nodo->altura;
+            }
+        }
+        Compra* RotaIzqui(Compra* nodo){
+            Compra* aux=nodo->izquierda;
+            nodo->izquierda=aux->derecha;
+            aux->derecha=nodo;
+            nodo->altura=max(ObtenerAlt(nodo->izquierda),ObtenerAlt(nodo->derecha))+1;
+            aux->altura=max(ObtenerAlt(aux->izquierda),ObtenerAlt(aux->derecha))+1;
+            return aux;
+        }
+        Compra* RotaDere(Compra* nodo){
+            Compra* aux=nodo->derecha;
+            nodo->derecha=aux->izquierda;
+            aux->izquierda=nodo;
+            nodo->altura=max(ObtenerAlt(nodo->izquierda),ObtenerAlt(nodo->derecha))+1;
+            aux->altura=max(ObtenerAlt(aux->izquierda),ObtenerAlt(aux->derecha))+1;
+            return aux;
+        }
+        Compra* RotaDobleIzq(Compra* nodo){
+            Compra* aux;
+            nodo->izquierda=RotaDere(nodo->izquierda);
+            aux= RotaIzqui(nodo);
+            return aux;
+        }
+        Compra* RotaDobleDere(Compra* nodo){
+            Compra* aux;
+            nodo->derecha=RotaIzqui(nodo->derecha);
+            aux= RotaDere(nodo);
+            return aux;
+        }
+        Compra* InsertarAvl(Compra* nuevo,Compra* subAr) {
+            Compra* nuevoPadre = subAr;
+            if (nuevo->id < subAr->id) {
+                if (subAr->izquierda == NULL) {
+                    subAr->izquierda = nuevo;
+                } else {
+                    subAr->izquierda = InsertarAvl(nuevo, subAr->izquierda);
+                    if ((ObtenerAlt(subAr->izquierda) - ObtenerAlt(subAr->derecha )) == 2) {
+                        if (nuevo->id < subAr->izquierda->id) {
+                            nuevoPadre = RotaIzqui(subAr);
+                        } else {
+                            nuevoPadre = RotaDobleIzq(subAr);
+                        }
+                    }
                 }
-                else if (arbol->dato == arbol->padre->derecha->dato) {
-                    arbol->padre->derecha = nuevoNodo;
+            } else if (nuevo->id > subAr->id) {
+                if (subAr->derecha == NULL) {
+                    subAr->derecha = nuevo;
+                } else {
+                    subAr->derecha = InsertarAvl(nuevo, subAr->derecha);
+                    if ((ObtenerAlt(subAr->derecha) - ObtenerAlt(subAr->izquierda)) == 2) {
+                        if (nuevo->id > subAr->derecha->id) {
+                            nuevoPadre = RotaDere(subAr);
+                        } else {
+                            nuevoPadre = RotaDobleDere(subAr);
+                        }
+                    }
+
                 }
+            } else {
+                cout<<"Nodo duplicado"<<endl;
             }
-            if (nuevoNodo) {
-                // Procedemos a asignarle su nuevo padre
-                nuevoNodo->padre = arbol->padre;
+            //acutalizar la altura;
+            if (subAr->izquierda == NULL && subAr->derecha != NULL) {
+                subAr->altura = subAr->derecha->altura + 1;
+            } else if (subAr->derecha == NULL && subAr->izquierda != NULL) {
+                subAr->altura = subAr->izquierda->altura + 1;
+            } else {
+                subAr->altura = max(ObtenerAlt(subAr->izquierda),ObtenerAlt(subAr->derecha)) + 1;
+            }
+            return nuevoPadre;
+        }
+        //meotod para insertar
+        void Insertar(int dato,string nombre,int cantidad) {
+            Compra* nuevo = new Compra(dato,nombre,cantidad);
+            if (raiz == NULL) {
+                raiz = nuevo;
+            } else {
+                raiz = this->InsertarAvl(nuevo,raiz);
             }
         }
-        // Función para destruir un nodo
-        void DestruirNodo(Compra* nodo) {
-            nodo->izquierda = NULL;
-            nodo->derecha = NULL;
-            delete nodo;
-        }
-        void graficar(Compra* nodo) {
-            string res;
-            int raiz;
+        //motodo recorridos:
+        void PreOrden(Compra* nodo) {
+            if (nodo != NULL) {
+                cout<<to_string(nodo->id)+" "<<endl;
+                PreOrden(nodo->izquierda);
+                PreOrden(nodo->derecha);
+            }
+        }  
+        void CrearGrafica(string nombre){
             ofstream file;
             file.open("ArbolAvl.dot");
-            res = "digraph grafica{\nrankdir=TB;\nnode[shape=box, style=filled, fillcolor=lightpink, penwidth=3]\n";
-            if (nodo != NULL) {
-                int raiz;
-                raiz= nodo->dato;
-                res+=nodo->textoGraphviz();
+            string texto;
+            texto ="digraph G\n";
+            texto +="{\n";
+            texto +="      node[shape=circle]\n";
+            texto +="      node[style=filled]\n";
+            texto +="      node[fillcolor=lightpink]\n";
+            texto +="      node[color=black]\n";
+            texto +="      edge[color=black]\n";
+            texto +="      label="+nombre+"\n";
+            texto +="      labelloc=\"t\"\n";
+            if (raiz != NULL) {
+                texto += raiz->textoGraphviz();
             }
-            res +="\n}";
-            file << res;
+           
+            texto+="\n}";
+            file << texto;
             file.close();
             //------->generar png
             system(("dot -Tpng ArbolAvl.dot -o  ArbolAvl.png"));
-
-        }
+        }  
         
-         
+
+};    
 };
