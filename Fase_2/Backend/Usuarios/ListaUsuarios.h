@@ -110,7 +110,7 @@ public:
         }
     
         //metodo de editar
-        void editar(string res,string nick, string passw,int edad){
+        void editar(string res,string nick, string passw, int edad){
             Usuario* aux = inicio;
             bool encontrado = false;
             if(inicio!=NULL){
@@ -155,7 +155,9 @@ public:
                     anterior = actual;
                     actual = actual->siguiente;
                 }
-                
+                if(!encontrado){
+                    cout << "\n Usuario No Encontrado\n\n";
+                }
             }else{
                 cout  << "\n La Lista se Encuentra Vacia\n\n";
             }

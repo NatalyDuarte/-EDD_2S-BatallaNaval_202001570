@@ -21,13 +21,17 @@ respu = " "
 nick = " "
 passw = " "
 ed=0
+def editausu():
+    nick = edita.lineEdit.text()
+    passw = edita.lineEdit_2.text()
+    listausu.editar(respu,nick,passw,20)
+    
 
 def editar():
     entrar.hide()
     edita.show()
-    nick = edita.lineEdit.text()
-    passw = edita.lineEdit_2.text()
-    listausu.editar(respu,nick,passw,20)
+    edita.pushButton.clicked.connect(editausu)
+    
     
 def geneavl():
     global pre
@@ -84,6 +88,7 @@ def registr():
     
 def elimini():
     global respu
+    global arbolb
     listausu.eliminar(respu)
     nick = " "
     passw = " "
@@ -195,10 +200,50 @@ def portav(a,b):
         res2=matriz.Buscar(a+2,b)
         res3=matriz.Buscar(a+1,b)
         if res1=="NO" and res2=="NO" and res3=="NO":
-            matriz.addDispersa(a,b)
-            matriz.addDispersa(a+1,b) 
-            matriz.addDispersa(a+2,b)
-            matriz.addDispersa(a+1,b)
+            matriz.addDispersa("P",a,b)
+            matriz.addDispersa("P",a+1,b) 
+            matriz.addDispersa("P",a+2,b)
+            matriz.addDispersa("P",a+1,b)
+            
+def submar(a,b):
+    res1=matriz.Buscar(a+1,b)
+    res2=matriz.Buscar(a+2,b)
+    if res1=="NO" and res2=="NO":
+        matriz.addDispersa("S",a,b)
+        matriz.addDispersa("S",a+1,b) 
+        matriz.addDispersa("S",a+2,b)
+    elif res1=="SI" and res2=="SI":
+        res1=matriz.Buscar(a-1,b)
+        res2=matriz.Buscar(a-2,b)
+        if res1=="NO" and res2=="NO":
+            matriz.addDispersa("S",a,b)
+            matriz.addDispersa("S",a-1,b) 
+            matriz.addDispersa("S",a-2,b)
+    elif res1=="NO" and res2=="SI":
+        res1=matriz.Buscar(a-1,b)
+        res2=matriz.Buscar(a-2,b)
+        if res1=="NO" and res2=="NO":
+            matriz.addDispersa("S",a,b)
+            matriz.addDispersa("S",a-1,b) 
+            matriz.addDispersa("S",a-2,b)
+    elif res1=="SI" :
+        res1=matriz.Buscar(a+1,b)
+        res2=matriz.Buscar(a+2,b)
+        if res1=="NO" and res2=="NO":
+            matriz.addDispersa("S",a,b)
+            matriz.addDispersa("S",a+1,b) 
+            matriz.addDispersa("S",a+2,b)
+            
+def destruct(a,b):
+    res1=matriz.Buscar(a+1,b)
+    if res1=="NO" :
+        matriz.addDispersa("D",a,b)
+        matriz.addDispersa("D",a+1,b) 
+    elif res1=="SI" :
+        res1=matriz.Buscar(a-1,b)
+        if res1=="NO":
+            matriz.addDispersa("D",a,b)
+            matriz.addDispersa("D",a-1,b)
 
 def matri(ancho,alto):  
     if ancho==10:
@@ -221,6 +266,10 @@ def matri(ancho,alto):
     a=randint(0,ancho-1)
     b=randint(0,alto-1)
     bus=0
+    print("Portaaviones :"+str(porta))
+    print("Submarino :"+str(subma))
+    print("Destructor :"+str(destruc))
+    print("Buque :"+str(buques))
     if bus==0:
         res=matriz.Buscar(a,b)
         #insercion de barcos
@@ -230,8 +279,13 @@ def matri(ancho,alto):
             for i in range(porta):
                 portav(a,b)
             #subma
+            for i in range(subma):
+                submar(a,b)
             #destruc
+            for i in range(destruc):
+                destruct(a,b)
             #buques
+            matriz.addDispersa("B",a,b)
         else:
             a=randint(0,ancho-1)
             b=randint(0,alto-1)
@@ -240,11 +294,16 @@ def matri(ancho,alto):
             if res=="NO":
                 #vertical
                 #porta
-                for i in porta:
+                for i in range(porta):
                     portav(a,b)
                 #subma
+                for i in range(subma):
+                    submar(a,b)
                 #destruc
-                #buques    
+                for i in range(destruc):
+                    destruct(a,b)
+                #buques   
+                matriz.addDispersa("B",a,b) 
     else:
         #horizontal
         res=matriz.Buscar(a,b)
@@ -299,6 +358,12 @@ def carga():
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])
+    #login = uic.loadUi("Fase_2/Backend/Frontend/Paginas/Login.ui")
+    #admini = uic.loadUi("Fase_2/Backend/Frontend/Paginas/Administracion.ui")
+    #entrar = uic.loadUi("Fase_2/Backend/Frontend/Paginas/Bienvenido.ui")
+    #edita = uic.loadUi("Fase_2/Backend/Frontend/Paginas/Editar.ui")
+    #tienda = uic.loadUi("Fase_2/Backend/Frontend/Paginas/Tienda.ui")
+    #regis = uic.loadUi("Fase_2/Backend/Frontend/Paginas/Registro.ui")
     login = uic.loadUi("Frontend/Paginas/Login.ui")
     admini = uic.loadUi("Frontend/Paginas/Administracion.ui")
     entrar = uic.loadUi("Frontend/Paginas/Bienvenido.ui")

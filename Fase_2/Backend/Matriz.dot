@@ -1,0 +1,52 @@
+digraph G{ 
+node[shape=box]
+bgcolor=white
+raiz[label = "   ",color=black, style=filled fillcolor=cornsilk, group=1]
+label = "Tablero" 
+F8[label="Fila 8",color=black, style=filled fillcolor=cornsilk,group=1];
+F9[label="Fila 9",color=black, style=filled fillcolor=cornsilk,group=1];
+F10[label="Fila 10",color=black, style=filled fillcolor=cornsilk,group=1];
+F11[label="Fila 11",color=black, style=filled fillcolor=cornsilk,group=1];
+F8 -> F9
+F9 -> F8
+F9 -> F10
+F10 -> F9
+F10 -> F11
+F11 -> F10
+C5[label="Columna 5",color=black, style=filled fillcolor=cornsilk,group=6];
+raiz -> F8
+raiz -> C5
+{rank = same; raiz;C5; }
+N8_5[label="P",color=black, style=filled fillcolor=cadetblue1,group="6"];
+N9_5[label="P",color=black, style=filled fillcolor=cadetblue1,group="6"];
+N10_5[label="P",color=black, style=filled fillcolor=cadetblue1,group="6"];
+N11_5[label="P",color=black, style=filled fillcolor=cadetblue1,group="6"];
+F8 -> N8_5;
+N8_5 -> F8;
+{rank=same;
+F8;
+N8_5 }
+F9 -> N9_5;
+N9_5 -> F9;
+{rank=same;
+F9;
+N9_5 }
+F10 -> N10_5;
+N10_5 -> F10;
+{rank=same;
+F10;
+N10_5 }
+F11 -> N11_5;
+N11_5 -> F11;
+{rank=same;
+F11;
+N11_5 }
+C5 -> N8_5;
+N8_5 -> C5;
+N9_5 -> N8_5;
+N8_5 -> N9_5;
+N10_5 -> N9_5;
+N9_5 -> N10_5;
+N11_5 -> N10_5;
+N10_5 -> N11_5;
+ } 
