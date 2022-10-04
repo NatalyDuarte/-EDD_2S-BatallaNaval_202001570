@@ -8,11 +8,11 @@ from tkinter import *
 from tkinter import filedialog
 import json
 from random import randint,random,uniform
-from Matriz import MatrizDispersa 
+from Matriz.MatrizDispersa import Dispersa
 listausu = Listas.ListaUsuarios()
 listacate = Listas.ListaCategoria()
 colatuto = Listas.ColaTutorial()
-matriz = MatrizDispersa.Matriz()
+matriz = Dispersa(0)
 
 respu = ""
 nick= ""
@@ -30,6 +30,8 @@ def editar():
 def tiend():
     entrar.hide()
     tienda.show() 
+    listaca.canti()
+    
     
 def agre():
     nick1 = regis.lineEdit.text()
@@ -85,6 +87,7 @@ def descen():
    
 
 def incio():
+    matriz.graficarDispersa()
     nick = login.lineEdit.text()
     passw = login.lineEdit_2.text()
     if len(nick)==0 or len(passw)==0:
@@ -110,50 +113,59 @@ def incio():
             entrar.pushButton_5.clicked.connect(tiend)
             
 def portav(a,b):
+    res1=matriz.Buscar(a+1,b)
+    res2=matriz.Buscar(a+2,b)
+    res3=matriz.Buscar(a+3,b)
+    if res1=="NO" and res2=="NO" and res3=="NO":
+        print("Llego1")
+        matriz.addDispersa("P",a,b)
+        matriz.addDispersa("P",a+1,b) 
+        matriz.addDispersa("P",a+2,b)
+        matriz.addDispersa("P",a+3,b)
+    elif res1=="SI" and res2=="SI" and res3=="SI":
+        print("Llego2")
+        res1=matriz.Buscar(a-1,b)
+        res2=matriz.Buscar(a-2,b)
+        res3=matriz.Buscar(a-3,b)
+        if res1=="NO" and res2=="NO" and res3=="NO":
+            print("Llego3")
+            matriz.addDispersa("P",a,b)
+            matriz.addDispersa("P",a-1,b) 
+            matriz.addDispersa("P",a-2,b)
+            matriz.addDispersa("P",a-3,b)
+    elif res1=="NO" and res2=="NO" and res3=="SI":
+        print("Llego4")
+        res1=matriz.Buscar(a-1,b)
+        res2=matriz.Buscar(a-2,b)
+        res3=matriz.Buscar(a+1,b)
+        if res1=="NO" and res2=="NO" and res3=="NO":
+            print("Llego5")
+            matriz.addDispersa("P",a,b)
+            matriz.addDispersa("P",a-1,b) 
+            matriz.addDispersa("P",a-2,b)
+            matriz.addDispersa("P",a+1,b)
+    elif res1=="NO" and res2=="SI":
+        print("Llego6")
+        res1=matriz.Buscar(a-1,b)
+        res2=matriz.Buscar(a+2,b)
+        res3=matriz.Buscar(a+1,b)
+        if res1=="NO" and res2=="NO" and res3=="NO":
+            print("Llego7")
+            matriz.addDispersa("P",a,b)
+            matriz.addDispersa("P",a-1,b) 
+            matriz.addDispersa("P",a+2,b)
+            matriz.addDispersa("P",a+1,b)
+    elif res1=="SI" :
+        print("Llego9")
         res1=matriz.Buscar(a+1,b)
         res2=matriz.Buscar(a+2,b)
-        res3=matriz.Buscar(a+3,b)
+        res3=matriz.Buscar(a+1,b)
         if res1=="NO" and res2=="NO" and res3=="NO":
-            matriz.InsertarMatriz(a,b,"P")
-            matriz.InsertarMatriz(a+1,b,"P") 
-            matriz.InsertarMatriz(a+2,b,"P")
-            matriz.InsertarMatriz(a+3,b,"P")
-        elif res1=="SI" and res2=="SI" and res3=="SI":
-            res1=matriz.Buscar(a-1,b)
-            res2=matriz.Buscar(a-2,b)
-            res3=matriz.Buscar(a-3,b)
-            if res1=="NO" and res2=="NO" and res3=="NO":
-                matriz.InsertarMatriz(a,b,"P")
-                matriz.InsertarMatriz(a-1,b,"P") 
-                matriz.InsertarMatriz(a-2,b,"P")
-                matriz.InsertarMatriz(a-3,b,"P")
-        elif res1=="NO" and res2=="NO" and res3=="SI":
-            res1=matriz.Buscar(a-1,b)
-            res2=matriz.Buscar(a-2,b)
-            res3=matriz.Buscar(a+1,b)
-            if res1=="NO" and res2=="NO" and res3=="NO":
-                matriz.InsertarMatriz(a,b,"P")
-                matriz.InsertarMatriz(a-1,b,"P") 
-                matriz.InsertarMatriz(a-2,b,"P")
-                matriz.InsertarMatriz(a+1,b,"P")
-        elif res1=="NO" and res2=="SI":
-            res1=matriz.Buscar(a-1,b)
-            res2=matriz.Buscar(a+2,b)
-            res3=matriz.Buscar(a+1,b)
-            if res1=="NO" and res2=="NO" and res3=="NO":
-                matriz.InsertarMatriz(a,b,"P")
-                matriz.InsertarMatriz(a-1,b,"P") 
-                matriz.InsertarMatriz(a+2,b,"P")
-                matriz.InsertarMatriz(a+1,b,"P")
-        elif res1=="SI" :
-            res1=matriz.Buscar(a+1,b)
-            res2=matriz.Buscar(a+2,b)
-            res3=matriz.Buscar(a+1,b)
-            if res1=="NO" and res2=="NO" and res3=="NO":
-                matriz.InsertarMatriz(a,b,"P")
-                matriz.InsertarMatriz(a+1,b,"P") 
-                matriz.InsertarMatriz(a+2,b,"P")
-                matriz.InsertarMatriz(a+1,b,"P")
+            print("Llego8")
+            matriz.addDispersa(a,b)
+            matriz.addDispersa(a+1,b) 
+            matriz.addDispersa(a+2,b)
+            matriz.addDispersa(a+1,b)
 
 def matri(ancho,alto):  
     if ancho==10:
@@ -182,7 +194,7 @@ def matri(ancho,alto):
         if res=="NO":
             #vertical
             #porta
-            for i in range(0,porta):
+            for i in range(porta):
                 portav(a,b)
             #subma
             #destruc
@@ -244,7 +256,10 @@ def carga():
                     moviy=tutorial["y"]
                     colatuto.insertar(int(movix),int(moviy),"Movimiento")
                 matri(ancho,alto)
-                matriz.graficar("Matriz")
+                
+                
+                
+                
     else:
         print("No se reconocio el archivo")
         
@@ -261,10 +276,6 @@ if __name__ == '__main__':
     tienda = uic.loadUi("Fase_2/Backend/Frontend/Paginas/Tienda.ui")
     regis = uic.loadUi("Fase_2/Backend/Frontend/Paginas/Registro.ui")
     listausu.agregarlista(0,"EDD","edd123",0,50)
-    listausu.agregarlista(1,"Javier","edd123",12,12)
-    listausu.agregarlista(2,"Pedro","edd123",12,22)
-    listausu.agregarlista(3,"Maria","edd123",12,23)
-    listausu.agregarlista(4,"Jaan","edd123",12,90)
     login.show()
     login.pushButton.clicked.connect(incio)
     login.pushButton_2.clicked.connect(carga)

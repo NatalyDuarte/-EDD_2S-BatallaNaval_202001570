@@ -241,15 +241,8 @@ public:
                 }
                 
             }
-    
-        void Reversible(){
-            Usuario* actual= inicio;
-            while(actual->siguiente!=NULL){
-                actual=actual->siguiente;
-            }
-            deagregarlista(actual->id,actual->nick,actual->passw,actual->mon,actual->edad);
-            actual = NULL;
         }
+
         void agrearticulo(string nick, int id, string categoria,  int precio,string nom, string src){
             Usuario* aux = inicio;
             if(inicio!=NULL){
@@ -263,6 +256,6 @@ public:
                     }
                 }
             }
-        }    }
+        }    
     
 };

@@ -1,222 +1,263 @@
-import os
+from os import system
 import webbrowser
-from Matriz.ListaCabecera import ListaCabecera
-from Matriz.Celda import Celda
-from Matriz.Cabecera import Cabecera
+import sys
+class nodoCabecera():
+    def __init__(self, id):
+        self.id = id
+        self.siguiente = None
+        self.anterior = None
+        self.acceso = None
 
-class Matriz():
+
+class nodoSub():
+    def __init__(self, dato, ejex, ejey):
+        self.dato = dato
+        self.valorx = ejex
+        self.valory = ejey
+        self.izquierda = None
+        self.derecha = None
+        self.arriba = None
+        self.abajo = None
     
-    def __init__(self):
-        self.capa = 0
-        self.filas = ListaCabecera('fila')
-        self.columnas = ListaCabecera('columna')
-
-    def InsertarMatriz(self,  coordefila, coordecolumna, caracter):
-        new = Celda( coordefila, coordecolumna, caracter)
-        verfila = self.filas.getCabecera(coordefila)
-        vercolumna = self.columnas.getCabecera(coordecolumna)
-        if verfila == None: 
-            verfila = Cabecera(coordefila)
-            self.filas.insertarCabe(verfila)
-            #self.filas.imprimirCabecera()
-        if vercolumna== None: 
-            vercolumna = Cabecera(coordecolumna)
-            self.columnas.insertarCabe(vercolumna)
-            #self.columnas.imprimirCabecera()
-        if verfila.getAcceso() == None: 
-            verfila.setAcceso(new)
-        else: 
-            if new.coordecolumna < verfila.getAcceso().coordecolumna:     
-                new.setDerecha(verfila.getAcceso())        
-                verfila.getAcceso().setIzquierda(new)
-                verfila.setAcceso(new)
+class ListaCabecera():
+    def __init__(self, tipo):
+        self.primero = None
+        self.ultimo = None
+        self.tipo = tipo
+        self.size = 0
+    
+    def addNodoCabecera(self,nuevo):
+        if self.primero == None:
+            self.primero = nuevo
+            self.ultimo = nuevo
+        else:
+            if nuevo.id < self.primero.id:
+                nuevo.siguiente = self.primero
+                self.primero.anterior = nuevo
+                self.primero = nuevo
+            elif nuevo.id > self.ultimo.id:
+                self.ultimo.siguiente = nuevo
+                nuevo.anterior = self.ultimo
+                self.ultimo = nuevo
             else:
-                tmp : Celda = verfila.getAcceso() 
-                while tmp != None:                      
-                    if new.coordecolumna < tmp.coordecolumna:
-                        new.setDerecha(tmp)
-                        new.setIzquierda(tmp.getIzquierda())
-                        tmp.getIzquierda().setDerecha(new)
-                        tmp.setIzquierda(new)
+                tmp = self.primero
+                while tmp!=None:
+                    if nuevo.id < tmp.id:
+                        nuevo.siguiente = tmp
+                        nuevo.anterior = tmp.anterior
+                        tmp.anterior.siguiente = nuevo
+                        tmp.anterior = nuevo
                         break
-                    elif new.coordefila == tmp.coordefila and new.coordecolumna == tmp.coordecolumna:
-                        break
+                    elif nuevo.id > tmp.id:
+                        tmp = tmp.siguiente
                     else:
-                        if tmp.getDerecha() == None:
-                            tmp.setDerecha(new)
-                            new.setIzquierda(tmp)
-                            break
-                        else:
-                            tmp = tmp.getDerecha() 
-        if vercolumna.getAcceso() == None:  
-            vercolumna.setAcceso(new)
-        else: 
-            if new.coordefila < vercolumna.getAcceso().coordefila:
-                new.setAbajo(vercolumna.getAcceso())
-                vercolumna.getAcceso().setArriba(new)
-                vercolumna.setAcceso(new)
-            else:
-                tmp2 : Celda = vercolumna.getAcceso()
-                while tmp2 != None:
-                    if new.coordefila < tmp2.coordefila:
-                        new.setAbajo(tmp2)
-                        new.setArriba(tmp2.getArriba())
-                        tmp2.getArriba().setAbajo(new)
-                        tmp2.setArriba(new)
-                        break
-                    elif new.coordefila == tmp2.coordefila and new.coordecolumna == tmp2.coordecolumna:
-                        break
-                    else:
-                        if tmp2.getAbajo() == None:
-                            tmp2.setAbajo(new)
-                            new.setArriba(tmp2)
-                            break
-                        else:
-                            tmp2 = tmp2.getAbajo()
-    
-    def ImprimirFila(self, fila):
-        inicio= self.filas.getCabecera(fila)
-        if inicio == None:
-            print('No existe')
-            return None
-        tmp = inicio.getAcceso()
-        while tmp != None:
-            print(tmp.caracter)
-            tmp = tmp.getDerecha()
+                        break;      
+        self.size+=1
 
+    def showCabecera(self):
+        tmp = self.primero
+        while tmp!=None:
+            print(self.tipo, tmp.id)
+            tmp = tmp.siguiente
+      
+    def getCabecera(self,id):
+        tmp = self.primero
+        while tmp!=None:
+            if tmp.id == id:
+                return tmp
+            tmp =tmp.siguiente
+        return None
     
-    def ImprimirColumna(self, columna):
-        inicio = self.columnas.getCabecera(columna)
-        if inicio == None:
-            print('No existe')
-            return None
-        tmp= inicio.getAcceso()
-        while tmp != None:
-            print(tmp.caracter)
-            tmp = tmp.getAbajo()
+class Dispersa():
+    def __init__(self, data):
+        self.data = data
+        self.fila = ListaCabecera("fila")
+        self.columna = ListaCabecera("columna")
+    
 
-    def Sustitu(self, fila, columna, cade):
-        try:
-            tmp = self.filas.getCabecera(fila).getAcceso()
-            while tmp != None:
-                if tmp.coordefila == fila and tmp.coordecolumna == columna:
-                    #print("Llego")
-                    tmp.caracter = cade
-                tmp = tmp.getDerecha()
-            return None
-        except:
-            #print('Coordenada no encontrada')
-            return None
+    def addDispersa(self,dato, ejex, ejey):
+        nuevo = nodoSub(dato,ejex,ejey)
+        nodox = self.fila.getCabecera(ejex)
+        nodoy = self.columna.getCabecera(ejey)
+
+        if nodox == None:
+            nodox =  nodoCabecera(ejex)
+            self.fila.addNodoCabecera(nodox)
         
-    def Buscar(self, fila, columna):
+        if nodoy == None:
+            nodoy =  nodoCabecera(ejey)
+            self.columna.addNodoCabecera(nodoy)
+
+        if nodox.acceso == None:
+            nodox.acceso = nuevo
+        else:
+            if nuevo.valory < nodox.acceso.valory:
+                nuevo.derecha = nodox.acceso
+                nodox.acceso.izquierda = nuevo
+                nodox.acceso = nuevo
+            else:
+                tmp = nodox.acceso
+                while tmp!=None:
+                    if nuevo.valory < tmp.valory:
+                        nuevo.derecha = tmp
+                        nuevo.izquierda = tmp.izquierda
+                        tmp.izquierda.derecha = nuevo
+                        tmp.izquierda = nuevo
+                        break
+                    elif nuevo.valorx == tmp.valorx and nuevo.valory == tmp.valory:
+                        break;
+                    else:
+                        if tmp.derecha == None:
+                            tmp.derecha = nuevo
+                            nuevo.izquierda = tmp
+                            break
+                        else:
+                            tmp = tmp.derecha
+        
+        if nodoy.acceso == None:
+            nodoy.acceso = nuevo
+        else:
+            if nuevo.valorx < nodoy.acceso.valorx:
+                nuevo.abajo = nodoy.acceso
+                nodoy.acceso.arriba = nuevo
+                nodoy.acceso = nuevo
+            else:
+                aux = nodoy.acceso
+                while aux!=None:
+                    if nuevo.valorx < aux.valorx:
+                        nuevo.abajo = aux
+                        nuevo.arriba = aux.arriba
+                        aux.arriba.abajo = nuevo
+                        aux.arriba = nuevo
+                        break;
+                    elif nuevo.valorx == aux.valorx and nuevo.valory == aux.valory:
+                        break
+                    else:
+                        if aux.abajo == None:
+                            aux.abajo = nuevo
+                            nuevo.arriba = aux
+                            break
+                        else:
+                            aux = aux.abajo
+                            
+    def Buscar(self, elex, eley):
         res="NO"
-        try:
-            tmp = self.filas.getCabecera(fila).getAcceso()
-            while tmp != None:
-                if tmp.coordefila == fila and tmp.coordecolumna == columna:
-                    res="SI"
-                tmp = tmp.getDerecha()
-            return res
-        except:
-            #print('Coordenada no encontrada')
-            return "NO"
+        probando = self.fila.primero 
+        probando1 = self.columna.primero 
+        while probando != None and probando1 !=None :
+            if probando.id == elex and probando1.id == eley:
+                res="SI"
+            probando = probando.siguiente
+            probando1 = probando1.siguiente
+        return res
+                       
+
+    def graficarDispersa(self):
+        dot = 'digraph G{ \nnode[shape=box]'
+        dot+= '\nbgcolor=white\nraiz[label = \"   \",color=black, style=filled fillcolor=cornsilk, group=1]\n'
+        dot+='label = "Tablero" \n'
         
-   
-    def graficarNeato(self, nombre):
-        contenido = '''digraph G{
-    node[shape=box, width=0.7, height=0.7, fontname="Arial", fillcolor="white", style=filled]
-    edge[style = "bold"]
-    node[label = "capa:''' + str(self.capa) +'''" fillcolor="darkolivegreen1" pos = "-1,1!"]raiz;'''
-        contenido += '''label = "{}" \nfontname="Arial Black" \nfontsize="25pt" \n
-                    \n'''.format('\nMATRIZ DISPERSA')
+        filaX = self.fila.primero
+        while filaX!=None:
+            dot+='F'+str(filaX.id)+'[label="Fila '+str(filaX.id)+'",color=black, style=filled fillcolor=cornsilk,group=1];\n'
+            filaX = filaX.siguiente
+    
+        filaX = self.fila.primero
+        while filaX!=None:
+            if filaX.siguiente!=None:
+                dot+='F'+str(filaX.id)+' -> F'+str(filaX.siguiente.id)+'\n'
+                dot+='F'+str(filaX.siguiente.id)+' -> F'+str(filaX.id)+'\n'
+            filaX = filaX.siguiente
 
-        # --graficar nodos ENCABEZADO
-        # --graficar nodos fila
-        pivote = self.filas.primero
-        posx = 0
-        while pivote != None:
-            contenido += '\n\tnode[label = "F{}" fillcolor="azure3" pos="-1,-{}!" shape=box]x{};'.format(pivote.correlativo, 
-            posx, pivote.correlativo)
-            pivote = pivote.siguiente
-            posx += 1
-        pivote = self.filas.primero
-        while pivote.siguiente != None:
-            contenido += '\n\tx{}->x{};'.format(pivote.correlativo, pivote.siguiente.correlativo)
-            contenido += '\n\tx{}->x{}[dir=back];'.format(pivote.correlativo, pivote.siguiente.correlativo)
-            pivote = pivote.siguiente
-        contenido += '\n\traiz->x{};'.format(self.filas.primero.correlativo)
-
-        # --graficar nodos columna
-        pivotey = self.columnas.primero
-        posy = 0
-        while pivotey != None:
-            contenido += '\n\tnode[label = "C{}" fillcolor="azure3" pos = "{},1!" shape=box]y{};'.format(pivotey.correlativo, 
-            posy, pivotey.correlativo)
-            pivotey = pivotey.siguiente
-            posy += 1
-        pivotey = self.columnas.primero
-        while pivotey.siguiente != None:
-            contenido += '\n\ty{}->y{};'.format(pivotey.correlativo, pivotey.siguiente.correlativo)
-            contenido += '\n\ty{}->y{}[dir=back];'.format(pivotey.correlativo, pivotey.siguiente.correlativo)
-            pivotey = pivotey.siguiente
-        contenido += '\n\traiz->y{};'.format(self.columnas.primero.correlativo)
-
-        #ya con las cabeceras graficadas, lo siguiente es los nodos internos, o nodosCelda
-        pivote = self.filas.primero
-        posx = 0
-        while pivote != None:
-            pivote_celda : Celda = pivote.acceso
-            while pivote_celda != None:
-                # --- buscamos posy
-                pivotey = self.columnas.primero
-                posy_celda = 0
-                while pivotey != None:
-                    if pivotey.correlativo == pivote_celda.coordenadaY: break
-                    posy_celda += 1
-                    pivotey = pivotey.siguiente
-                if pivote_celda.caracter == '*':
-                    contenido += '\n\tnode[label="*" fillcolor="black" pos="{},-{}!" shape=box]i{}_{};'.format( #pos="{},-{}!"
-                        posy_celda, posx, pivote_celda.coordenadaX, pivote_celda.coordenadaY
-                    )
-                else:
-                    contenido += '\n\tnode[label=" " fillcolor="white" pos="{},-{}!" shape=box]i{}_{};'.format( # pos="{},-{}!"
-                        posy_celda, posx, pivote_celda.coordenadaX, pivote_celda.coordenadaY
-                    ) 
-                pivote_celda = pivote_celda.derecha
+        columnaY = self.columna.primero
+        while columnaY!=None:
+            grupo = columnaY.id+1
+            dot+='C'+str(columnaY.id)+'[label="Columna '+str(columnaY.id)+'",color=black, style=filled fillcolor=cornsilk,group='+str(grupo)+'];\n'
+            columnaY = columnaY.siguiente
+        
+        count = 0
+        columnaY = self.columna.primero
+        while columnaY!=None:
+            if columnaY.siguiente!=None:
+                dot+='C'+str(columnaY.id)+' -> C'+str(columnaY.siguiente.id)+';\n'
+                dot+='C'+str(columnaY.siguiente.id)+' -> C'+str(columnaY.id)+';\n'
             
-            pivote_celda = pivote.acceso
-            while pivote_celda != None:
-                if pivote_celda.derecha != None:
-                    contenido += '\n\ti{}_{}->i{}_{};'.format(pivote_celda.coordenadaX, pivote_celda.coordenadaY,
-                    pivote_celda.derecha.coordenadaX, pivote_celda.derecha.coordenadaY)
-                    contenido += '\n\ti{}_{}->i{}_{}[dir=back];'.format(pivote_celda.coordenadaX, pivote_celda.coordenadaY,
-                    pivote_celda.derecha.coordenadaX, pivote_celda.derecha.coordenadaY)
-                pivote_celda = pivote_celda.derecha
-        
-            contenido += '\n\tx{}->i{}_{};'.format(pivote.correlativo, pivote.acceso.coordenadaX, pivote.acceso.coordenadaY)
-            contenido += '\n\tx{}->i{}_{}[dir=back];'.format(pivote.correlativo, pivote.acceso.coordenadaX, pivote.acceso.coordenadaY)
-            pivote = pivote.siguiente
-            posx += 1
-        
-        pivote = self.columnas.primero
-        while pivote != None:
-            pivote_celda : Nodo_Interno = pivote.acceso
-            while pivote_celda != None:
-                if pivote_celda.abajo != None:
-                    contenido += '\n\ti{}_{}->i{}_{};'.format(pivote_celda.coordenadaX, pivote_celda.coordenadaY,
-                    pivote_celda.abajo.coordenadaX, pivote_celda.abajo.coordenadaY)
-                    contenido += '\n\ti{}_{}->i{}_{}[dir=back];'.format(pivote_celda.coordenadaX, pivote_celda.coordenadaY,
-                    pivote_celda.abajo.coordenadaX, pivote_celda.abajo.coordenadaY) 
-                pivote_celda = pivote_celda.abajo
-            contenido += '\n\ty{}->i{}_{};'.format(pivote.correlativo, pivote.acceso.coordenadaX, pivote.acceso.coordenadaY)
-            contenido += '\n\ty{}->i{}_{}[dir=back];'.format(pivote.correlativo, pivote.acceso.coordenadaX, pivote.acceso.coordenadaY)
-            pivote = pivote.siguiente
+            count+=1
+            columnaY = columnaY.siguiente
+
+        filaX = self.fila.primero
+        columnaY = self.columna.primero
+        dot+= 'raiz -> F'+str(filaX.id)+'\n'
+        dot+= 'raiz -> C'+str(columnaY.id)+'\n'
+        dot+= '{rank = same; raiz;'
+        count = 0
+        columnaY = self.columna.primero
+        while columnaY!=None:
+            dot+="C"+str(columnaY.id)+'; '
+            count+=1
+            columnaY = columnaY.siguiente
+        dot+='}\n'
+
+        aux = self.fila.primero
+        aux2 = aux.acceso
+        count=0
+        while aux!=None:
+            count+=1
+            while aux2!=None:
+                dot+='N'+str(aux2.valorx)+'_'+str(aux2.valory)+'[label="'+aux2.dato +'",color=black, style=filled fillcolor=cadetblue1,group="'+str((aux2.valory+1))+'"];\n'
+                aux2 = aux2.derecha
+            aux = aux.siguiente
+            if aux!=None:
+                aux2 = aux.acceso
+            
+        aux = self.fila.primero
+        aux2 = aux.acceso
+        count = 0
+        while aux!= None:
+            rank = '{rank=same;\nF'+str(aux.id)+';\n'
+            count =0
+            while aux2!=None:
+                if count == 0:
+                    dot+="F"+str(aux.id)+" -> N"+str(aux2.valorx)+"_"+str(aux2.valory)+";\n"
+                    dot+="N"+str(aux2.valorx)+"_"+str(aux2.valory)+" -> F"+str(aux.id)+";\n"
+                    count+=1
                 
-        contenido += '\n}'
-        #--- se genera DOT y se procede a ecjetuar el comando
-        dot = "matriz_{}_dot.txt".format(nombre)
-        with open(dot, 'w') as grafo:
-            grafo.write(contenido)
-        result = "matriz_{}.pdf".format(nombre)
-        os.system("neato -Tpdf " + dot + " -o " + result)
-        webbrowser.open(result)
+                if aux2.derecha!=None:
+                    dot+="N"+str(aux2.valorx)+"_"+str(aux2.valory)+" -> "+"N"+str(aux2.derecha.valorx)+"_"+str(aux2.derecha.valory)+";\n"
+                    dot+="N"+str(aux2.derecha.valorx)+"_"+str(aux2.derecha.valory)+" -> "+"N"+str(aux2.valorx)+"_"+str(aux2.valory)+";\n"
+                rank+= "N"+str(aux2.valorx)+"_"+str(aux2.valory)+" "
+                aux2 = aux2.derecha
+            
+            aux = aux.siguiente
+            if aux!=None:
+                aux2 = aux.acceso
+            
+            dot+= rank+"}\n"
+        
+        aux = self.columna.primero
+        aux2 = aux.acceso
+        count = 0
+        while aux!=None:
+            count = 0
+            dot+=""
+            while aux2!=None:
+                if count == 0:
+                    dot+='C'+str(aux.id)+' -> N'+str(aux2.valorx)+'_'+str(aux2.valory)+';\n'
+                    dot+='N'+str(aux2.valorx)+'_'+str(aux2.valory)+' -> C'+str(aux.id)+';\n'
+                    count+=1
+                if aux2.abajo !=None:
+                    dot+='N'+str(aux2.abajo.valorx)+'_'+str(aux2.abajo.valory)+' -> '+"N"+str(aux2.valorx)+"_"+str(aux2.valory)+';\n'
+                    dot+='N'+str(aux2.valorx)+'_'+str(aux2.valory)+' -> '+"N"+str(aux2.abajo.valorx)+'_'+str(aux2.abajo.valory)+';\n'
+                
+                aux2 = aux2.abajo
+            
+            aux = aux.siguiente
+            if aux!=None:
+                aux2 = aux.acceso
+        dot+=" } "
+        grafi = open("Matriz"+".dot",'w')
+        grafi.write(dot)
+        grafi.close()
+        system("dot Matriz.dot -Tpng -o Matriz.png")
+
+    

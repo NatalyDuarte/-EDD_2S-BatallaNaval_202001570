@@ -2,7 +2,6 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-
 using namespace std;
 class Articulo{
     //atributos y metodos
@@ -103,6 +102,20 @@ class ListaCategoria{
                 }
                 auxcate = auxcate->siguiente;
             }
+        }
+        int canti(){
+            int count =0;
+            Categoria* auxcate = cabecera;
+            while(auxcate != NULL){
+                Articulo *auxarti = auxcate->abajo;
+                while(auxarti!= NULL){
+                    count+=1;
+                    auxarti = auxarti->abajo;
+                }
+                auxcate = auxcate->siguiente;
+
+            }
+            return count;
         }
         //metodo obtener precio articulo 
         int getPrecio(int id){

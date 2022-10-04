@@ -71,6 +71,7 @@ class Usuario(object):
     edad = property(_Listas.Usuario_edad_get, _Listas.Usuario_edad_set)
     siguiente = property(_Listas.Usuario_siguiente_get, _Listas.Usuario_siguiente_set)
     anterior = property(_Listas.Usuario_anterior_get, _Listas.Usuario_anterior_set)
+    listacatego = property(_Listas.Usuario_listacatego_get, _Listas.Usuario_listacatego_set)
 
     def __init__(self, id, nick, passw, mon, edad):
         _Listas.Usuario_swiginit(self, _Listas.new_Usuario(id, nick, passw, mon, edad))
@@ -96,9 +97,6 @@ class ListaUsuarios(object):
     def mostrarlista(self):
         return _Listas.ListaUsuarios_mostrarlista(self)
 
-    def mostrarlistaF(self):
-        return _Listas.ListaUsuarios_mostrarlistaF(self)
-
     def verificar(self, nic, passw):
         return _Listas.ListaUsuarios_verificar(self, nic, passw)
 
@@ -116,10 +114,72 @@ class ListaUsuarios(object):
 
     def ordeanamiento(self):
         return _Listas.ListaUsuarios_ordeanamiento(self)
+
+    def agrearticulo(self, nick, id, categoria, precio, nom, src):
+        return _Listas.ListaUsuarios_agrearticulo(self, nick, id, categoria, precio, nom, src)
     __swig_destroy__ = _Listas.delete_ListaUsuarios
 
 # Register ListaUsuarios in _Listas:
 _Listas.ListaUsuarios_swigregister(ListaUsuarios)
+
+class Usu(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+    id = property(_Listas.Usu_id_get, _Listas.Usu_id_set)
+    siguiente = property(_Listas.Usu_siguiente_get, _Listas.Usu_siguiente_set)
+    anterior = property(_Listas.Usu_anterior_get, _Listas.Usu_anterior_set)
+    derecha = property(_Listas.Usu_derecha_get, _Listas.Usu_derecha_set)
+    izquierda = property(_Listas.Usu_izquierda_get, _Listas.Usu_izquierda_set)
+
+    def __init__(self, valor):
+        _Listas.Usu_swiginit(self, _Listas.new_Usu(valor))
+    __swig_destroy__ = _Listas.delete_Usu
+
+# Register Usu in _Listas:
+_Listas.Usu_swigregister(Usu)
+
+class ArbolB(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+    OrdenAr = property(_Listas.ArbolB_OrdenAr_get, _Listas.ArbolB_OrdenAr_set)
+    raiz = property(_Listas.ArbolB_raiz_get, _Listas.ArbolB_raiz_set)
+
+    def __init__(self):
+        _Listas.ArbolB_swiginit(self, _Listas.new_ArbolB())
+
+    def Insertar(self, id):
+        return _Listas.ArbolB_Insertar(self, id)
+
+    def InsertarRama(self, nodo, rama):
+        return _Listas.ArbolB_InsertarRama(self, nodo, rama)
+
+    def Divi(self, rama):
+        return _Listas.ArbolB_Divi(self, rama)
+
+    def InsertarInRama(self, primero, nuevo):
+        return _Listas.ArbolB_InsertarInRama(self, primero, nuevo)
+
+    def Hoja(self, primero):
+        return _Listas.ArbolB_Hoja(self, primero)
+
+    def Conta(self, primero):
+        return _Listas.ArbolB_Conta(self, primero)
+
+    def Grafo(self):
+        return _Listas.ArbolB_Grafo(self)
+
+    def GrafoArb(self, rama):
+        return _Listas.ArbolB_GrafoArb(self, rama)
+
+    def Ramitas(self, rama):
+        return _Listas.ArbolB_Ramitas(self, rama)
+
+    def ConeRamas(self, rama):
+        return _Listas.ArbolB_ConeRamas(self, rama)
+    __swig_destroy__ = _Listas.delete_ArbolB
+
+# Register ArbolB in _Listas:
+_Listas.ArbolB_swigregister(ArbolB)
 
 class Tutorial(object):
     thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
@@ -262,6 +322,9 @@ class ListaCategoria(object):
 
     def mostrarArti(self):
         return _Listas.ListaCategoria_mostrarArti(self)
+
+    def canti(self):
+        return _Listas.ListaCategoria_canti(self)
 
     def getPrecio(self, id):
         return _Listas.ListaCategoria_getPrecio(self, id)

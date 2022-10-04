@@ -2689,20 +2689,24 @@ SWIGINTERN PyObject *SWIG_PyStaticMethod_New(PyObject *SWIGUNUSEDPARM(self), PyO
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_Articulo swig_types[0]
-#define SWIGTYPE_p_Categoria swig_types[1]
-#define SWIGTYPE_p_ColaTutorial swig_types[2]
-#define SWIGTYPE_p_ListaCategoria swig_types[3]
-#define SWIGTYPE_p_ListaMovimientos swig_types[4]
-#define SWIGTYPE_p_ListaUsuarios swig_types[5]
-#define SWIGTYPE_p_Movimientos swig_types[6]
-#define SWIGTYPE_p_PilaMovimientos swig_types[7]
-#define SWIGTYPE_p_SHA256 swig_types[8]
-#define SWIGTYPE_p_Tutorial swig_types[9]
-#define SWIGTYPE_p_Usuario swig_types[10]
-#define SWIGTYPE_p_char swig_types[11]
-static swig_type_info *swig_types[13];
-static swig_module_info swig_module = {swig_types, 12, 0, 0, 0, 0};
+#define SWIGTYPE_p_ArbolB swig_types[0]
+#define SWIGTYPE_p_Articulo swig_types[1]
+#define SWIGTYPE_p_Categoria swig_types[2]
+#define SWIGTYPE_p_ColaTutorial swig_types[3]
+#define SWIGTYPE_p_ListaCategoria swig_types[4]
+#define SWIGTYPE_p_ListaMovimientos swig_types[5]
+#define SWIGTYPE_p_ListaUsuarios swig_types[6]
+#define SWIGTYPE_p_Movimientos swig_types[7]
+#define SWIGTYPE_p_PilaMovimientos swig_types[8]
+#define SWIGTYPE_p_SHA256 swig_types[9]
+#define SWIGTYPE_p_Tutorial swig_types[10]
+#define SWIGTYPE_p_Usu swig_types[11]
+#define SWIGTYPE_p_Usuario swig_types[12]
+#define SWIGTYPE_p_char swig_types[13]
+#define SWIGTYPE_p_pairT_Usu_p_bool_t swig_types[14]
+#define SWIGTYPE_p_pairT_Usu_p_pairT_bool_bool_t_t swig_types[15]
+static swig_type_info *swig_types[17];
+static swig_module_info swig_module = {swig_types, 16, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -2810,6 +2814,7 @@ namespace swig {
 
 
 #include "Usuarios/ListaUsuarios.h"
+#include "Usuarios/ArbolB.h"
 #include "Tutorial/ColaTutorial.h"
 #include "Movimientos/ListaMovimientos.h"
 #include "Categoria/ListaCategoria.h"
@@ -3155,6 +3160,13 @@ SWIGINTERNINLINE PyObject*
   SWIG_From_int  (int value)
 {
   return PyInt_FromLong((long) value);
+}
+
+
+SWIGINTERNINLINE PyObject*
+  SWIG_From_bool  (bool value)
+{
+  return PyBool_FromLong(value ? 1 : 0);
 }
 
 #ifdef __cplusplus
@@ -3568,6 +3580,58 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Usuario_listacatego_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Usuario *arg1 = (Usuario *) 0 ;
+  ListaCategoria *arg2 = (ListaCategoria *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "Usuario_listacatego_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_Usuario, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Usuario_listacatego_set" "', argument " "1"" of type '" "Usuario *""'"); 
+  }
+  arg1 = reinterpret_cast< Usuario * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_ListaCategoria, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Usuario_listacatego_set" "', argument " "2"" of type '" "ListaCategoria *""'"); 
+  }
+  arg2 = reinterpret_cast< ListaCategoria * >(argp2);
+  if (arg1) (arg1)->listacatego = *arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Usuario_listacatego_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Usuario *arg1 = (Usuario *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  ListaCategoria *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_Usuario, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Usuario_listacatego_get" "', argument " "1"" of type '" "Usuario *""'"); 
+  }
+  arg1 = reinterpret_cast< Usuario * >(argp1);
+  result = (ListaCategoria *)& ((arg1)->listacatego);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_ListaCategoria, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_new_Usuario(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   int arg1 ;
@@ -3776,29 +3840,6 @@ SWIGINTERN PyObject *_wrap_ListaUsuarios_mostrarlista(PyObject *SWIGUNUSEDPARM(s
   }
   arg1 = reinterpret_cast< ListaUsuarios * >(argp1);
   result = (arg1)->mostrarlista();
-  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_ListaUsuarios_mostrarlistaF(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  ListaUsuarios *arg1 = (ListaUsuarios *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject *swig_obj[1] ;
-  std::string result;
-  
-  if (!args) SWIG_fail;
-  swig_obj[0] = args;
-  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ListaUsuarios, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ListaUsuarios_mostrarlistaF" "', argument " "1"" of type '" "ListaUsuarios *""'"); 
-  }
-  arg1 = reinterpret_cast< ListaUsuarios * >(argp1);
-  result = (arg1)->mostrarlistaF();
   resultobj = SWIG_From_std_string(static_cast< std::string >(result));
   return resultobj;
 fail:
@@ -4052,6 +4093,83 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_ListaUsuarios_agrearticulo(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ListaUsuarios *arg1 = (ListaUsuarios *) 0 ;
+  std::string arg2 ;
+  int arg3 ;
+  std::string arg4 ;
+  int arg5 ;
+  std::string arg6 ;
+  std::string arg7 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  int val5 ;
+  int ecode5 = 0 ;
+  PyObject *swig_obj[7] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "ListaUsuarios_agrearticulo", 7, 7, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ListaUsuarios, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ListaUsuarios_agrearticulo" "', argument " "1"" of type '" "ListaUsuarios *""'"); 
+  }
+  arg1 = reinterpret_cast< ListaUsuarios * >(argp1);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(swig_obj[1], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "ListaUsuarios_agrearticulo" "', argument " "2"" of type '" "std::string""'"); 
+    }
+    arg2 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  ecode3 = SWIG_AsVal_int(swig_obj[2], &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "ListaUsuarios_agrearticulo" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = static_cast< int >(val3);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(swig_obj[3], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "ListaUsuarios_agrearticulo" "', argument " "4"" of type '" "std::string""'"); 
+    }
+    arg4 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  ecode5 = SWIG_AsVal_int(swig_obj[4], &val5);
+  if (!SWIG_IsOK(ecode5)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "ListaUsuarios_agrearticulo" "', argument " "5"" of type '" "int""'");
+  } 
+  arg5 = static_cast< int >(val5);
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(swig_obj[5], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "ListaUsuarios_agrearticulo" "', argument " "6"" of type '" "std::string""'"); 
+    }
+    arg6 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  {
+    std::string *ptr = (std::string *)0;
+    int res = SWIG_AsPtr_std_string(swig_obj[6], &ptr);
+    if (!SWIG_IsOK(res) || !ptr) {
+      SWIG_exception_fail(SWIG_ArgError((ptr ? res : SWIG_TypeError)), "in method '" "ListaUsuarios_agrearticulo" "', argument " "7"" of type '" "std::string""'"); 
+    }
+    arg7 = *ptr;
+    if (SWIG_IsNewObj(res)) delete ptr;
+  }
+  (arg1)->agrearticulo(arg2,arg3,arg4,arg5,arg6,arg7);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_delete_ListaUsuarios(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   ListaUsuarios *arg1 = (ListaUsuarios *) 0 ;
@@ -4082,6 +4200,779 @@ SWIGINTERN PyObject *ListaUsuarios_swigregister(PyObject *SWIGUNUSEDPARM(self), 
 }
 
 SWIGINTERN PyObject *ListaUsuarios_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_Usu_id_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Usu *arg1 = (Usu *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "Usu_id_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_Usu, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Usu_id_set" "', argument " "1"" of type '" "Usu *""'"); 
+  }
+  arg1 = reinterpret_cast< Usu * >(argp1);
+  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Usu_id_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->id = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Usu_id_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Usu *arg1 = (Usu *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  int result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_Usu, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Usu_id_get" "', argument " "1"" of type '" "Usu *""'"); 
+  }
+  arg1 = reinterpret_cast< Usu * >(argp1);
+  result = (int) ((arg1)->id);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Usu_siguiente_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Usu *arg1 = (Usu *) 0 ;
+  Usu *arg2 = (Usu *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "Usu_siguiente_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_Usu, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Usu_siguiente_set" "', argument " "1"" of type '" "Usu *""'"); 
+  }
+  arg1 = reinterpret_cast< Usu * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_Usu, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Usu_siguiente_set" "', argument " "2"" of type '" "Usu *""'"); 
+  }
+  arg2 = reinterpret_cast< Usu * >(argp2);
+  if (arg1) (arg1)->siguiente = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Usu_siguiente_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Usu *arg1 = (Usu *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  Usu *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_Usu, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Usu_siguiente_get" "', argument " "1"" of type '" "Usu *""'"); 
+  }
+  arg1 = reinterpret_cast< Usu * >(argp1);
+  result = (Usu *) ((arg1)->siguiente);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Usu, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Usu_anterior_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Usu *arg1 = (Usu *) 0 ;
+  Usu *arg2 = (Usu *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "Usu_anterior_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_Usu, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Usu_anterior_set" "', argument " "1"" of type '" "Usu *""'"); 
+  }
+  arg1 = reinterpret_cast< Usu * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_Usu, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Usu_anterior_set" "', argument " "2"" of type '" "Usu *""'"); 
+  }
+  arg2 = reinterpret_cast< Usu * >(argp2);
+  if (arg1) (arg1)->anterior = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Usu_anterior_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Usu *arg1 = (Usu *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  Usu *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_Usu, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Usu_anterior_get" "', argument " "1"" of type '" "Usu *""'"); 
+  }
+  arg1 = reinterpret_cast< Usu * >(argp1);
+  result = (Usu *) ((arg1)->anterior);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Usu, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Usu_derecha_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Usu *arg1 = (Usu *) 0 ;
+  Usu *arg2 = (Usu *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "Usu_derecha_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_Usu, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Usu_derecha_set" "', argument " "1"" of type '" "Usu *""'"); 
+  }
+  arg1 = reinterpret_cast< Usu * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_Usu, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Usu_derecha_set" "', argument " "2"" of type '" "Usu *""'"); 
+  }
+  arg2 = reinterpret_cast< Usu * >(argp2);
+  if (arg1) (arg1)->derecha = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Usu_derecha_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Usu *arg1 = (Usu *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  Usu *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_Usu, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Usu_derecha_get" "', argument " "1"" of type '" "Usu *""'"); 
+  }
+  arg1 = reinterpret_cast< Usu * >(argp1);
+  result = (Usu *) ((arg1)->derecha);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Usu, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Usu_izquierda_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Usu *arg1 = (Usu *) 0 ;
+  Usu *arg2 = (Usu *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "Usu_izquierda_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_Usu, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Usu_izquierda_set" "', argument " "1"" of type '" "Usu *""'"); 
+  }
+  arg1 = reinterpret_cast< Usu * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_Usu, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Usu_izquierda_set" "', argument " "2"" of type '" "Usu *""'"); 
+  }
+  arg2 = reinterpret_cast< Usu * >(argp2);
+  if (arg1) (arg1)->izquierda = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_Usu_izquierda_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Usu *arg1 = (Usu *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  Usu *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_Usu, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Usu_izquierda_get" "', argument " "1"" of type '" "Usu *""'"); 
+  }
+  arg1 = reinterpret_cast< Usu * >(argp1);
+  result = (Usu *) ((arg1)->izquierda);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Usu, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_Usu(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  int val1 ;
+  int ecode1 = 0 ;
+  PyObject *swig_obj[1] ;
+  Usu *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  ecode1 = SWIG_AsVal_int(swig_obj[0], &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "new_Usu" "', argument " "1"" of type '" "int""'");
+  } 
+  arg1 = static_cast< int >(val1);
+  result = (Usu *)new Usu(arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Usu, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_Usu(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  Usu *arg1 = (Usu *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_Usu, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_Usu" "', argument " "1"" of type '" "Usu *""'"); 
+  }
+  arg1 = reinterpret_cast< Usu * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *Usu_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_Usu, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *Usu_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  return SWIG_Python_InitShadowInstance(args);
+}
+
+SWIGINTERN PyObject *_wrap_ArbolB_OrdenAr_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ArbolB *arg1 = (ArbolB *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "ArbolB_OrdenAr_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ArbolB, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ArbolB_OrdenAr_set" "', argument " "1"" of type '" "ArbolB *""'"); 
+  }
+  arg1 = reinterpret_cast< ArbolB * >(argp1);
+  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ArbolB_OrdenAr_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->OrdenAr = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ArbolB_OrdenAr_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ArbolB *arg1 = (ArbolB *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  int result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ArbolB, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ArbolB_OrdenAr_get" "', argument " "1"" of type '" "ArbolB *""'"); 
+  }
+  arg1 = reinterpret_cast< ArbolB * >(argp1);
+  result = (int) ((arg1)->OrdenAr);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ArbolB_raiz_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ArbolB *arg1 = (ArbolB *) 0 ;
+  Usu *arg2 = (Usu *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "ArbolB_raiz_set", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ArbolB, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ArbolB_raiz_set" "', argument " "1"" of type '" "ArbolB *""'"); 
+  }
+  arg1 = reinterpret_cast< ArbolB * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_Usu, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ArbolB_raiz_set" "', argument " "2"" of type '" "Usu *""'"); 
+  }
+  arg2 = reinterpret_cast< Usu * >(argp2);
+  if (arg1) (arg1)->raiz = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ArbolB_raiz_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ArbolB *arg1 = (ArbolB *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  Usu *result = 0 ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ArbolB, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ArbolB_raiz_get" "', argument " "1"" of type '" "ArbolB *""'"); 
+  }
+  arg1 = reinterpret_cast< ArbolB * >(argp1);
+  result = (Usu *) ((arg1)->raiz);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Usu, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_ArbolB(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ArbolB *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "new_ArbolB", 0, 0, 0)) SWIG_fail;
+  result = (ArbolB *)new ArbolB();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_ArbolB, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ArbolB_Insertar(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ArbolB *arg1 = (ArbolB *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject *swig_obj[2] ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "ArbolB_Insertar", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ArbolB, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ArbolB_Insertar" "', argument " "1"" of type '" "ArbolB *""'"); 
+  }
+  arg1 = reinterpret_cast< ArbolB * >(argp1);
+  ecode2 = SWIG_AsVal_int(swig_obj[1], &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ArbolB_Insertar" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  (arg1)->Insertar(arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ArbolB_InsertarRama(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ArbolB *arg1 = (ArbolB *) 0 ;
+  Usu *arg2 = (Usu *) 0 ;
+  Usu *arg3 = (Usu *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject *swig_obj[3] ;
+  pair< Usu *,pair< bool,bool > > result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "ArbolB_InsertarRama", 3, 3, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ArbolB, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ArbolB_InsertarRama" "', argument " "1"" of type '" "ArbolB *""'"); 
+  }
+  arg1 = reinterpret_cast< ArbolB * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_Usu, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ArbolB_InsertarRama" "', argument " "2"" of type '" "Usu *""'"); 
+  }
+  arg2 = reinterpret_cast< Usu * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_Usu, 0 |  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ArbolB_InsertarRama" "', argument " "3"" of type '" "Usu *""'"); 
+  }
+  arg3 = reinterpret_cast< Usu * >(argp3);
+  result = (arg1)->InsertarRama(arg2,arg3);
+  resultobj = SWIG_NewPointerObj((new pair< Usu *,pair< bool,bool > >(static_cast< const pair< Usu *,pair< bool,bool > >& >(result))), SWIGTYPE_p_pairT_Usu_p_pairT_bool_bool_t_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ArbolB_Divi(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ArbolB *arg1 = (ArbolB *) 0 ;
+  Usu *arg2 = (Usu *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  Usu *result = 0 ;
+  
+  if (!SWIG_Python_UnpackTuple(args, "ArbolB_Divi", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ArbolB, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ArbolB_Divi" "', argument " "1"" of type '" "ArbolB *""'"); 
+  }
+  arg1 = reinterpret_cast< ArbolB * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_Usu, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ArbolB_Divi" "', argument " "2"" of type '" "Usu *""'"); 
+  }
+  arg2 = reinterpret_cast< Usu * >(argp2);
+  result = (Usu *)(arg1)->Divi(arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_Usu, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ArbolB_InsertarInRama(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ArbolB *arg1 = (ArbolB *) 0 ;
+  Usu *arg2 = (Usu *) 0 ;
+  Usu *arg3 = (Usu *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  void *argp3 = 0 ;
+  int res3 = 0 ;
+  PyObject *swig_obj[3] ;
+  pair< Usu *,bool > result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "ArbolB_InsertarInRama", 3, 3, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ArbolB, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ArbolB_InsertarInRama" "', argument " "1"" of type '" "ArbolB *""'"); 
+  }
+  arg1 = reinterpret_cast< ArbolB * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_Usu, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ArbolB_InsertarInRama" "', argument " "2"" of type '" "Usu *""'"); 
+  }
+  arg2 = reinterpret_cast< Usu * >(argp2);
+  res3 = SWIG_ConvertPtr(swig_obj[2], &argp3,SWIGTYPE_p_Usu, 0 |  0 );
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "ArbolB_InsertarInRama" "', argument " "3"" of type '" "Usu *""'"); 
+  }
+  arg3 = reinterpret_cast< Usu * >(argp3);
+  result = (arg1)->InsertarInRama(arg2,arg3);
+  resultobj = SWIG_NewPointerObj((new pair< Usu *,bool >(static_cast< const pair< Usu *,bool >& >(result))), SWIGTYPE_p_pairT_Usu_p_bool_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ArbolB_Hoja(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ArbolB *arg1 = (ArbolB *) 0 ;
+  Usu *arg2 = (Usu *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  bool result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "ArbolB_Hoja", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ArbolB, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ArbolB_Hoja" "', argument " "1"" of type '" "ArbolB *""'"); 
+  }
+  arg1 = reinterpret_cast< ArbolB * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_Usu, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ArbolB_Hoja" "', argument " "2"" of type '" "Usu *""'"); 
+  }
+  arg2 = reinterpret_cast< Usu * >(argp2);
+  result = (bool)(arg1)->Hoja(arg2);
+  resultobj = SWIG_From_bool(static_cast< bool >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ArbolB_Conta(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ArbolB *arg1 = (ArbolB *) 0 ;
+  Usu *arg2 = (Usu *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  int result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "ArbolB_Conta", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ArbolB, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ArbolB_Conta" "', argument " "1"" of type '" "ArbolB *""'"); 
+  }
+  arg1 = reinterpret_cast< ArbolB * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_Usu, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ArbolB_Conta" "', argument " "2"" of type '" "Usu *""'"); 
+  }
+  arg2 = reinterpret_cast< Usu * >(argp2);
+  result = (int)(arg1)->Conta(arg2);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ArbolB_Grafo(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ArbolB *arg1 = (ArbolB *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ArbolB, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ArbolB_Grafo" "', argument " "1"" of type '" "ArbolB *""'"); 
+  }
+  arg1 = reinterpret_cast< ArbolB * >(argp1);
+  (arg1)->Grafo();
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ArbolB_GrafoArb(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ArbolB *arg1 = (ArbolB *) 0 ;
+  Usu *arg2 = (Usu *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  std::string result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "ArbolB_GrafoArb", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ArbolB, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ArbolB_GrafoArb" "', argument " "1"" of type '" "ArbolB *""'"); 
+  }
+  arg1 = reinterpret_cast< ArbolB * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_Usu, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ArbolB_GrafoArb" "', argument " "2"" of type '" "Usu *""'"); 
+  }
+  arg2 = reinterpret_cast< Usu * >(argp2);
+  result = (arg1)->GrafoArb(arg2);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ArbolB_Ramitas(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ArbolB *arg1 = (ArbolB *) 0 ;
+  Usu *arg2 = (Usu *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  std::string result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "ArbolB_Ramitas", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ArbolB, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ArbolB_Ramitas" "', argument " "1"" of type '" "ArbolB *""'"); 
+  }
+  arg1 = reinterpret_cast< ArbolB * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_Usu, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ArbolB_Ramitas" "', argument " "2"" of type '" "Usu *""'"); 
+  }
+  arg2 = reinterpret_cast< Usu * >(argp2);
+  result = (arg1)->Ramitas(arg2);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ArbolB_ConeRamas(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ArbolB *arg1 = (ArbolB *) 0 ;
+  Usu *arg2 = (Usu *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject *swig_obj[2] ;
+  std::string result;
+  
+  if (!SWIG_Python_UnpackTuple(args, "ArbolB_ConeRamas", 2, 2, swig_obj)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ArbolB, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ArbolB_ConeRamas" "', argument " "1"" of type '" "ArbolB *""'"); 
+  }
+  arg1 = reinterpret_cast< ArbolB * >(argp1);
+  res2 = SWIG_ConvertPtr(swig_obj[1], &argp2,SWIGTYPE_p_Usu, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "ArbolB_ConeRamas" "', argument " "2"" of type '" "Usu *""'"); 
+  }
+  arg2 = reinterpret_cast< Usu * >(argp2);
+  result = (arg1)->ConeRamas(arg2);
+  resultobj = SWIG_From_std_string(static_cast< std::string >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_ArbolB(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ArbolB *arg1 = (ArbolB *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ArbolB, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_ArbolB" "', argument " "1"" of type '" "ArbolB *""'"); 
+  }
+  arg1 = reinterpret_cast< ArbolB * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *ArbolB_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!SWIG_Python_UnpackTuple(args, "swigregister", 1, 1, &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_ArbolB, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *ArbolB_swiginit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   return SWIG_Python_InitShadowInstance(args);
 }
 
@@ -5919,6 +6810,29 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_ListaCategoria_canti(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ListaCategoria *arg1 = (ListaCategoria *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject *swig_obj[1] ;
+  int result;
+  
+  if (!args) SWIG_fail;
+  swig_obj[0] = args;
+  res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ListaCategoria, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ListaCategoria_canti" "', argument " "1"" of type '" "ListaCategoria *""'"); 
+  }
+  arg1 = reinterpret_cast< ListaCategoria * >(argp1);
+  result = (int)(arg1)->canti();
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_ListaCategoria_getPrecio(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   ListaCategoria *arg1 = (ListaCategoria *) 0 ;
@@ -6020,6 +6934,8 @@ static PyMethodDef SwigMethods[] = {
 	 { "Usuario_siguiente_get", _wrap_Usuario_siguiente_get, METH_O, NULL},
 	 { "Usuario_anterior_set", _wrap_Usuario_anterior_set, METH_VARARGS, NULL},
 	 { "Usuario_anterior_get", _wrap_Usuario_anterior_get, METH_O, NULL},
+	 { "Usuario_listacatego_set", _wrap_Usuario_listacatego_set, METH_VARARGS, NULL},
+	 { "Usuario_listacatego_get", _wrap_Usuario_listacatego_get, METH_O, NULL},
 	 { "new_Usuario", _wrap_new_Usuario, METH_VARARGS, NULL},
 	 { "delete_Usuario", _wrap_delete_Usuario, METH_O, NULL},
 	 { "Usuario_swigregister", Usuario_swigregister, METH_O, NULL},
@@ -6028,16 +6944,48 @@ static PyMethodDef SwigMethods[] = {
 	 { "ListaUsuarios_agregarlista", _wrap_ListaUsuarios_agregarlista, METH_VARARGS, NULL},
 	 { "ListaUsuarios_obtener", _wrap_ListaUsuarios_obtener, METH_O, NULL},
 	 { "ListaUsuarios_mostrarlista", _wrap_ListaUsuarios_mostrarlista, METH_O, NULL},
-	 { "ListaUsuarios_mostrarlistaF", _wrap_ListaUsuarios_mostrarlistaF, METH_O, NULL},
 	 { "ListaUsuarios_verificar", _wrap_ListaUsuarios_verificar, METH_VARARGS, NULL},
 	 { "ListaUsuarios_editar", _wrap_ListaUsuarios_editar, METH_VARARGS, NULL},
 	 { "ListaUsuarios_eliminar", _wrap_ListaUsuarios_eliminar, METH_VARARGS, NULL},
 	 { "ListaUsuarios_obtemonedas", _wrap_ListaUsuarios_obtemonedas, METH_VARARGS, NULL},
 	 { "ListaUsuarios_obtedad", _wrap_ListaUsuarios_obtedad, METH_VARARGS, NULL},
 	 { "ListaUsuarios_ordeanamiento", _wrap_ListaUsuarios_ordeanamiento, METH_O, NULL},
+	 { "ListaUsuarios_agrearticulo", _wrap_ListaUsuarios_agrearticulo, METH_VARARGS, NULL},
 	 { "delete_ListaUsuarios", _wrap_delete_ListaUsuarios, METH_O, NULL},
 	 { "ListaUsuarios_swigregister", ListaUsuarios_swigregister, METH_O, NULL},
 	 { "ListaUsuarios_swiginit", ListaUsuarios_swiginit, METH_VARARGS, NULL},
+	 { "Usu_id_set", _wrap_Usu_id_set, METH_VARARGS, NULL},
+	 { "Usu_id_get", _wrap_Usu_id_get, METH_O, NULL},
+	 { "Usu_siguiente_set", _wrap_Usu_siguiente_set, METH_VARARGS, NULL},
+	 { "Usu_siguiente_get", _wrap_Usu_siguiente_get, METH_O, NULL},
+	 { "Usu_anterior_set", _wrap_Usu_anterior_set, METH_VARARGS, NULL},
+	 { "Usu_anterior_get", _wrap_Usu_anterior_get, METH_O, NULL},
+	 { "Usu_derecha_set", _wrap_Usu_derecha_set, METH_VARARGS, NULL},
+	 { "Usu_derecha_get", _wrap_Usu_derecha_get, METH_O, NULL},
+	 { "Usu_izquierda_set", _wrap_Usu_izquierda_set, METH_VARARGS, NULL},
+	 { "Usu_izquierda_get", _wrap_Usu_izquierda_get, METH_O, NULL},
+	 { "new_Usu", _wrap_new_Usu, METH_O, NULL},
+	 { "delete_Usu", _wrap_delete_Usu, METH_O, NULL},
+	 { "Usu_swigregister", Usu_swigregister, METH_O, NULL},
+	 { "Usu_swiginit", Usu_swiginit, METH_VARARGS, NULL},
+	 { "ArbolB_OrdenAr_set", _wrap_ArbolB_OrdenAr_set, METH_VARARGS, NULL},
+	 { "ArbolB_OrdenAr_get", _wrap_ArbolB_OrdenAr_get, METH_O, NULL},
+	 { "ArbolB_raiz_set", _wrap_ArbolB_raiz_set, METH_VARARGS, NULL},
+	 { "ArbolB_raiz_get", _wrap_ArbolB_raiz_get, METH_O, NULL},
+	 { "new_ArbolB", _wrap_new_ArbolB, METH_NOARGS, NULL},
+	 { "ArbolB_Insertar", _wrap_ArbolB_Insertar, METH_VARARGS, NULL},
+	 { "ArbolB_InsertarRama", _wrap_ArbolB_InsertarRama, METH_VARARGS, NULL},
+	 { "ArbolB_Divi", _wrap_ArbolB_Divi, METH_VARARGS, NULL},
+	 { "ArbolB_InsertarInRama", _wrap_ArbolB_InsertarInRama, METH_VARARGS, NULL},
+	 { "ArbolB_Hoja", _wrap_ArbolB_Hoja, METH_VARARGS, NULL},
+	 { "ArbolB_Conta", _wrap_ArbolB_Conta, METH_VARARGS, NULL},
+	 { "ArbolB_Grafo", _wrap_ArbolB_Grafo, METH_O, NULL},
+	 { "ArbolB_GrafoArb", _wrap_ArbolB_GrafoArb, METH_VARARGS, NULL},
+	 { "ArbolB_Ramitas", _wrap_ArbolB_Ramitas, METH_VARARGS, NULL},
+	 { "ArbolB_ConeRamas", _wrap_ArbolB_ConeRamas, METH_VARARGS, NULL},
+	 { "delete_ArbolB", _wrap_delete_ArbolB, METH_O, NULL},
+	 { "ArbolB_swigregister", ArbolB_swigregister, METH_O, NULL},
+	 { "ArbolB_swiginit", ArbolB_swiginit, METH_VARARGS, NULL},
 	 { "Tutorial_ancho_set", _wrap_Tutorial_ancho_set, METH_VARARGS, NULL},
 	 { "Tutorial_ancho_get", _wrap_Tutorial_ancho_get, METH_O, NULL},
 	 { "Tutorial_alto_set", _wrap_Tutorial_alto_set, METH_VARARGS, NULL},
@@ -6118,6 +7066,7 @@ static PyMethodDef SwigMethods[] = {
 	 { "ListaCategoria_getCate", _wrap_ListaCategoria_getCate, METH_VARARGS, NULL},
 	 { "ListaCategoria_agregarArti", _wrap_ListaCategoria_agregarArti, METH_VARARGS, NULL},
 	 { "ListaCategoria_mostrarArti", _wrap_ListaCategoria_mostrarArti, METH_O, NULL},
+	 { "ListaCategoria_canti", _wrap_ListaCategoria_canti, METH_O, NULL},
 	 { "ListaCategoria_getPrecio", _wrap_ListaCategoria_getPrecio, METH_VARARGS, NULL},
 	 { "ListaCategoria_graficarListas", _wrap_ListaCategoria_graficarListas, METH_O, NULL},
 	 { "delete_ListaCategoria", _wrap_delete_ListaCategoria, METH_O, NULL},
@@ -6133,6 +7082,7 @@ static PyMethodDef SwigMethods_proxydocs[] = {
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
+static swig_type_info _swigt__p_ArbolB = {"_p_ArbolB", "ArbolB *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Articulo = {"_p_Articulo", "Articulo *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Categoria = {"_p_Categoria", "Categoria *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_ColaTutorial = {"_p_ColaTutorial", "ColaTutorial *", 0, 0, (void*)0, 0};
@@ -6143,10 +7093,14 @@ static swig_type_info _swigt__p_Movimientos = {"_p_Movimientos", "Movimientos *"
 static swig_type_info _swigt__p_PilaMovimientos = {"_p_PilaMovimientos", "PilaMovimientos *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_SHA256 = {"_p_SHA256", "SHA256 *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Tutorial = {"_p_Tutorial", "Tutorial *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_Usu = {"_p_Usu", "Usu *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_Usuario = {"_p_Usuario", "Usuario *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_pairT_Usu_p_bool_t = {"_p_pairT_Usu_p_bool_t", "pair< Usu *,bool > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_pairT_Usu_p_pairT_bool_bool_t_t = {"_p_pairT_Usu_p_pairT_bool_bool_t_t", "pair< Usu *,pair< bool,bool > > *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
+  &_swigt__p_ArbolB,
   &_swigt__p_Articulo,
   &_swigt__p_Categoria,
   &_swigt__p_ColaTutorial,
@@ -6157,10 +7111,14 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_PilaMovimientos,
   &_swigt__p_SHA256,
   &_swigt__p_Tutorial,
+  &_swigt__p_Usu,
   &_swigt__p_Usuario,
   &_swigt__p_char,
+  &_swigt__p_pairT_Usu_p_bool_t,
+  &_swigt__p_pairT_Usu_p_pairT_bool_bool_t_t,
 };
 
+static swig_cast_info _swigc__p_ArbolB[] = {  {&_swigt__p_ArbolB, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Articulo[] = {  {&_swigt__p_Articulo, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Categoria[] = {  {&_swigt__p_Categoria, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_ColaTutorial[] = {  {&_swigt__p_ColaTutorial, 0, 0, 0},{0, 0, 0, 0}};
@@ -6171,10 +7129,14 @@ static swig_cast_info _swigc__p_Movimientos[] = {  {&_swigt__p_Movimientos, 0, 0
 static swig_cast_info _swigc__p_PilaMovimientos[] = {  {&_swigt__p_PilaMovimientos, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_SHA256[] = {  {&_swigt__p_SHA256, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Tutorial[] = {  {&_swigt__p_Tutorial, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_Usu[] = {  {&_swigt__p_Usu, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_Usuario[] = {  {&_swigt__p_Usuario, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_pairT_Usu_p_bool_t[] = {  {&_swigt__p_pairT_Usu_p_bool_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_pairT_Usu_p_pairT_bool_bool_t_t[] = {  {&_swigt__p_pairT_Usu_p_pairT_bool_bool_t_t, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
+  _swigc__p_ArbolB,
   _swigc__p_Articulo,
   _swigc__p_Categoria,
   _swigc__p_ColaTutorial,
@@ -6185,8 +7147,11 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_PilaMovimientos,
   _swigc__p_SHA256,
   _swigc__p_Tutorial,
+  _swigc__p_Usu,
   _swigc__p_Usuario,
   _swigc__p_char,
+  _swigc__p_pairT_Usu_p_bool_t,
+  _swigc__p_pairT_Usu_p_pairT_bool_bool_t_t,
 };
 
 
