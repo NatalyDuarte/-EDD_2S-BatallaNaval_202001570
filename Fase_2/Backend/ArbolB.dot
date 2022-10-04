@@ -1,0 +1,18 @@
+digraph G {
+     node[shape=record]
+      node[style=filled]
+      node[fillcolor=lightpink]
+      node[color=black]
+      edge[color=black]
+      label=Arbol_Id_de_Usuasrios
+      labelloc="t"
+R0x5578e2ee3f60[label="<C1>|3|<C2>|6|<C3>|9|<C4>"];
+R0x5578e2ee36d0[label="1|2"];
+R0x5578e307aa10[label="4|5"];
+R0x5578e3079000[label="7|8"];
+R0x5578e2fcfab0[label="10|12"];
+R0x5578e2ee3f60:C1->R0x5578e2ee36d0;
+R0x5578e2ee3f60:C2->R0x5578e307aa10;
+R0x5578e2ee3f60:C3->R0x5578e3079000;
+R0x5578e2ee3f60:C4->R0x5578e2fcfab0;
+}

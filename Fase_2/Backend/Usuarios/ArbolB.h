@@ -224,7 +224,6 @@ class ArbolB {
             file << texto;
             file.close();
             system(("dot -Tpng ArbolB.dot -o  ArbolB.png"));
-            system(("ArbolB.png"));
         }
 
         string GrafoArb(Usu* rama) {

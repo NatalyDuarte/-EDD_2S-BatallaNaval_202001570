@@ -1,0 +1,14 @@
+digraph G
+{
+      node[shape=circle]
+      node[style=filled]
+      node[fillcolor=lightpink]
+      node[color=black]
+      edge[color=black]
+      label=Nataly
+      labelloc="t"
+372284 ->99647
+372284 ->666202 ->637785
+
+
+}

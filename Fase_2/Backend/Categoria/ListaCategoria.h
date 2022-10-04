@@ -92,16 +92,19 @@ class ListaCategoria{
             }
         }
         //metodo mostrar Articulo
-        void mostrarArti(){
+        string mostrarArti(){
             Categoria* auxcate = cabecera;
+            string dato, dato1;
             while(auxcate != NULL){
                 Articulo *auxarti = auxcate->abajo;
+                dato="Los Articulos son: ";
                 while(auxarti!= NULL){
-                    cout<<"[id: "<<auxarti->id<<"], [Nombre: "<< auxarti->nombre<<"] "<<", [Categoria: "<< auxcate->dato<<"] "<<", [precio: "<< auxarti->precio<<"] "<<endl;
+                    dato1=dato1+"[id:"+ to_string(auxarti->id)+"],[Nombre: "+ auxarti->nombre+"], [Categoria: "+ auxcate->dato+"], [precio: "+ to_string(auxarti->precio)+"] ";
                     auxarti = auxarti->abajo;
                 }
                 auxcate = auxcate->siguiente;
             }
+            return dato+dato1;
         }
         int canti(){
             int count =0;

@@ -3,7 +3,6 @@
 #include <sstream>
 #include <string>
 #include "sha256/sha256.cpp"
-#include "../Categoria/ListaCategoria.h"
 
 using namespace std;
 SHA256 probando;
@@ -15,7 +14,6 @@ public:
         int mon, id, edad;
         Usuario* siguiente;
         Usuario* anterior;
-        ListaCategoria listacatego;
         Usuario(int id, string nick, string passw,int mon, int edad){
             this->id = id;
             this->nick= nick;
@@ -24,7 +22,6 @@ public:
             this->edad= edad;
             this->siguiente=NULL;
             this->anterior=NULL;
-            listacatego;
         }
 };
 class ListaUsuarios
@@ -113,7 +110,7 @@ public:
         }
     
         //metodo de editar
-        void editar(string res,string nick, string passw,int mon, int edad){
+        void editar(string res,string nick, string passw,int edad){
             Usuario* aux = inicio;
             bool encontrado = false;
             if(inicio!=NULL){
@@ -121,7 +118,6 @@ public:
                     if(aux->nick==res){
                         aux->nick = nick;
                         aux->passw =probando(passw);
-                        aux->mon = mon; 
                         aux->edad = edad;
                         encontrado = true;				
                     }
@@ -159,9 +155,7 @@ public:
                     anterior = actual;
                     actual = actual->siguiente;
                 }
-                if(!encontrado){
-                    cout << "\n Usuario No Encontrado\n\n";
-                }
+                
             }else{
                 cout  << "\n La Lista se Encuentra Vacia\n\n";
             }
@@ -241,21 +235,6 @@ public:
                 }
                 
             }
-        }
-
-        void agrearticulo(string nick, int id, string categoria,  int precio,string nom, string src){
-            Usuario* aux = inicio;
-            if(inicio!=NULL){
-                while (aux!=NULL){
-                    if (aux->nick == nick){
-                        aux->listacatego.agregarArti(id, categoria, precio,nom, src);
-                        break;
-                    }
-                    else{
-                        aux = aux->siguiente;
-                    }
-                }
-            }
-        }    
+        }  
     
 };

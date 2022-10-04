@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <iostream>
-#include <conio.h>
 #include <stdlib.h>
 #include <fstream>
 
@@ -180,4 +179,3 @@ class ArbolAvl{
         
 
 };    
-};

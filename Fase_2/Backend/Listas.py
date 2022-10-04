@@ -71,7 +71,6 @@ class Usuario(object):
     edad = property(_Listas.Usuario_edad_get, _Listas.Usuario_edad_set)
     siguiente = property(_Listas.Usuario_siguiente_get, _Listas.Usuario_siguiente_set)
     anterior = property(_Listas.Usuario_anterior_get, _Listas.Usuario_anterior_set)
-    listacatego = property(_Listas.Usuario_listacatego_get, _Listas.Usuario_listacatego_set)
 
     def __init__(self, id, nick, passw, mon, edad):
         _Listas.Usuario_swiginit(self, _Listas.new_Usuario(id, nick, passw, mon, edad))
@@ -100,8 +99,8 @@ class ListaUsuarios(object):
     def verificar(self, nic, passw):
         return _Listas.ListaUsuarios_verificar(self, nic, passw)
 
-    def editar(self, res, nick, passw, mon, edad):
-        return _Listas.ListaUsuarios_editar(self, res, nick, passw, mon, edad)
+    def editar(self, res, nick, passw, edad):
+        return _Listas.ListaUsuarios_editar(self, res, nick, passw, edad)
 
     def eliminar(self, UsuarioBuscado):
         return _Listas.ListaUsuarios_eliminar(self, UsuarioBuscado)
@@ -114,9 +113,6 @@ class ListaUsuarios(object):
 
     def ordeanamiento(self):
         return _Listas.ListaUsuarios_ordeanamiento(self)
-
-    def agrearticulo(self, nick, id, categoria, precio, nom, src):
-        return _Listas.ListaUsuarios_agrearticulo(self, nick, id, categoria, precio, nom, src)
     __swig_destroy__ = _Listas.delete_ListaUsuarios
 
 # Register ListaUsuarios in _Listas:
@@ -335,6 +331,70 @@ class ListaCategoria(object):
 
 # Register ListaCategoria in _Listas:
 _Listas.ListaCategoria_swigregister(ListaCategoria)
+
+class Compra(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+    id = property(_Listas.Compra_id_get, _Listas.Compra_id_set)
+    altura = property(_Listas.Compra_altura_get, _Listas.Compra_altura_set)
+    nombre = property(_Listas.Compra_nombre_get, _Listas.Compra_nombre_set)
+    cantidad = property(_Listas.Compra_cantidad_get, _Listas.Compra_cantidad_set)
+    derecha = property(_Listas.Compra_derecha_get, _Listas.Compra_derecha_set)
+    izquierda = property(_Listas.Compra_izquierda_get, _Listas.Compra_izquierda_set)
+
+    def __init__(self, id, nombre, cantidad):
+        _Listas.Compra_swiginit(self, _Listas.new_Compra(id, nombre, cantidad))
+
+    def textoGraphviz(self):
+        return _Listas.Compra_textoGraphviz(self)
+    __swig_destroy__ = _Listas.delete_Compra
+
+# Register Compra in _Listas:
+_Listas.Compra_swigregister(Compra)
+
+class ArbolAvl(object):
+    thisown = property(lambda x: x.this.own(), lambda x, v: x.this.own(v), doc="The membership flag")
+    __repr__ = _swig_repr
+
+    def __init__(self):
+        _Listas.ArbolAvl_swiginit(self, _Listas.new_ArbolAvl())
+
+    def ObtenerRaiz(self):
+        return _Listas.ArbolAvl_ObtenerRaiz(self)
+
+    def Buscar(self, id, nodo):
+        return _Listas.ArbolAvl_Buscar(self, id, nodo)
+
+    def ObtenerAlt(self, nodo):
+        return _Listas.ArbolAvl_ObtenerAlt(self, nodo)
+
+    def RotaIzqui(self, nodo):
+        return _Listas.ArbolAvl_RotaIzqui(self, nodo)
+
+    def RotaDere(self, nodo):
+        return _Listas.ArbolAvl_RotaDere(self, nodo)
+
+    def RotaDobleIzq(self, nodo):
+        return _Listas.ArbolAvl_RotaDobleIzq(self, nodo)
+
+    def RotaDobleDere(self, nodo):
+        return _Listas.ArbolAvl_RotaDobleDere(self, nodo)
+
+    def InsertarAvl(self, nuevo, subAr):
+        return _Listas.ArbolAvl_InsertarAvl(self, nuevo, subAr)
+
+    def Insertar(self, dato, nombre, cantidad):
+        return _Listas.ArbolAvl_Insertar(self, dato, nombre, cantidad)
+
+    def PreOrden(self, nodo):
+        return _Listas.ArbolAvl_PreOrden(self, nodo)
+
+    def CrearGrafica(self, nombre):
+        return _Listas.ArbolAvl_CrearGrafica(self, nombre)
+    __swig_destroy__ = _Listas.delete_ArbolAvl
+
+# Register ArbolAvl in _Listas:
+_Listas.ArbolAvl_swigregister(ArbolAvl)
 
 
 

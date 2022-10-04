@@ -1,6 +1,7 @@
 from PyQt5 import QtWidgets, uic
-from PyQt5.QtWidgets import QMainWindow, QApplication
+from PyQt5.QtWidgets import QMainWindow, QApplication, QLabel
 from PyQt5.uic import loadUi
+from PyQt5.QtGui import QIcon, QPixmap
 import sys
 import webbrowser
 import Listas
@@ -13,25 +14,53 @@ listausu = Listas.ListaUsuarios()
 listacate = Listas.ListaCategoria()
 colatuto = Listas.ColaTutorial()
 matriz = Dispersa(0)
+arbolb = Listas.ArbolB()
+arbolavl = Listas.ArbolAvl()
 
-respu = ""
-nick= ""
-passw= ""
-respu = ""
+respu = " " 
+nick = " "
+passw = " "
+ed=0
 
 def editar():
     entrar.hide()
     edita.show()
-    nick = login.lineEdit.text()
-    passw = login.lineEdit_2.text()
-    edad =  login.lineEdit_4.text()  
-    listausu.editar(respu,nick,passw,int(edad))
+    nick = edita.lineEdit.text()
+    passw = edita.lineEdit_2.text()
+    listausu.editar(respu,nick,passw,20)
+    
+def geneavl():
+    global pre
+    nombre = tienda.lineEdit.text()
+    id = tienda.lineEdit_3.text()
+    cantidad = tienda.lineEdit_2.text() 
+   # pre=listacate.getPrecio(int(id))
+   # if ed>=pre:
+   #     print("Comprado Exitosamente")
+    #    ed=ed-pre
+    #    edad=listausu.obtedad(respu,passw);
+    #    listausu.editar(respu,respu,passw,ed,edad)
+    #else:
+   #     print("No se puede realizar la compra por falta de tokens")
+    arbolavl.Insertar(int(id),str(nombre),int(cantidad))  
+    
+def cerrartienda():
+    tienda.hide()
+    entrar.show()
 
 def tiend():
+    global respu
+    global passw
+    global ed
     entrar.hide()
-    tienda.show() 
-    listaca.canti()
+    tienda.show()
+    ed=listausu.obtemonedas(respu,passw); 
     
+    tienda.label_3.setText("Tokens Disponibles "+str(ed))
+    tienda.pushButton_2.clicked.connect(geneavl)
+    tienda.pushButton.clicked.connect(cerrartienda)
+   
+        
     
 def agre():
     nick1 = regis.lineEdit.text()
@@ -39,7 +68,7 @@ def agre():
     edad1 =  regis.lineEdit_3.text()  
     id1=listausu.obtener()
     listausu.agregarlista(int(id1),nick1,passw1,int("0"),int(edad1)) 
-    listausu.mostrarlista()
+    arbolb.Insertar(int(id1))
     regis.hide()
     login.show()
     
@@ -54,10 +83,11 @@ def registr():
     regis.pushButton_2.clicked.connect(regre) 
     
 def elimini():
+    global respu
     listausu.eliminar(respu)
-    nick = ""
-    passw = ""
-    respu = ""
+    nick = " "
+    passw = " "
+    respu = " "
     entrar.hide()
     login.show()
     
@@ -84,23 +114,34 @@ def descen():
     listausu.ordeanamiento()
     dato=listausu.mostrarlistaF()
     admini.plainTextEdit.insertPlainText(dato)
-   
-
-def incio():
+    
+def grafimatri():
     matriz.graficarDispersa()
+
+def grafiarbolb():
+    arbolb.Grafo()
+    
+def grafiarbolavl():
+    global respu
+    arbolavl.CrearGrafica(respu)
+   
+def incio():
+    global passw
     nick = login.lineEdit.text()
     passw = login.lineEdit_2.text()
     if len(nick)==0 or len(passw)==0:
         login.label_5.setText("Ingrese los datos para continuar")
     else:
+        global respu
         respu=listausu.verificar(nick,passw)
-        print(respu)
         if respu=="EDD":
             login.hide()
             admini.show()
             admini.pushButton.clicked.connect(ascen)
             admini.pushButton_2.clicked.connect(descen)
+            admini.pushButton_3.clicked.connect(grafiarbolb)
             admini.pushButton_4.clicked.connect(cerraadmi)
+            admini.pushButton_5.clicked.connect(grafimatri)
         elif(respu=="None"):
             login.label_5.setText("Datos incorrectos")
         else:
@@ -111,57 +152,49 @@ def incio():
             entrar.pushButton_2.clicked.connect(elimini)
             entrar.pushButton_4.clicked.connect(cerra)
             entrar.pushButton_5.clicked.connect(tiend)
+            entrar.pushButton_6.clicked.connect(grafiarbolavl)
             
 def portav(a,b):
     res1=matriz.Buscar(a+1,b)
     res2=matriz.Buscar(a+2,b)
     res3=matriz.Buscar(a+3,b)
     if res1=="NO" and res2=="NO" and res3=="NO":
-        print("Llego1")
         matriz.addDispersa("P",a,b)
         matriz.addDispersa("P",a+1,b) 
         matriz.addDispersa("P",a+2,b)
         matriz.addDispersa("P",a+3,b)
     elif res1=="SI" and res2=="SI" and res3=="SI":
-        print("Llego2")
         res1=matriz.Buscar(a-1,b)
         res2=matriz.Buscar(a-2,b)
         res3=matriz.Buscar(a-3,b)
         if res1=="NO" and res2=="NO" and res3=="NO":
-            print("Llego3")
             matriz.addDispersa("P",a,b)
             matriz.addDispersa("P",a-1,b) 
             matriz.addDispersa("P",a-2,b)
             matriz.addDispersa("P",a-3,b)
     elif res1=="NO" and res2=="NO" and res3=="SI":
-        print("Llego4")
         res1=matriz.Buscar(a-1,b)
         res2=matriz.Buscar(a-2,b)
         res3=matriz.Buscar(a+1,b)
         if res1=="NO" and res2=="NO" and res3=="NO":
-            print("Llego5")
             matriz.addDispersa("P",a,b)
             matriz.addDispersa("P",a-1,b) 
             matriz.addDispersa("P",a-2,b)
             matriz.addDispersa("P",a+1,b)
     elif res1=="NO" and res2=="SI":
-        print("Llego6")
         res1=matriz.Buscar(a-1,b)
         res2=matriz.Buscar(a+2,b)
         res3=matriz.Buscar(a+1,b)
         if res1=="NO" and res2=="NO" and res3=="NO":
-            print("Llego7")
             matriz.addDispersa("P",a,b)
             matriz.addDispersa("P",a-1,b) 
             matriz.addDispersa("P",a+2,b)
             matriz.addDispersa("P",a+1,b)
     elif res1=="SI" :
-        print("Llego9")
         res1=matriz.Buscar(a+1,b)
         res2=matriz.Buscar(a+2,b)
         res3=matriz.Buscar(a+1,b)
         if res1=="NO" and res2=="NO" and res3=="NO":
-            print("Llego8")
             matriz.addDispersa(a,b)
             matriz.addDispersa(a+1,b) 
             matriz.addDispersa(a+2,b)
@@ -220,7 +253,6 @@ def matri(ancho,alto):
         
 def carga():
     archivo=filedialog.askopenfilename(filetypes=[("Archivos JSON", ".json .JSON")])
-    print(archivo)
     if archivo!="":
         with open(archivo) as file:
             datos = json.load(file)
@@ -231,6 +263,7 @@ def carga():
                 mon=usua["monedas"]
                 edad=usua["edad"]
                 listausu.agregarlista(int(id),nick,passw,int(mon),int(edad))
+                arbolb.Insertar(int(id))
             for arti in datos['articulos']:
                 cate=arti["categoria"]
                 cate1=listacate.getCate(cate)
@@ -256,10 +289,7 @@ def carga():
                     moviy=tutorial["y"]
                     colatuto.insertar(int(movix),int(moviy),"Movimiento")
                 matri(ancho,alto)
-                
-                
-                
-                
+                      
     else:
         print("No se reconocio el archivo")
         
@@ -269,13 +299,14 @@ def carga():
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])
-    login = uic.loadUi("Fase_2/Backend/Frontend/Paginas/Login.ui")
-    admini = uic.loadUi("Fase_2/Backend/Frontend/Paginas/Administracion.ui")
-    entrar = uic.loadUi("Fase_2/Backend/Frontend/Paginas/Bienvenido.ui")
-    edita = uic.loadUi("Fase_2/Backend/Frontend/Paginas/Editar.ui")
-    tienda = uic.loadUi("Fase_2/Backend/Frontend/Paginas/Tienda.ui")
-    regis = uic.loadUi("Fase_2/Backend/Frontend/Paginas/Registro.ui")
+    login = uic.loadUi("Frontend/Paginas/Login.ui")
+    admini = uic.loadUi("Frontend/Paginas/Administracion.ui")
+    entrar = uic.loadUi("Frontend/Paginas/Bienvenido.ui")
+    edita = uic.loadUi("Frontend/Paginas/Editar.ui")
+    tienda = uic.loadUi("Frontend/Paginas/Tienda.ui")
+    regis = uic.loadUi("Frontend/Paginas/Registro.ui")
     listausu.agregarlista(0,"EDD","edd123",0,50)
+    listausu.agregarlista(11,"Nataly","Nataly123",4259,50)
     login.show()
     login.pushButton.clicked.connect(incio)
     login.pushButton_2.clicked.connect(carga)
