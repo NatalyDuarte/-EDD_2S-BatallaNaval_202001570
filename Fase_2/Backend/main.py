@@ -1,3 +1,4 @@
+from unittest import result
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMainWindow, QApplication, QLabel
 from PyQt5.uic import loadUi
@@ -22,9 +23,14 @@ nick = " "
 passw = " "
 ed=0
 def editausu():
+    global respu
+    global passw
     nick = edita.lineEdit.text()
-    passw = edita.lineEdit_2.text()
-    listausu.editar(respu,nick,passw,20)
+    passw1 = edita.lineEdit_2.text()
+    edad = edita.lineEdit_4.text()
+    print(respu)
+    mon = listausu.obtemonedas(respu,passw)
+    listausu.editar(respu,nick,passw1,mon,int(edad))
     
 
 def editar():
@@ -132,6 +138,7 @@ def grafiarbolavl():
    
 def incio():
     global passw
+    global nick
     nick = login.lineEdit.text()
     passw = login.lineEdit_2.text()
     if len(nick)==0 or len(passw)==0:

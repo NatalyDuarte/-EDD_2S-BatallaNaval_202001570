@@ -99,8 +99,8 @@ class ListaUsuarios(object):
     def verificar(self, nic, passw):
         return _Listas.ListaUsuarios_verificar(self, nic, passw)
 
-    def editar(self, res, nick, passw, edad):
-        return _Listas.ListaUsuarios_editar(self, res, nick, passw, edad)
+    def editar(self, res, nick, passw, mon, edad):
+        return _Listas.ListaUsuarios_editar(self, res, nick, passw, mon, edad)
 
     def eliminar(self, UsuarioBuscado):
         return _Listas.ListaUsuarios_eliminar(self, UsuarioBuscado)

@@ -3847,13 +3847,16 @@ SWIGINTERN PyObject *_wrap_ListaUsuarios_editar(PyObject *SWIGUNUSEDPARM(self), 
   std::string arg3 ;
   std::string arg4 ;
   int arg5 ;
+  int arg6 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val5 ;
   int ecode5 = 0 ;
-  PyObject *swig_obj[5] ;
+  int val6 ;
+  int ecode6 = 0 ;
+  PyObject *swig_obj[6] ;
   
-  if (!SWIG_Python_UnpackTuple(args, "ListaUsuarios_editar", 5, 5, swig_obj)) SWIG_fail;
+  if (!SWIG_Python_UnpackTuple(args, "ListaUsuarios_editar", 6, 6, swig_obj)) SWIG_fail;
   res1 = SWIG_ConvertPtr(swig_obj[0], &argp1,SWIGTYPE_p_ListaUsuarios, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ListaUsuarios_editar" "', argument " "1"" of type '" "ListaUsuarios *""'"); 
@@ -3891,7 +3894,12 @@ SWIGINTERN PyObject *_wrap_ListaUsuarios_editar(PyObject *SWIGUNUSEDPARM(self), 
     SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "ListaUsuarios_editar" "', argument " "5"" of type '" "int""'");
   } 
   arg5 = static_cast< int >(val5);
-  (arg1)->editar(arg2,arg3,arg4,arg5);
+  ecode6 = SWIG_AsVal_int(swig_obj[5], &val6);
+  if (!SWIG_IsOK(ecode6)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "ListaUsuarios_editar" "', argument " "6"" of type '" "int""'");
+  } 
+  arg6 = static_cast< int >(val6);
+  (arg1)->editar(arg2,arg3,arg4,arg5,arg6);
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:

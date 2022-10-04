@@ -110,7 +110,7 @@ public:
         }
     
         //metodo de editar
-        void editar(string res,string nick, string passw, int edad){
+        void editar(string res,string nick, string passw,int mon, int edad){
             Usuario* aux = inicio;
             bool encontrado = false;
             if(inicio!=NULL){
@@ -118,6 +118,7 @@ public:
                     if(aux->nick==res){
                         aux->nick = nick;
                         aux->passw =probando(passw);
+                        aux->mon = mon; 
                         aux->edad = edad;
                         encontrado = true;				
                     }
